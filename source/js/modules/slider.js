@@ -6,6 +6,7 @@ const initSlider = () => {
       slidesPerView: 'auto',
       // slidesPerView: 1,
       speed: 1000,
+      grabCursor: true,
       freeMode: true,
       watchSlidesVisibility: true,
       lazy: {
@@ -80,7 +81,7 @@ const initSlider = () => {
       observeSlideChildren: true,
       nested: true,
       simulateTouch: false,
-      spaceBetween: 20,
+      effect: 'fade',
       lazy: {
         loadPrevNext: true,
       },
