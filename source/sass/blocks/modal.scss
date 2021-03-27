@@ -69,9 +69,19 @@
 
   &__close-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 11px;
+    right: 20px;
     z-index: 1;
+    padding: 10px;
+
+    svg {
+      stroke: $color-silver;
+    }
+
+    &:hover svg,
+    &:focus svg {
+      stroke: $color-tahiti-gold;
+    }
   }
 
   &--responsive {

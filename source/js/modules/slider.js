@@ -6,6 +6,7 @@ const initSlider = () => {
       slidesPerView: 'auto',
       // slidesPerView: 1,
       speed: 1000,
+      freeMode: true,
       watchSlidesVisibility: true,
       lazy: {
         loadPrevNext: true,
@@ -49,15 +50,37 @@ const initSlider = () => {
 
     // setTimeout(inertNotVisible, 0);
 
-    const swiper = new Swiper('.event__slider', {
+    const popupSlider = new Swiper('.popup-slider', {
       slidesPerView: 1,
-      loop: true,
+      speed: 0,
+      watchSlidesVisibility: true,
+      observer: true,
+      observeParents: true,
+      observeSlideChildren: true,
+      simulateTouch: false,
+      lazy: {
+        loadPrevNext: true,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      navigation: {
+        nextEl: '.popup-slider__button-next',
+        prevEl: '.popup-slider__button-prev',
+      },
+    });
+
+    const eventSlider = new Swiper('.event__slider', {
+      slidesPerView: 1,
       speed: 1000,
       watchSlidesVisibility: true,
       observer: true,
       observeParents: true,
       observeSlideChildren: true,
       nested: true,
+      simulateTouch: false,
+      spaceBetween: 20,
       lazy: {
         loadPrevNext: true,
       },
@@ -66,35 +89,43 @@ const initSlider = () => {
         onlyInViewport: true,
       },
       pagination: {
-        el: '.swiper-pagination',
+        el: '.event__pagination',
         clickable: true,
+        bulletClass: 'event__pagination-item',
+        bulletActiveClass: 'event__pagination-current-item',
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        clickable: true,
+        nextEl: '.event__button-next',
+        prevEl: '.event__button-prev',
       },
     });
 
-    const popupSlider = new Swiper('.popup-slider', {
-      slidesPerView: 1,
-      speed: 1000,
-      loop: true,
-      watchSlidesVisibility: true,
-      observer: true,
-      observeParents: true,
-      observeSlideChildren: true,
-      lazy: {
-        loadPrevNext: true,
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
+    // eventSlider.on('progress', () => {
+    //   inertNotVisible();
+    // });
+
+    // const inertNotVisible = () => {
+    //   eventSlider.slides.forEach((slide) => {
+    //     if (!slide.classList.contains('swiper-slide-visible')) {
+    //       slide.childNodes[1].setAttribute('tabindex', '-1');
+    //     } else {
+    //       slide.childNodes[1].setAttribute('tabindex', '0');
+    //     }
+    //   });
+
+    //   eventSlider.pagination.bullets.forEach((bullet) => {
+    //     if (bullet.classList.contains('event__pagination-item')) {
+    //       bullet.setAttribute('tabIndex', '-1');
+    //     } else {
+    //       bullet.setAttribute('tabIndex', '0');
+    //     }
+    //   });
+    // };
+
+    // setTimeout(inertNotVisible, 0);
+
+    // eventSlider.controller.control = slider;
   }
 };
 
