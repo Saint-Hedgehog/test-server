@@ -1846,7 +1846,8 @@ button,
   .modal__close-btn {
     position: absolute;
     top: 15px;
-    right: 15px; }
+    right: 15px;
+    z-index: 1; }
   .modal--responsive .modal__content {
     width: 100%; }
   .modal--fit-content .modal__content {
@@ -1921,3 +1922,20 @@ button,
       height: 5px;
       background-color: #f2f2f2;
       border-radius: 50%; }
+
+.popup,
+.modal-slider,
+.modal-slider__slide {
+  width: 1144px;
+  height: 594px; }
+
+.modal-slider__slide img {
+  width: 100%;
+  height: auto; }
+
+.modal-slider__button-prev,
+.modal-slider__button-next {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ee732c; }

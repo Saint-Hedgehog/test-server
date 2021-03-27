@@ -57,6 +57,7 @@ const initSlider = () => {
       observer: true,
       observeParents: true,
       observeSlideChildren: true,
+      nested: true,
       lazy: {
         loadPrevNext: true,
       },
@@ -67,6 +68,27 @@ const initSlider = () => {
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    const popupSlider = new Swiper('.popup-slider', {
+      slidesPerView: 1,
+      speed: 1000,
+      loop: true,
+      watchSlidesVisibility: true,
+      observer: true,
+      observeParents: true,
+      observeSlideChildren: true,
+      lazy: {
+        loadPrevNext: true,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
       },
       navigation: {
         nextEl: '.swiper-button-next',
