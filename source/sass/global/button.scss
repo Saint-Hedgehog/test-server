@@ -1,0 +1,165 @@
+.button {
+  display: inline-block;
+  margin: 0 16.5px 16px 0;
+  padding: 3px 9px 3px 9px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid $color-gainsboro-2;
+  border-radius: 20px;
+  transition: color $default-transition-settings,
+    background-color $default-transition-settings,
+    border-color $default-transition-settings;
+  cursor: pointer;
+
+  &::before {
+    transition: background-color $default-transition-settings;
+  }
+
+  &--events,
+  &--tmk-group,
+  &--stz,
+  &--vtz,
+  &--tmk-artrom,
+  &--tmk-ipsco,
+  &--tagmet,
+  &--sin-tz,
+  &--ktp,
+  &--omz,
+  &--tmk-gipi,
+  &--tmk-resita {
+    padding: 0 7px;
+    font-size: 10px;
+    line-height: 23px;
+    border-radius: 15px;
+    letter-spacing: 0.05em;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-white;
+  }
+
+  &--events {
+    margin-right: 11px;
+    color: $color-grey;
+    border-color: $color-grey;
+
+    &:hover,
+    &:focus {
+      background-color: $color-grey;
+    }
+  }
+
+  &--tmk-group {
+    color: $color-tahiti-gold;
+    border-color: $color-tahiti-gold;
+
+    &:hover,
+    &:focus {
+      background-color: $color-tahiti-gold;
+    }
+  }
+
+  &--stz {
+    color: $color-san-marino;
+    border-color: $color-san-marino;
+
+    &:hover,
+    &:focus {
+      background-color: $color-san-marino;
+    }
+  }
+
+  &--vtz {
+    color: $color-mandy;
+    border-color: $color-mandy;
+
+    &:hover,
+    &:focus {
+      background-color: $color-mandy;
+    }
+  }
+
+  &--tmk-artrom {
+    color: $color-beaver;
+    border-color: $color-beaver;
+
+    &:hover,
+    &:focus {
+      background-color: $color-beaver;
+    }
+  }
+
+  &--tmk-ipsco {
+    color: $color-scarlet;
+    border-color: $color-scarlet;
+
+    &:hover,
+    &:focus {
+      background-color: $color-scarlet;
+    }
+  }
+
+  &--tagmet {
+    color: $color-fruit-salad;
+    border-color: $color-fruit-salad;
+
+    &:hover,
+    &:focus {
+      background-color: $color-fruit-salad;
+    }
+  }
+
+  &--sin-tz {
+    color: $color-gulf-stream;
+    border-color: $color-gulf-stream;
+
+    &:hover,
+    &:focus {
+      background-color: $color-gulf-stream;
+    }
+  }
+
+  &--ktp {
+    color: $color-cream-can;
+    border-color: $color-cream-can;
+
+    &:hover,
+    &:focus {
+      background-color: $color-cream-can;
+    }
+  }
+
+  &--omz {
+    color: $color-bouquet;
+    border-color: $color-bouquet;
+
+    &:hover,
+    &:focus {
+      background-color: $color-bouquet;
+    }
+  }
+
+  &--tmk-gipi {
+    color: $color-wewak;
+    border-color: $color-wewak;
+
+    &:hover,
+    &:focus {
+      background-color: $color-wewak;
+    }
+  }
+
+  &--tmk-resita {
+    color: $color-martini;
+    border-color: $color-martini;
+
+    &:hover,
+    &:focus {
+      background-color: $color-martini;
+    }
+  }
+}

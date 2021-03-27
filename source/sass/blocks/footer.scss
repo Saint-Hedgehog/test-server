@@ -1,0 +1,304 @@
+.footer {
+  min-height: 115px;
+  padding-bottom: 55px;
+}
+
+.footer .container {
+  display: flex;
+}
+
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  width: 130px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__social-item {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.footer__social-link {
+  margin-bottom: 8px;
+}
+
+.footer__social-link svg {
+  fill: $color-silver;
+  transition: fill $default-transition-settings,
+    opacity $default-transition-settings;
+
+  &:hover,
+  &:focus {
+    fill: $color-tahiti-gold;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.footer__filter {
+  position: relative;
+  width: 655px;
+  padding-left: 63px;
+  border-left: 1px solid $color-grey;
+
+  &--events {
+    width: 433px;
+    margin-left: auto;
+    padding-left: 64px;
+  }
+}
+
+.footer__filter h2 {
+  position: absolute;
+  top: 38px;
+  left: -31px;
+  display: inline-block;
+  margin: 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: $color-zambezi;
+  transform: rotate(-90deg);
+}
+
+.footer__filter--events h2 {
+  top: 23px;
+  left: -17px;
+}
+
+.footer__filter p {
+  margin: 0;
+  margin-bottom: 9px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-silver;
+}
+
+.footer__filter .button {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  &--tmk-group,
+  &--stz,
+  &--vtz,
+  &--tmk-artrom,
+  &--tmk-ipsco,
+  &--tagmet,
+  &--sin-tz,
+  &--ktp,
+  &--omz,
+  &--tmk-gipi,
+  &--tmk-resita {
+    margin-bottom: 20px;
+    padding: 3px 9px 3px 19px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: normal;
+    border-color: $color-gainsboro-2;
+
+    &:hover,
+    &:focus {
+      color: $color-white;
+
+      &::before {
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &--tmk-group {
+    color: $color-tahiti-gold;
+
+    &::before {
+      background-color: $color-tahiti-gold;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-tahiti-gold;
+      border-color: $color-tahiti-gold;
+    }
+  }
+
+  &--stz {
+    color: $color-san-marino;
+
+    &::before {
+      background-color: $color-san-marino;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-san-marino;
+      border-color: $color-san-marino;
+    }
+  }
+
+  &--vtz {
+    color: $color-mandy;
+
+    &::before {
+      background-color: $color-mandy;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-mandy;
+      border-color: $color-mandy;
+    }
+  }
+
+  &--tmk-artrom {
+    color: $color-beaver;
+
+    &::before {
+      background-color: $color-beaver;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-beaver;
+      border-color: $color-beaver;
+    }
+  }
+
+  &--tmk-ipsco {
+    color: $color-scarlet;
+
+    &::before {
+      background-color: $color-scarlet;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-scarlet;
+      border-color: $color-scarlet;
+    }
+  }
+
+  &--tagmet {
+    color: $color-fruit-salad;
+
+    &::before {
+      background-color: $color-fruit-salad;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-fruit-salad;
+      border-color: $color-fruit-salad;
+    }
+  }
+
+  &--sin-tz {
+    color: $color-gulf-stream;
+
+    &::before {
+      background-color: $color-gulf-stream;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-gulf-stream;
+      border-color: $color-gulf-stream;
+    }
+  }
+
+  &--ktp {
+    color: $color-cream-can;
+
+    &::before {
+      background-color: $color-cream-can;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-cream-can;
+      border-color: $color-cream-can;
+    }
+  }
+
+  &--omz {
+    color: $color-bouquet;
+
+    &::before {
+      background-color: $color-bouquet;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-bouquet;
+      border-color: $color-bouquet;
+    }
+  }
+
+  &--tmk-gipi {
+    color: $color-wewak;
+
+    &::before {
+      background-color: $color-wewak;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-wewak;
+      border-color: $color-wewak;
+    }
+  }
+
+  &--tmk-resita {
+    color: $color-martini;
+
+    &::before {
+      background-color: $color-martini;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-martini;
+      border-color: $color-martini;
+    }
+  }
+}
+
+.footer__filter--events .button {
+  &--events {
+    margin-right: 16px;
+    margin-bottom: 20px;
+    padding: 2px 9px;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: normal;
+
+    &:hover,
+    &:focus {
+      color: $color-white;
+    }
+  }
+
+  &--grey {
+    color: $color-white;
+    background-color: $color-grey;
+    border-color: $color-grey;
+  }
+}

@@ -1,0 +1,38 @@
+.time-line {
+  position: relative;
+}
+
+.time-line .wrapper {
+  max-width: 1390px;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+
+.time-line > .wrapper > p {
+  position: absolute;
+  top: 96px;
+  left: 26px;
+  display: block;
+  margin: 0;
+  font-weight: 800;
+  font-size: 90px;
+  line-height: 40px;
+  color: $color-tahiti-gold;
+  letter-spacing: -0.03em;
+
+  &:nth-of-type(3n + 2) {
+    top: 162px;
+
+    // &::before {
+    //   content: attr(data-active);
+    //   position: absolute;
+    //   top: 100%;
+    //   transform: translate3d(0, 0, 0);
+    // }
+  }
+
+  &:nth-of-type(3n + 3) {
+    top: 162px;
+    left: 82px;
+  }
+}
