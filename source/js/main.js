@@ -5,7 +5,6 @@ import {initModals} from './modules/init-modals';
 import {hidePreloader} from './modules/preloader';
 import {initFilter} from './modules/filter';
 import {initSlider} from './modules/slider';
-// import data from '../data/history.json';
 
 // Utils
 // ---------------------------------
