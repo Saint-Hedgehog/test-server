@@ -14,6 +14,7 @@ const initSlider = () => {
       grabCursor: true,
       freeMode: true,
       watchSlidesVisibility: true,
+      // slidesPerView: 'auto',
       virtual: {
         slides: data.years.map((year, index) => `
           <div class="slider__slide swiper-slide" data-year="${year}">
@@ -75,7 +76,8 @@ const initSlider = () => {
     slider.on('slideChange', () => {
       let index = slider.realIndex + 1;
       if (index >= 10) {
-        currentNum2.remove();
+        currentNum2.classList.add('visually-hidden');
+
         gsap.to(currentNum1, 0.3, {
           force3D: true,
           y: -67,
@@ -92,24 +94,28 @@ const initSlider = () => {
           y: 0,
           delay: 0.3,
         });
+      } else {
+        if (currentNum2.classList.contains('visually-hidden')) {
+          currentNum2.classList.remove('visually-hidden');
+          currentNum1.innerHTML = '0';
+        }
+        gsap.to(currentNum2, 0.3, {
+          force3D: true,
+          y: -67,
+          onComplete: () => {
+            gsap.to(currentNum2, 0, {
+              force3D: true,
+              y: 67,
+            });
+            currentNum2.innerHTML = index;
+          },
+        });
+        gsap.to(currentNum2, 0.3, {
+          force3D: true,
+          y: 0,
+          delay: 0.3,
+        });
       }
-
-      gsap.to(currentNum2, 0.3, {
-        force3D: true,
-        y: -67,
-        onComplete: () => {
-          gsap.to(currentNum2, 0, {
-            force3D: true,
-            y: 67,
-          });
-          currentNum2.innerHTML = index;
-        },
-      });
-      gsap.to(currentNum2, 0.3, {
-        force3D: true,
-        y: 0,
-        delay: 0.3,
-      });
     });
 
     /* Главный слайдер модального окна */
