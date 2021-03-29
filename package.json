@@ -55,6 +55,5 @@
     "node": "8.15"
   },
   "dependencies": {
-    "swiper": "^6.5.0"
   }
 }
