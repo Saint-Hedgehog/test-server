@@ -76,7 +76,6 @@ const initSlider = () => {
       let index = slider.realIndex + 1;
       if (index >= 10) {
         currentNum2.remove();
-
         gsap.to(currentNum1, 0.3, {
           force3D: true,
           y: -67,
