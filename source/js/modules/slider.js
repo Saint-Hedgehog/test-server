@@ -1,12 +1,9 @@
-// import {Swiper, Navigation, Pagination, Controller, Mousewheel} from 'swiper';
+/* global Swiper */
 import data from '../../data/history.json';
-
-// Swiper.use([Navigation, Pagination, Controller, Mousewheel]);
+import {setupModal} from '../utils/modal';
 
 
 const initSlider = () => {
-// /* global Swiper */
-
   if (document.querySelector('.time-line')) {
     const slider = new Swiper('.slider', {
       speed: 1000,
@@ -14,14 +11,16 @@ const initSlider = () => {
       freeMode: true,
       watchSlidesVisibility: true,
       virtual: {
-        slides: data.years.map((year) => `
+        slides: data.years.map((year, index) => `
           <div class="slider__slide swiper-slide" data-year="${year}">
+          ${index === 0 ? '' : `
             <div class="slider__divider">
-            <div class="slider__divider-line"></div>
+              <div class="slider__divider-line"></div>
               <span>
                 ${year}
               </span>
             </div>
+          `}
             ${data.cards[year].map(({id, title, cover, events, org}) => `
             <article class="slider__card" data-id="${id}">
               <a href="#" class="slider__link" data-modal="success" aria-label="">
@@ -40,7 +39,7 @@ const initSlider = () => {
                 <p>${title}</p>
               </a>
             </article>
-            `)}
+            `).join('')}
             </div>`
         ),
       },
@@ -59,10 +58,12 @@ const initSlider = () => {
         },
       },
     });
-
-    // slider.on('progress', () => {
-    //   inertNotVisible();
-    // });
+    const modalSuccess = document.querySelector('.modal--success');
+    slider.on('progress', () => {
+      // inertNotVisible();
+      const modalSuccessBtns = document.querySelectorAll('[data-modal="success"]');
+      setupModal(modalSuccess, false, modalSuccessBtns);
+    });
 
     // const inertNotVisible = () => {
     //   slider.slides.forEach((slide) => {
