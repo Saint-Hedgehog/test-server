@@ -9,6 +9,7 @@
   background-size: 100% 100%;
   background-position: center;
   z-index: 5;
+  overflow: auto;
 
   @include retina {
     background-image: url("../img/bg/bg-start@2x.jpg");
@@ -23,7 +24,8 @@
 .preloader .container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  margin-bottom: 78px;
   padding: 0 197px 0 309px;
 }
 
@@ -52,10 +54,8 @@
 
 .preloader__button {
   display: inline-block;
-  width: 193px;
-  height: 56px;
   margin: 0 0 7px 1px;
-  padding: 0;
+  padding: 15px 41px;
   font-size: 25px;
   line-height: 25px;
   text-align: center;

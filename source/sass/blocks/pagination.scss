@@ -8,6 +8,7 @@
 }
 
 .pagination__item {
+  position: relative;
   display: inline-block;
   width: 51px;
   height: 23px;
@@ -27,6 +28,17 @@
     background-color $default-transition-settings;
   letter-spacing: -0.02em;
   cursor: pointer;
+
+  &:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: -8px;
+    width: 3px;
+    height: 2px;
+    background-color: $color-tahiti-gold;
+    border-radius: 50%;
+  }
 
   &:hover:not(.pagination__current-item),
   &:focus:not(.pagination__current-item) {
