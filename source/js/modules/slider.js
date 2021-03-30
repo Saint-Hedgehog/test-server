@@ -4,9 +4,88 @@ import data from '../../data/history.json';
 import {setupModal} from '../utils/modal';
 import {gsap} from 'gsap';
 
+const modalSuccess = document.querySelector('.modal--success');
+const descriptionElement = modalSuccess.querySelector('.event__description p');
+const eventsElement = modalSuccess.querySelector('.event__description .button--events');
+const orgElement = modalSuccess.querySelector('.event__description .button--tmk-group');
+const prevCardBtn = modalSuccess.querySelector('.popup-slider__button-prev');
+const nextCardBtn = modalSuccess.querySelector('.popup-slider__button-next');
+
+const eventsSlider = new Swiper('.event__slider', {
+  slidesPerView: 1,
+  speed: 1000,
+  pagination: {
+    el: '.event__pagination',
+    clickable: true,
+    bulletClass: 'event__pagination-item',
+    bulletActiveClass: 'event__pagination-current-item',
+  },
+  navigation: {
+    clickable: true,
+    nextEl: '.event__button-next',
+    prevEl: '.event__button-prev',
+  },
+});
+
+let currentYear;
+let currentCard;
+
+const openCard = (year, card) => {
+  currentYear = year;
+  currentCard = card;
+  const {description, pictures, org, events} = card;
+  eventsSlider.removeAllSlides();
+  eventsSlider.appendSlide(pictures.map((picture) => `
+    <div class="event__slide swiper-slide">
+      <picture>
+        <!-- 1х: 433px; 2x: 866px -->
+        <source type="image/webp" srcset="${picture}@1x.webp 1x, ${picture}@2x.webp 2x">
+        <!-- 1х: 433px; 2x: 866px -->
+        <img src="${picture}@1x.jpg" alt="photo-1" width="433" height="320"
+          srcset="${picture}@1x.jpg 2x" loading="lazy">
+      </picture>
+    </div>
+  `));
+  eventsSlider.slideTo(0);
+  eventsSlider.updateSlides();
+  descriptionElement.textContent = description;
+  eventsElement.textContent = `#${events[0].title}`;
+  orgElement.textContent = org.title;
+};
+
+prevCardBtn.addEventListener('click', () => {
+  const currentYearIndex = data.years.findIndex((year) => year === currentYear);
+  const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
+  if (currentCardIndex > 0) {
+    openCard(currentYear, data.cards[currentYear][currentCardIndex - 1]);
+  } else if (currentYearIndex > 0) {
+    const prevYear = data.years[currentYearIndex - 1];
+    const cardsCount = data.cards[prevYear].length;
+    openCard(prevYear, data.cards[prevYear][cardsCount - 1]);
+  } else {
+    const lastYear = data.years[data.years.length - 1];
+    const cardsCount = data.cards[lastYear].length;
+    openCard(lastYear, data.cards[lastYear][cardsCount - 1]);
+  }
+});
+nextCardBtn.addEventListener('click', () => {
+  const currentYearIndex = data.years.findIndex((year) => year === currentYear);
+  const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
+  const cardsCount = data.cards[currentYear].length;
+  const yearsCount = data.years.length;
+  if (currentCardIndex < cardsCount - 1) {
+    openCard(currentYear, data.cards[currentYear][currentCardIndex + 1]);
+  } else if (currentYearIndex < yearsCount - 1) {
+    const nextYear = data.years[currentYearIndex + 1];
+    openCard(nextYear, data.cards[nextYear][0]);
+  } else {
+    const firstYear = data.years[0];
+    openCard(firstYear, data.cards[firstYear][0]);
+  }
+
+});
+
 const initSlider = () => {
-
-
   if (document.querySelector('.time-line')) {
     /* Главный слайдер */
     const slider = new Swiper('.slider', {
@@ -14,9 +93,23 @@ const initSlider = () => {
       grabCursor: true,
       freeMode: true,
       watchSlidesVisibility: true,
-      // slidesPerView: 'auto',
-      virtual: {
-        slides: data.years.map((year, index) => `
+      slidesPerView: 'auto', // нельзя совмещать с virtual
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      pagination: {
+        el: '.pagination',
+        clickable: true,
+        bulletClass: 'pagination__item',
+        bulletActiveClass: 'pagination__current-item',
+        renderBullet(index, bulletClass) {
+          const year = data.years[index];
+          return `<button class="${bulletClass}">${year}</button>`;
+        },
+      },
+    });
+    slider.appendSlide(data.years.map((year, index) => `
           <div class="slider__slide swiper-slide" data-year="${year}">
           ${index === 0 ? '' : `
             <div class="slider__divider">
@@ -46,28 +139,17 @@ const initSlider = () => {
             </article>
             `).join('')}
             </div>`
-        ),
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      pagination: {
-        el: '.pagination',
-        clickable: true,
-        bulletClass: 'pagination__item',
-        bulletActiveClass: 'pagination__current-item',
-        renderBullet(index, bulletClass) {
-          const year = data.years[index];
-          return `<button class="${bulletClass}">${year}</button>`;
-        },
-      },
-    });
-
-    const modalSuccess = document.querySelector('.modal--success');
+    ));
     slider.on('progress', () => {
-      const modalSuccessBtns = document.querySelectorAll('[data-modal="success"]');
-      setupModal(modalSuccess, false, modalSuccessBtns);
+      const modalSuccessBtns = document.querySelectorAll('.swiper-slide-visible .slider__link[data-modal="success"]');
+      modalSuccessBtns.forEach((btn) => {
+        const year = btn.closest('.slider__slide').dataset.year;
+        const cardId = btn.closest('.slider__card').dataset.id;
+        const card = data.cards[year].find((c) => String(c.id) === cardId);
+        setupModal(modalSuccess, null, [btn], () => {
+          openCard(year, card);
+        });
+      });
     });
 
     let currentNum1 = document.querySelector('.time-line__text-container p:nth-child(2n + 1)');
@@ -116,123 +198,6 @@ const initSlider = () => {
           delay: 0.3,
         });
       }
-    });
-
-    /* Главный слайдер модального окна */
-    const popupSlider = new Swiper('.popup-slider', {
-      slidesPerView: 1,
-      speed: 0,
-      watchSlidesVisibility: true,
-      observer: true,
-      observeParents: true,
-      observeSlideChildren: true,
-      simulateTouch: false,
-      // virtual: {
-      //   slides: data.years.map((year) => `
-      //     <div class="popup-slider__slide swiper-slide" data-year="${year}">
-
-      //       ${data.cards[year].map(({id, title, cover, events, org}) => `
-      //       <article class="event" data-id="${id}">
-      //       <div class="event__slider swiper-container">
-      //         <div class="swiper-wrapper">
-      //           <!-- Слайд 1 -->
-      //           <div class="event__slide swiper-slide">
-      //             <picture>
-      //               <!-- 1х: 433px; 2x: 866px -->
-      //               <source type="image/webp" srcset="img/slides/slides-photo-1@1x.webp 1x, img/slides/slides-photo-1@2x.webp 2x">
-      //               <!-- 1х: 433px; 2x: 866px -->
-      //               <img src="img/slides/slides-photo-1@1x.jpg" alt="photo-1" width="433" height="320"
-      //                 srcset="img/slides/slides-photo-1@1x.jpg 2x" loading="lazy">
-      //             </picture>
-      //           </div>
-      //           <!-- Слайд 2 -->
-      //           <div class="event__slide swiper-slide">
-      //             <picture>
-      //               <!-- 1х: 433px; 2x: 866px -->
-      //               <source type="image/webp" srcset="img/slides/slides-photo-2@1x.webp 1x, img/slides/slides-photo-2@2x.webp 2x">
-      //               <!-- 1х: 433px; 2x: 866px -->
-      //               <img src="img/slides/slides-photo-2@1x.jpg" alt="photo-1" width="433" height="320"
-      //                 srcset="img/slides/slides-photo-2@1x.jpg 2x" loading="lazy">
-      //             </picture>
-      //           </div>
-      //           <!-- Слайд 3 -->
-      //           <div class="event__slide swiper-slide">
-      //             <picture>
-      //               <!-- 1х: 433px; 2x: 866px -->
-      //               <source type="image/webp" srcset="img/slides/slides-photo-3@1x.webp 1x, img/slides/slides-photo-3@2x.webp 2x">
-      //               <!-- 1х: 433px; 2x: 866px -->
-      //               <img src="img/slides/slides-photo-3@1x.jpg" alt="photo-1" width="433" height="320"
-      //                 srcset="img/slides/slides-photo-3@1x.jpg 2x" loading="lazy">
-      //             </picture>
-      //           </div>
-      //         </div>
-      //         <!-- Пагинация -->
-      //         <div class="event__pagination swiper-pagination"></div>
-      //         <!-- Кнопки навигации -->
-      //         <button class="event__button-prev" type="button">
-      //           <svg width="16" height="27">
-      //             <use xlink:href="#icon-button-prev"></use>
-      //           </svg>
-      //         </button>
-      //         <button class="event__button-next" type="button">
-      //           <svg width="16" height="27">
-      //             <use xlink:href="#icon-button-prev"></use>
-      //           </svg>
-      //         </button>
-      //       </div>
-      //       <!--  -->
-      //       <div class="event__description">
-      //         <p>В&nbsp;2001 году в&nbsp;форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по&nbsp;продаже продукции и&nbsp;закупке сырья и основных материалов создан Торговый дом ТМК (ТД&nbsp;ТМК).</p>
-      //         <span class="button button--events">${events[0].title}</span>
-      //         <span class="button button--tmk-group">${org.title}</span>
-      //       </div>
-      //     </article>
-      //       `).join('')}
-      //       </div>`
-      //   ),
-      // },
-      lazy: {
-        loadPrevNext: true,
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      navigation: {
-        nextEl: '.popup-slider__button-next',
-        prevEl: '.popup-slider__button-prev',
-      },
-    });
-
-    /* Галерея в модальном окне */
-    const eventSlider = new Swiper('.event__slider', {
-      slidesPerView: 1,
-      speed: 1000,
-      watchSlidesVisibility: true,
-      observer: true,
-      observeParents: true,
-      observeSlideChildren: true,
-      nested: true,
-      simulateTouch: false,
-      effect: 'fade',
-      lazy: {
-        loadPrevNext: true,
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      pagination: {
-        el: '.event__pagination',
-        clickable: true,
-        bulletClass: 'event__pagination-item',
-        bulletActiveClass: 'event__pagination-current-item',
-      },
-      navigation: {
-        clickable: true,
-        nextEl: '.event__button-next',
-        prevEl: '.event__button-prev',
-      },
     });
   }
 };
