@@ -4,38 +4,41 @@ import data from '../../data/history.json';
 import {setupModal} from '../utils/modal';
 import {gsap} from 'gsap';
 
-const modalSuccess = document.querySelector('.modal--success');
-const descriptionElement = modalSuccess.querySelector('.event__description p');
-const eventsElement = modalSuccess.querySelector('.event__description .button--events');
-const orgElement = modalSuccess.querySelector('.event__description .button--tmk-group');
-const prevCardBtn = modalSuccess.querySelector('.popup-slider__button-prev');
-const nextCardBtn = modalSuccess.querySelector('.popup-slider__button-next');
+const initSlider = () => {
+  if (document.querySelector('.time-line')) {
+    /* Слайдер в модалке */
+    const modalSuccess = document.querySelector('.modal--success');
+    const descriptionElement = modalSuccess.querySelector('.event__description p');
+    const eventsElement = modalSuccess.querySelector('.event__description .button--events');
+    const orgElement = modalSuccess.querySelector('.event__description .button--tmk-group');
+    const prevCardBtn = modalSuccess.querySelector('.popup-slider__button-prev');
+    const nextCardBtn = modalSuccess.querySelector('.popup-slider__button-next');
 
-const eventsSlider = new Swiper('.event__slider', {
-  slidesPerView: 1,
-  speed: 1000,
-  pagination: {
-    el: '.event__pagination',
-    clickable: true,
-    bulletClass: 'event__pagination-item',
-    bulletActiveClass: 'event__pagination-current-item',
-  },
-  navigation: {
-    clickable: true,
-    nextEl: '.event__button-next',
-    prevEl: '.event__button-prev',
-  },
-});
+    const eventsSlider = new Swiper('.event__slider', {
+      slidesPerView: 1,
+      speed: 1000,
+      pagination: {
+        el: '.event__pagination',
+        clickable: true,
+        bulletClass: 'event__pagination-item',
+        bulletActiveClass: 'event__pagination-current-item',
+      },
+      navigation: {
+        clickable: true,
+        nextEl: '.event__button-next',
+        prevEl: '.event__button-prev',
+      },
+    });
 
-let currentYear;
-let currentCard;
+    let currentYear;
+    let currentCard;
 
-const openCard = (year, card) => {
-  currentYear = year;
-  currentCard = card;
-  const {description, pictures, org, events} = card;
-  eventsSlider.removeAllSlides();
-  eventsSlider.appendSlide(pictures.map((picture) => `
+    const openCard = (year, card) => {
+      currentYear = year;
+      currentCard = card;
+      const {description, pictures, org, events} = card;
+      eventsSlider.removeAllSlides();
+      eventsSlider.appendSlide(pictures.map((picture) => `
     <div class="event__slide swiper-slide">
       <picture>
         <!-- 1х: 433px; 2x: 866px -->
@@ -46,47 +49,45 @@ const openCard = (year, card) => {
       </picture>
     </div>
   `));
-  eventsSlider.slideTo(0);
-  eventsSlider.updateSlides();
-  descriptionElement.textContent = description;
-  eventsElement.textContent = `#${events[0].title}`;
-  orgElement.textContent = org.title;
-};
+      eventsSlider.slideTo(0);
+      eventsSlider.updateSlides();
+      descriptionElement.textContent = description;
+      eventsElement.textContent = `#${events[0].title}`;
+      orgElement.textContent = org.title;
+    };
 
-prevCardBtn.addEventListener('click', () => {
-  const currentYearIndex = data.years.findIndex((year) => year === currentYear);
-  const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
-  if (currentCardIndex > 0) {
-    openCard(currentYear, data.cards[currentYear][currentCardIndex - 1]);
-  } else if (currentYearIndex > 0) {
-    const prevYear = data.years[currentYearIndex - 1];
-    const cardsCount = data.cards[prevYear].length;
-    openCard(prevYear, data.cards[prevYear][cardsCount - 1]);
-  } else {
-    const lastYear = data.years[data.years.length - 1];
-    const cardsCount = data.cards[lastYear].length;
-    openCard(lastYear, data.cards[lastYear][cardsCount - 1]);
-  }
-});
-nextCardBtn.addEventListener('click', () => {
-  const currentYearIndex = data.years.findIndex((year) => year === currentYear);
-  const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
-  const cardsCount = data.cards[currentYear].length;
-  const yearsCount = data.years.length;
-  if (currentCardIndex < cardsCount - 1) {
-    openCard(currentYear, data.cards[currentYear][currentCardIndex + 1]);
-  } else if (currentYearIndex < yearsCount - 1) {
-    const nextYear = data.years[currentYearIndex + 1];
-    openCard(nextYear, data.cards[nextYear][0]);
-  } else {
-    const firstYear = data.years[0];
-    openCard(firstYear, data.cards[firstYear][0]);
-  }
+    prevCardBtn.addEventListener('click', () => {
+      const currentYearIndex = data.years.findIndex((year) => year === currentYear);
+      const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
+      if (currentCardIndex > 0) {
+        openCard(currentYear, data.cards[currentYear][currentCardIndex - 1]);
+      } else if (currentYearIndex > 0) {
+        const prevYear = data.years[currentYearIndex - 1];
+        const cardsCount = data.cards[prevYear].length;
+        openCard(prevYear, data.cards[prevYear][cardsCount - 1]);
+      } else {
+        const lastYear = data.years[data.years.length - 1];
+        const cardsCount = data.cards[lastYear].length;
+        openCard(lastYear, data.cards[lastYear][cardsCount - 1]);
+      }
+    });
+    nextCardBtn.addEventListener('click', () => {
+      const currentYearIndex = data.years.findIndex((year) => year === currentYear);
+      const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
+      const cardsCount = data.cards[currentYear].length;
+      const yearsCount = data.years.length;
+      if (currentCardIndex < cardsCount - 1) {
+        openCard(currentYear, data.cards[currentYear][currentCardIndex + 1]);
+      } else if (currentYearIndex < yearsCount - 1) {
+        const nextYear = data.years[currentYearIndex + 1];
+        openCard(nextYear, data.cards[nextYear][0]);
+      } else {
+        const firstYear = data.years[0];
+        openCard(firstYear, data.cards[firstYear][0]);
+      }
 
-});
+    });
 
-const initSlider = () => {
-  if (document.querySelector('.time-line')) {
     /* Главный слайдер */
     const slider = new Swiper('.slider', {
       speed: 1000,
@@ -109,7 +110,19 @@ const initSlider = () => {
         },
       },
     });
-    slider.appendSlide(data.years.map((year, index) => `
+    const updateSlider = ({eventId, orgId} = {}) => {
+      slider.removeAllSlides();
+      slider.appendSlide(data.years.map((year, index) => {
+        const cards = data.cards[year].filter((card) => {
+          if (eventId && !card.events.some((event) => String(event.id) === eventId)) {
+            return false;
+          }
+          if (orgId && String(card.org.id) !== orgId) {
+            return false;
+          }
+          return true;
+        });
+        return `
           <div class="slider__slide swiper-slide" data-year="${year}">
           ${index === 0 ? '' : `
             <div class="slider__divider">
@@ -119,7 +132,7 @@ const initSlider = () => {
               </span>
             </div>
           `}
-            ${data.cards[year].map(({id, title, cover, events, org}) => `
+            ${cards.map(({id, title, cover, events, org}) => `
             <article class="slider__card" data-id="${id}">
               <a href="#" class="slider__link" data-modal="success" aria-label="">
                 <div class="slider__img-container">
@@ -138,8 +151,10 @@ const initSlider = () => {
               </a>
             </article>
             `).join('')}
-            </div>`
-    ));
+            </div>`;
+      }));
+    };
+
     slider.on('progress', () => {
       const modalSuccessBtns = document.querySelectorAll('.swiper-slide-visible .slider__link[data-modal="success"]');
       modalSuccessBtns.forEach((btn) => {
@@ -151,6 +166,8 @@ const initSlider = () => {
         });
       });
     });
+
+    updateSlider();
 
     let currentNum1 = document.querySelector('.time-line__text-container p:nth-child(2n + 1)');
     let currentNum2 = document.querySelector('.time-line__text-container p:nth-child(2n + 2)');
@@ -198,6 +215,20 @@ const initSlider = () => {
           delay: 0.3,
         });
       }
+    });
+
+    // todo добавить data-event-id в кнопки https://prnt.sc/10zfua6
+    // todo добавить data-org-id в кнопки https://prnt.sc/10zfuky
+    // todo обнови данные в json, а то там у всех компаний одинаковые id
+    document.querySelectorAll('.footer__filter--enterprises .button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        updateSlider({orgId: btn.dataset.orgId});
+      });
+    });
+    document.querySelectorAll('.footer__filter--events .button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        updateSlider({eventId: btn.dataset.eventId});
+      });
     });
   }
 };
