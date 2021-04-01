@@ -34,6 +34,11 @@ const initSlider = () => {
 
     let currentYear;
     let currentCard;
+    const filter = {
+      org: null,
+      events: [],
+    };
+    let filteredYears = [];
 
     const openCard = (year, card) => {
       currentYear = year;
@@ -109,7 +114,7 @@ const initSlider = () => {
       grabCursor: true,
       freeMode: true,
       watchSlidesVisibility: true,
-      // slidesPerView: 'auto', // нельзя совмещать с virtual
+      slidesPerView: 'auto',
       keyboard: {
         enabled: true,
         onlyInViewport: true,
@@ -120,29 +125,28 @@ const initSlider = () => {
         bulletClass: 'pagination__item',
         bulletActiveClass: 'pagination__current-item',
         renderBullet(index, bulletClass) {
-          const year = data.years[index];
+          const year = filteredYears[index];
           return `<button class="${bulletClass}">${year}</button>`;
         },
       },
     });
-    const updateSlider = ({eventId, orgId} = {}) => {
+    const updateSlider = () => {
       slider.removeAllSlides();
-      slider.appendSlide(data.years.map((year, index) => {
-        // const filter = {
-        //   org: [],
-        //   event: []
-        //   }
+      filteredYears = [];
+      const filteredSlides = data.years.map((year, index) => {
         const cards = data.cards[year].filter((card) => {
-          if (eventId && !card.events.some((event) => String(event.id) === eventId)) {
-            return false;
-          }
-          if (orgId && String(card.org.id) !== orgId) {
-            return false;
-          }
-          return true;
+          // eslint-disable-next-line max-nested-callbacks
+          const hasEvents = !filter.events.length || card.events.some(({id}) => filter.events.some((evt) => evt === id));
+          const hasOrg = !filter.org || filter.org === card.org.id;
+          return hasEvents && hasOrg;
         });
 
-        // console.log(data.cards[year].events);
+        if (cards.length) {
+          filteredYears.push(year);
+        } else {
+          return null;
+        }
+
         return `
           <div class="slider__slide swiper-slide" data-year="${year}">
           ${index === 0 ? '' : `
@@ -173,7 +177,13 @@ const initSlider = () => {
             </article>
             `).join('')}
             </div>`;
-      }));
+      }).filter((markup) => !!markup);
+      slider.appendSlide(filteredSlides);
+      slider.update();
+      if (filteredYears[0]) {
+        currentNum1.textContent = filteredYears[0][2];
+        currentNum2.textContent = filteredYears[0][3];
+      }
     };
 
     slider.on('progress', () => {
@@ -188,72 +198,66 @@ const initSlider = () => {
       });
     });
 
-    updateSlider();
-
     let currentNum1 = document.querySelector('.time-line__text-container p:nth-child(2n + 1)');
     let currentNum2 = document.querySelector('.time-line__text-container p:nth-child(2n + 2)');
 
     slider.on('slideChange', () => {
-      let index = slider.realIndex + 1;
-      if (index >= 10) {
-        currentNum2.classList.add('visually-hidden');
+      const year = filteredYears[slider.realIndex];
+      let firstDigit = year[2];
+      let secondDigit = year[3];
 
-        gsap.to(currentNum1, 0.3, {
-          force3D: true,
-          y: -67,
-          onComplete: () => {
-            gsap.to(currentNum1, 0, {
-              force3D: true,
-              y: 67,
-            });
-            currentNum1.innerHTML = index;
-          },
-        });
-        gsap.to(currentNum1, 0.3, {
-          force3D: true,
-          y: 0,
-          delay: 0.3,
-        });
-      } else {
-        if (currentNum2.classList.contains('visually-hidden')) {
-          currentNum2.classList.remove('visually-hidden');
-          currentNum1.innerHTML = '0';
-        }
-        gsap.to(currentNum2, 0.3, {
-          force3D: true,
-          y: -67,
-          onComplete: () => {
-            gsap.to(currentNum2, 0, {
-              force3D: true,
-              y: 67,
-            });
-            currentNum2.innerHTML = index;
-          },
-        });
-        gsap.to(currentNum2, 0.3, {
-          force3D: true,
-          y: 0,
-          delay: 0.3,
-        });
-      }
+      gsap.to(currentNum1, 0.3, {
+        force3D: true,
+        y: -67,
+        onComplete: () => {
+          gsap.to(currentNum1, 0, {
+            force3D: true,
+            y: 67,
+          });
+          currentNum1.innerHTML = firstDigit;
+        },
+      });
+      gsap.to(currentNum1, 0.3, {
+        force3D: true,
+        y: 0,
+        delay: 0.3,
+      });
+      gsap.to(currentNum2, 0.3, {
+        force3D: true,
+        y: -67,
+        onComplete: () => {
+          gsap.to(currentNum2, 0, {
+            force3D: true,
+            y: 67,
+          });
+          currentNum2.innerHTML = secondDigit;
+        },
+      });
+      gsap.to(currentNum2, 0.3, {
+        force3D: true,
+        y: 0,
+        delay: 0.3,
+      });
     });
 
     document.querySelectorAll('.footer__filter--enterprises .button').forEach((btn) => {
       btn.addEventListener('click', () => {
-        // if (btn.classList.contains('button--active')) {
-        //   updateSlider({orgId: btn.dataset.orgId});
-        // } else {
-        //   // slider.removeAllSlides();
-        //   // updateSlider();
-        // }
-        updateSlider({orgId: btn.dataset.orgId});
+        filter.org = Number(btn.dataset.orgId);
+        updateSlider();
       });
     });
     document.querySelectorAll('.footer__filter--events .button').forEach((btn) => {
       btn.addEventListener('click', () => {
-        updateSlider({eventId: btn.dataset.eventId});
+        const eventId = Number(btn.dataset.eventId);
+        if (btn.classList.contains('button--active')) {
+          filter.events.push(eventId);
+        } else {
+          filter.events.splice(filter.events.findIndex((value) => value === eventId), 1);
+        }
+        updateSlider();
       });
     });
+    updateSlider();
   }
 };
 
