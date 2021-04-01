@@ -3,9 +3,8 @@ import {iosVhFix} from './utils/ios-vh-fix';
 
 import {initModals} from './modules/init-modals';
 import {hidePreloader} from './modules/preloader';
-import {initFilter} from './modules/filter';
+import {initFilterState} from './modules/filter-state';
 import {initSlider} from './modules/slider';
-// import {initModalsContent} from './modules/modal-content';
 
 // Utils
 // ---------------------------------
@@ -18,7 +17,7 @@ iosVhFix();
 
 initModals();
 hidePreloader();
-initFilter();
+initFilterState();
 initSlider();
-// initModalsContent();
+
 

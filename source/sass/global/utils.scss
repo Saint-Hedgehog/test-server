@@ -36,8 +36,10 @@
 
   main {
     flex-grow: 1;
-    // flex-grow: 0;
-    // height: 550px;
+  }
+
+  h1 {
+    @include visually-hidden;
   }
 }
 

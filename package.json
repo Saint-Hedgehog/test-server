@@ -55,7 +55,6 @@
     "node": "8.15"
   },
   "dependencies": {
-    "gsap": "^3.6.1",
-    "swiper": "^6.5.0"
+    "gsap": "^3.6.1"
   }
 }

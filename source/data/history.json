@@ -1,19 +1,20 @@
 {
   "cards": {
     "2001": [{
-        "id": 1,
+        "id": 16,
         "events": [{
-            "id": 22,
+            "id": 1,
             "title": "производство"
           },
           {
-            "id": 23,
-            "title": "экология"
+            "id": 2,
+            "title": "научно-техническое развитие"
           }
         ],
         "org": {
-          "id": 4,
-          "title": "Группа ТМК"
+          "id": 5,
+          "title": "ТМК-Групп",
+          "mod": "tmk-group"
         },
         "year": 2001,
         "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
@@ -22,248 +23,411 @@
           "img": "img/slides/slides-photo-1",
           "alt": "photo-1"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
+        "pictures": [{
+          "img": "img/slides/slides-photo-1",
+          "alt": "photo-1"
+          },
+           {
+            "img": "img/slides/slides-photo-2",
+            "alt": "photo-2"
+          },
+          {
+            "img": "img/slides/slides-photo-3",
+            "alt": "photo-3"
+          },
+          {
+            "img": "img/slides/slides-photo-4",
+            "alt": "photo-4"
+          }
         ]
       },
       {
-        "id": 1,
+        "id": 17,
         "events": [{
-            "id": 22,
+            "id": 1,
             "title": "производство"
           },
           {
-            "id": 23,
+            "id": 3,
             "title": "экология"
           }
         ],
         "org": {
-          "id": 4,
-          "title": "Группа ТМК"
+          "id": 5,
+          "title": "ТМК-Групп",
+          "mod": "tmk-group"
         },
         "year": 2001,
         "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+        "description": "2 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
         "cover": {
           "img": "img/slides/slides-photo-2",
           "alt": "photo-2"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
+        "pictures": [{
+          "img": "img/slides/slides-photo-2",
+          "alt": "photo-2"
+          },
+           {
+            "img": "img/slides/slides-photo-3",
+            "alt": "photo-3"
+          },
+          {
+            "img": "img/slides/slides-photo-4",
+            "alt": "photo-4"
+          },
+          {
+            "img": "img/slides/slides-photo-1",
+            "alt": "photo-1"
+          }
         ]
       },
       {
-        "id": 1,
+        "id": 18,
         "events": [{
-            "id": 22,
+            "id": 1,
             "title": "производство"
           },
           {
-            "id": 23,
+            "id": 2,
+            "title": "научно-техническое развитие"
+          },
+          {
+            "id": 3,
             "title": "экология"
           }
         ],
         "org": {
-          "id": 3,
-          "title": "СТЗ"
+          "id": 6,
+          "title": "СТЗ",
+          "mod": "stz"
         },
         "year": 2001,
         "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+        "description": "3 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
         "cover": {
           "img": "img/slides/slides-photo-3",
-          "alt": "photo-2"
+          "alt": "photo-3"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
-        ]
-      },
-      {
-        "id": 1,
-        "events": [{
-            "id": 22,
-            "title": "производство"
+        "pictures": [{
+          "img": "img/slides/slides-photo-3",
+          "alt": "photo-3"
+          },
+           {
+            "img": "img/slides/slides-photo-4",
+            "alt": "photo-4"
           },
           {
-            "id": 23,
-            "title": "экология"
+            "img": "img/slides/slides-photo-1",
+            "alt": "photo-1"
+          },
+          {
+            "img": "img/slides/slides-photo-2",
+            "alt": "photo-2"
           }
-        ],
-        "org": {
-          "id": 4,
-          "title": "СТЗ"
-        },
-        "year": 2001,
-        "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
-        "cover": {
-          "img": "img/slides/slides-photo-3",
-          "alt": "photo-2"
-        },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
         ]
       }
     ],
     "2002": [{
-        "id": 1,
+        "id": 19,
         "events": [{
-            "id": 22,
+            "id": 1,
             "title": "производство"
-          },
-          {
-            "id": 23,
-            "title": "экология"
           }
         ],
         "org": {
-          "id": 4,
-          "title": "Группа ТМК"
+          "id": 10,
+          "title": "ТАГМЕТ",
+          "mod": "tagmet"
         },
         "year": 2002,
         "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
-        "cover": {
-          "img": "img/slides/slides-photo-3",
-          "alt": "photo-3"
-        },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
-        ]
-      },
-      {
-        "id": 1,
-        "events": [{
-            "id": 22,
-            "title": "производство"
-          },
-          {
-            "id": 23,
-            "title": "экология"
-          }
-        ],
-        "org": {
-          "id": 4,
-          "title": "Группа ТМК"
-        },
-        "year": 2002,
-        "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+        "description": "4 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
         "cover": {
           "img": "img/slides/slides-photo-4",
           "alt": "photo-4"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
+        "pictures": [{
+          "img": "img/slides/slides-photo-4",
+          "alt": "photo-4"
+          },
+           {
+            "img": "img/slides/slides-photo-1",
+            "alt": "photo-1"
+          },
+          {
+            "img": "img/slides/slides-photo-2",
+            "alt": "photo-2"
+          },
+          {
+            "img": "img/slides/slides-photo-3",
+            "alt": "photo-3"
+          }
         ]
       },
       {
-        "id": 1,
+        "id": 20,
         "events": [{
-            "id": 22,
+            "id": 1,
             "title": "производство"
-          },
-          {
-            "id": 23,
-            "title": "экология"
           }
         ],
         "org": {
-          "id": 4,
-          "title": "Группа ТМК"
+          "id": 5,
+          "title": "ТМК-Групп",
+          "mod": "tmk-group"
+
         },
         "year": 2002,
         "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+        "description": "5 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+        "cover": {
+          "img": "img/slides/slides-photo-5",
+          "alt": "photo-5"
+        },
+        "pictures": [{
+          "img": "img/slides/slides-photo-1",
+          "alt": "photo-1"
+          },
+           {
+            "img": "img/slides/slides-photo-2",
+            "alt": "photo-2"
+          },
+          {
+            "img": "img/slides/slides-photo-3",
+            "alt": "photo-3"
+          },
+          {
+            "img": "img/slides/slides-photo-4",
+            "alt": "photo-4"
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "events": [{
+            "id": 1,
+            "title": "производство"
+          }
+        ],
+        "org": {
+          "id": 14,
+          "title": "ТМК-GIPI",
+          "mod": "tmk-gipi"
+
+        },
+        "year": 2002,
+        "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
+        "description": "6 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+        "cover": {
+          "img": "img/slides/slides-photo-6",
+          "alt": "photo-6"
+        },
+        "pictures": [{
+          "img": "img/slides/slides-photo-1",
+          "alt": "photo-1"
+          },
+           {
+            "img": "img/slides/slides-photo-2",
+            "alt": "photo-2"
+          },
+          {
+            "img": "img/slides/slides-photo-3",
+            "alt": "photo-3"
+          },
+          {
+            "img": "img/slides/slides-photo-4",
+            "alt": "photo-4"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "events": [{
+            "id": 1,
+            "title": "производство"
+          }
+        ],
+        "org": {
+          "id": 12,
+          "title": "КТП",
+          "mod": "ktp"
+        },
+        "year": 2002,
+        "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
+        "description": "7 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
         "cover": {
           "img": "img/slides/slides-photo-4",
           "alt": "photo-4"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
+        "pictures": [{
+          "img": "img/slides/slides-photo-1",
+          "alt": "photo-1"
+          },
+           {
+            "img": "img/slides/slides-photo-2",
+            "alt": "photo-2"
+          },
+          {
+            "img": "img/slides/slides-photo-3",
+            "alt": "photo-3"
+          },
+          {
+            "img": "img/slides/slides-photo-4",
+            "alt": "photo-4"
+          }
         ]
       }
     ],
     "2003": [{
-        "id": 1,
-        "events": [{
-            "id": 22,
-            "title": "производство"
-          },
-          {
-            "id": 23,
-            "title": "экология"
-          }
-        ],
-        "org": {
-          "id": 4,
-          "title": "Группа ТМК"
+      "id": 19,
+      "events": [{
+          "id": 1,
+          "title": "производство"
+        }
+      ],
+      "org": {
+        "id": 10,
+        "title": "ТАГМЕТ",
+        "mod": "tagmet"
+      },
+      "year": 2003,
+      "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
+      "description": "4 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+      "cover": {
+        "img": "img/slides/slides-photo-4",
+        "alt": "photo-4"
+      },
+      "pictures": [{
+        "img": "img/slides/slides-photo-1",
+        "alt": "photo-1"
         },
-        "year": 2003,
-        "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
-        "cover": {
+         {
+          "img": "img/slides/slides-photo-2",
+          "alt": "photo-2"
+        },
+        {
           "img": "img/slides/slides-photo-3",
           "alt": "photo-3"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
-        ]
-      },
-      {
-        "id": 1,
-        "events": [{
-            "id": 22,
-            "title": "производство"
-          },
-          {
-            "id": 23,
-            "title": "экология"
-          }
-        ],
-        "org": {
-          "id": 4,
-          "title": "Группа ТМК"
-        },
-        "year": 2002,
-        "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
-        "description": "В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
-        "cover": {
+        {
           "img": "img/slides/slides-photo-4",
           "alt": "photo-4"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "events": [{
+          "id": 1,
+          "title": "производство"
+        }
+      ],
+      "org": {
+        "id": 5,
+        "title": "ТМК-Групп",
+        "mod": "tmk-group"
+      },
+      "year": 2003,
+      "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
+      "description": "5 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+      "cover": {
+        "img": "img/slides/slides-photo-5",
+        "alt": "photo-5"
+      },
+      "pictures": [{
+        "img": "img/slides/slides-photo-1",
+        "alt": "photo-1"
         },
-        "pictures": [
-          "img/slides/slides-photo-1",
-          "img/slides/slides-photo-2",
-          "img/slides/slides-photo-3",
-          "img/slides/slides-photo-4"
-        ]
-      }
-    ]
+         {
+          "img": "img/slides/slides-photo-2",
+          "alt": "photo-2"
+        },
+        {
+          "img": "img/slides/slides-photo-3",
+          "alt": "photo-3"
+        },
+        {
+          "img": "img/slides/slides-photo-4",
+          "alt": "photo-4"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "events": [{
+          "id": 1,
+          "title": "производство"
+        }
+      ],
+      "org": {
+        "id": 14,
+        "title": "ТМК-GIPI",
+        "mod": "tmk-gipi"
+      },
+      "year": 2003,
+      "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
+      "description": "6 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+      "cover": {
+        "img": "img/slides/slides-photo-6",
+        "alt": "photo-6"
+      },
+      "pictures": [{
+        "img": "img/slides/slides-photo-1",
+        "alt": "photo-1"
+        },
+         {
+          "img": "img/slides/slides-photo-2",
+          "alt": "photo-2"
+        },
+        {
+          "img": "img/slides/slides-photo-3",
+          "alt": "photo-3"
+        },
+        {
+          "img": "img/slides/slides-photo-4",
+          "alt": "photo-4"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "events": [{
+          "id": 1,
+          "title": "производство"
+        }
+      ],
+      "org": {
+        "id": 12,
+        "title": "КТП",
+        "mod": "ktp"
+      },
+      "year": 2003,
+      "title": "ТМК основана в 2001 году первоначально в форме ЗАО на базе предприятия «Чермет»",
+      "description": "7 - В 2001 году в форме закрытого акционерного общества создана Трубная Металлургическая Компания (ТМК). Также для совершения операций по продаже продукции и закупке сырья и основных материалов создан Торговый дом ТМК (ТД ТМК).",
+      "cover": {
+        "img": "img/slides/slides-photo-4",
+        "alt": "photo-4"
+      },
+      "pictures": [{
+        "img": "img/slides/slides-photo-1",
+        "alt": "photo-1"
+        },
+         {
+          "img": "img/slides/slides-photo-2",
+          "alt": "photo-2"
+        },
+        {
+          "img": "img/slides/slides-photo-3",
+          "alt": "photo-3"
+        },
+        {
+          "img": "img/slides/slides-photo-4",
+          "alt": "photo-4"
+        }
+      ]
+    }
+  ]
   },
   "years": [
     "2001",
@@ -271,25 +435,65 @@
     "2003"
   ],
   "events": [{
-      "id": 22,
+      "id": 1,
       "title": "производство"
     },
     {
-      "id": 23,
+      "id": 2,
+      "title": "научно-техническое развитие"
+    },
+    {
+      "id": 3,
       "title": "экология"
+    },
+    {
+      "id": 4,
+      "title": "социальная ответственность"
     }
   ],
   "orgs": [{
-      "id": 4,
+      "id": 5,
       "title": "Группа ТМК"
     },
     {
-      "id": 4,
-      "title": "Группа ТМК 2"
+      "id": 6,
+      "title": "СТЗ"
     },
     {
-      "id": 4,
-      "title": "Группа ТМК 3"
+      "id": 7,
+      "title": "ВТЗ"
+    },
+    {
+      "id": 8,
+      "title": "ТМК ARTROM"
+    },
+    {
+      "id": 9,
+      "title": "ТМК IPSCO"
+    },
+    {
+      "id": 10,
+      "title": "Тагмет"
+    },
+    {
+      "id": 11,
+      "title": "СинТЗ"
+    },
+    {
+      "id": 12,
+      "title": "КТП"
+    },
+    {
+      "id": 13,
+      "title": "ОМЗ"
+    },
+    {
+      "id": 14,
+      "title": "ТМК GIPI"
+    },
+    {
+      "id": 15,
+      "title": "ТМК RESITA"
     }
   ]
 }

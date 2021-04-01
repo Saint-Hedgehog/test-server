@@ -1,13 +1,13 @@
 .event {
   display: flex;
   width: 1144px;
-  height: 594px;
+  min-height: 594px;
 }
 
 .event__slider,
 .event__slide {
-  width: 752.32px;
-  height: 594px;
+  width: 752px;
+  min-height: 594px;
 }
 
 .event__slide img {
@@ -19,8 +19,8 @@
 .event__description {
   position: relative;
   width: 392px;
-  height: 594px;
-  padding: 73px 46.08px 73px 42.4px;
+  min-height: 594px;
+  padding: 73px 42px;
   border: 1px solid $color-tahiti-gold;
   border-left: none;
 
@@ -37,9 +37,13 @@
   }
 }
 
+.event__textx-container {
+  margin-bottom: 94px;
+}
+
 .event__description p {
   margin-top: 0;
-  margin-bottom: 94px;
+  margin-bottom: 20px;
   padding-left: 2px;
   font-weight: normal;
   font-size: 18px;
@@ -55,7 +59,17 @@
   letter-spacing: normal;
   pointer-events: none;
 
-  &--tmk-group {
+  &--tmk-group,
+  &--stz,
+  &--vtz,
+  &--tmk-artrom,
+  &--tmk-ipsco,
+  &--tagmet,
+  &--sin-tz,
+  &--ktp,
+  &--omz,
+  &--tmk-gipi,
+  &--tmk-resita {
     position: relative;
     padding-left: 20px;
     padding-right: 8px;
@@ -74,6 +88,50 @@
       background-color: $color-white;
       border-radius: 50%;
     }
+  }
+
+  &--tmk-group {
+    background-color: $color-tahiti-gold;
+  }
+
+  &--stz {
+    background-color: $color-san-marino;
+  }
+
+  &--vtz {
+    background-color: $color-mandy;
+  }
+
+  &--tmk-artrom {
+    background-color: $color-beaver;
+  }
+
+  &--tmk-ipsco {
+    background-color: $color-scarlet;
+  }
+
+  &--tagmet {
+    background-color: $color-fruit-salad;
+  }
+
+  &--sin-tz {
+    background-color: $color-gulf-stream;
+  }
+
+  &--ktp {
+    background-color: $color-cream-can;
+  }
+
+  &--omz {
+    background-color: $color-bouquet;
+  }
+
+  &--tmk-gipi {
+    background-color: $color-wewak;
+  }
+
+  &--tmk-resita {
+    background-color: $color-martini;
   }
 }
 
@@ -102,7 +160,7 @@
 .event__button-next,
 .event__button-prev {
   position: absolute;
-  top: 284px;
+  top: calc(50% - 14px);
   left: 32px;
   z-index: 1;
   display: block;

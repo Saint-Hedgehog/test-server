@@ -69,10 +69,21 @@
 
   &__close-btn {
     position: absolute;
-    top: 11px;
-    right: 20px;
+    top: 21px;
+    right: 30px;
     z-index: 1;
-    padding: 10px;
+    display: block;
+    width: 15px;
+    height: 15px;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      padding: 20px;
+    }
 
     svg {
       stroke: $color-silver;

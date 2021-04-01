@@ -1,0 +1,256 @@
+.popup {
+  position: relative;
+
+  &--tmk-group {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-tahiti-gold;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-tahiti-gold;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-tahiti-gold;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-tahiti-gold;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--stz {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-san-marino;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-san-marino;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-san-marino;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-san-marino;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--vtz {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-mandy;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-mandy;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-mandy;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-mandy;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--tmk-artrom {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-beaver;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-beaver;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-beaver;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-beaver;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--tmk-ipsco {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-scarlet;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-scarlet;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-scarlet;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-scarlet;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--tagmet {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-fruit-salad;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-fruit-salad;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-fruit-salad;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-fruit-salad;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--sin-tz {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-gulf-stream;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-gulf-stream;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-gulf-stream;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-gulf-stream;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--ktp {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-cream-can;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-cream-can;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-cream-can;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-cream-can;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--omz {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-bouquet;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-bouquet;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-bouquet;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-bouquet;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--tmk-gipi {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-wewak;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-wewak;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-wewak;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-wewak;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+
+  &--tmk-resita {
+    .popup-slider__button-next,
+    .popup-slider__button-prev {
+      border-color: $color-martini;
+      transition: border-color $default-transition-settings;
+
+      svg {
+        stroke: $color-martini;
+        transition: stroke $default-transition-settings;
+      }
+    }
+
+    .event__description {
+      border-color: $color-martini;
+      transition: border-color $default-transition-settings;
+
+      &::before {
+        background-color: $color-martini;
+        transition: background-color $default-transition-settings;
+      }
+    }
+  }
+}

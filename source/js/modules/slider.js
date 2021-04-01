@@ -8,15 +8,17 @@ const initSlider = () => {
   if (document.querySelector('.time-line')) {
     /* Слайдер в модалке */
     const modalSuccess = document.querySelector('.modal--success');
+    const popup = modalSuccess.querySelector('.popup');
     const descriptionElement = modalSuccess.querySelector('.event__description p');
     const eventsElement = modalSuccess.querySelector('.event__description .button--events');
-    const orgElement = modalSuccess.querySelector('.event__description .button--tmk-group');
+    const orgElement = modalSuccess.querySelector('.event__description .button--enterprises');
     const prevCardBtn = modalSuccess.querySelector('.popup-slider__button-prev');
     const nextCardBtn = modalSuccess.querySelector('.popup-slider__button-next');
 
     const eventsSlider = new Swiper('.event__slider', {
       slidesPerView: 1,
       speed: 1000,
+      effect: 'fade',
       pagination: {
         el: '.event__pagination',
         clickable: true,
@@ -42,10 +44,10 @@ const initSlider = () => {
     <div class="event__slide swiper-slide">
       <picture>
         <!-- 1х: 433px; 2x: 866px -->
-        <source type="image/webp" srcset="${picture}@1x.webp 1x, ${picture}@2x.webp 2x">
+        <source type="image/webp" srcset="${picture.img}@1x.webp 1x, ${picture.img}@2x.webp 2x">
         <!-- 1х: 433px; 2x: 866px -->
-        <img src="${picture}@1x.jpg" alt="photo-1" width="433" height="320"
-          srcset="${picture}@1x.jpg 2x" loading="lazy">
+        <img src="${picture.img}@1x.jpg" alt="${picture.alt}" width="433" height="320"
+          srcset="${picture.img}@1x.jpg 2x" loading="lazy">
       </picture>
     </div>
   `));
@@ -54,6 +56,20 @@ const initSlider = () => {
       descriptionElement.textContent = description;
       eventsElement.textContent = `#${events[0].title}`;
       orgElement.textContent = org.title;
+
+      orgElement.classList.add(`button--${org.mod}`);
+      const arrClassName = orgElement.className.split(' ');
+      if (arrClassName.length > 3) {
+        const removedClassName = arrClassName.splice(-2, 1).join();
+        orgElement.classList.remove(`${removedClassName}`);
+      }
+
+      popup.classList.add(`popup--${org.mod}`);
+      const arr1ClassName = popup.className.split(' ');
+      if (arr1ClassName.length > 2) {
+        const removedClassName = arr1ClassName.splice(-2, 1).join();
+        popup.classList.remove(`${removedClassName}`);
+      }
     };
 
     prevCardBtn.addEventListener('click', () => {
@@ -85,7 +101,6 @@ const initSlider = () => {
         const firstYear = data.years[0];
         openCard(firstYear, data.cards[firstYear][0]);
       }
-
     });
 
     /* Главный слайдер */
@@ -94,7 +109,7 @@ const initSlider = () => {
       grabCursor: true,
       freeMode: true,
       watchSlidesVisibility: true,
-      slidesPerView: 'auto', // нельзя совмещать с virtual
+      // slidesPerView: 'auto', // нельзя совмещать с virtual
       keyboard: {
         enabled: true,
         onlyInViewport: true,
@@ -113,6 +128,10 @@ const initSlider = () => {
     const updateSlider = ({eventId, orgId} = {}) => {
       slider.removeAllSlides();
       slider.appendSlide(data.years.map((year, index) => {
+        // const filter = {
+        //   org: [],
+        //   event: []
+        //   }
         const cards = data.cards[year].filter((card) => {
           if (eventId && !card.events.some((event) => String(event.id) === eventId)) {
             return false;
@@ -122,6 +141,8 @@ const initSlider = () => {
           }
           return true;
         });
+
+        // console.log(data.cards[year].events);
         return `
           <div class="slider__slide swiper-slide" data-year="${year}">
           ${index === 0 ? '' : `
@@ -136,7 +157,7 @@ const initSlider = () => {
             <article class="slider__card" data-id="${id}">
               <a href="#" class="slider__link" data-modal="success" aria-label="">
                 <div class="slider__img-container">
-                  <div class="slider__img-label slider__img-label--tmk-group"></div>
+                  <div class="slider__img-label slider__img-label--${org.mod}"></div>
                   <picture>
                     <!-- 1х: 433px; 2x: 866px -->
                     <source type="image/webp" srcset="${cover.img}@1x.webp 1x, ${cover.img}@2x.webp 2x">
@@ -146,7 +167,7 @@ const initSlider = () => {
                   </picture>
                 </div>
                 <span class="button button--events">#${events[0].title}</span>
-                <span class="button button--tmk-group">${org.title}</span>
+                <span class="button button--${org.mod}">${org.title}</span>
                 <p>${title}</p>
               </a>
             </article>
@@ -217,11 +238,14 @@ const initSlider = () => {
       }
     });
 
-    // todo добавить data-event-id в кнопки https://prnt.sc/10zfua6
-    // todo добавить data-org-id в кнопки https://prnt.sc/10zfuky
-    // todo обнови данные в json, а то там у всех компаний одинаковые id
     document.querySelectorAll('.footer__filter--enterprises .button').forEach((btn) => {
       btn.addEventListener('click', () => {
+        // if (btn.classList.contains('button--active')) {
+        //   updateSlider({orgId: btn.dataset.orgId});
+        // } else {
+        //   // slider.removeAllSlides();
+        //   // updateSlider();
+        // }
         updateSlider({orgId: btn.dataset.orgId});
       });
     });

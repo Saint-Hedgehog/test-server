@@ -1,14 +1,13 @@
 .time-line__wrapper {
   position: relative;
   max-width: 1390px;
-  margin: 0 auto 36px auto;
-  padding-left: 50px;
+  margin: 0 auto;
 }
 
 .time-line__text-container {
   position: absolute;
   left: 26px;
-  top: 150px;
+  top: 119px;
   width: 170px;
   height: 80px;
   overflow: hidden;
@@ -17,7 +16,7 @@
 .time-line__wrapper > p,
 .time-line__text-container p {
   position: absolute;
-  top: 96px;
+  top: 64px;
   left: 26px;
   display: block;
   margin: 0;

@@ -12,27 +12,19 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
 <link rel="manifest" href="img/favicon/site.webmanifest" crossorigin="use-credentials">
-<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#000000">
-<meta name="msapplication-TileColor" content="#da532c">
+<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#ee732c">
+<meta name="msapplication-TileColor" content="ffffff">
 <meta name="theme-color" content="#ffffff">
 
 <!-- Шрифт с главной страницы -->
 <link rel="preload" href="fonts/raleway-regular.woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="fonts/raleway-bold.woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="fonts/raleway-black.woff2" as="font" crossorigin="anonymous">
 
 <!-- Стили -->
 <link rel="stylesheet" href="css/style.min.css">
 
-  <title>ProjectName — Главная</title>
-  <link rel="preload" href="fonts/raleway-medium.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-semi-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-extra-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-black.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-light.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-regular.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-medium.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-semi-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-bold.woff2" as="font" crossorigin="anonymous">
+  <title>ТМК — Главная</title>
 
 </head>
 <body>
@@ -55,6 +47,7 @@
   </div>
 
   <div class="wrapper wrapper--no-scrollbar">
+    <h1>История компании ТМК</h1>
     <header class="header ">
   <div class="header__wrapper container">
     <h2>История компании ТМК</h2>
@@ -66,7 +59,7 @@
 
 
     <main>
-      <section class="preloader">
+      <!-- <section class="preloader">
         <header class="header ">
   <div class="header__wrapper container">
     <h2>История компании ТМК</h2>
@@ -84,16 +77,8 @@
             <p>Сегодня ТМК&nbsp;&mdash; мировой лидер по&nbsp;объемам производства стальных труб, география наших поставок насчитывает более 80&nbsp;стран. Но&nbsp;мы&nbsp;на&nbsp;этом не&nbsp;останавливаемся. Мы&nbsp;продолжаем динамичное развитие, чтобы максимально соответствовать требованиям наших клиентов и&nbsp;во&nbsp;многом&nbsp;&mdash; предвосхищать их&nbsp;ожидания.</p>
             <p>В&nbsp;этот юбилейный год мы&nbsp;вспоминаем путь, который прошли за&nbsp;20&nbsp;лет, и&nbsp;приглашаем вас пройти его вместе с&nbsp;нами.</p>
           </div>
-
-          <!-- <span>'01</span>
-          <span>'07</span>
-          <span>'12</span>
-          <span>'14</span>
-          <span>'18</span>
-          <span>'19</span>
-          <span>21</span> -->
         </div>
-      </section>
+      </section> -->
 
       <section class="time-line">
         <div class="time-line__wrapper">
@@ -112,11 +97,6 @@
 
         </div>
       </section>
-
-      <!-- <div class="container">
-        <p><a href="#" data-modal="feedback" aria-label="">modal--feedback link</a></p>
-        <p><a href="#" data-modal="success">modal--success link</a></p>
-      </div> -->
     </main>
 
     <footer class="footer">
@@ -146,48 +126,107 @@
     <div class="footer__filter footer__filter--enterprises">
       <h2>предприятия</h2>
       <p>Показать только</p>
-      <button class="button button--tmk-group" type="button" aria-label="" data-org-id="4">Группа ТМК</button>
-      <button class="button button--stz" type="button" aria-label="">СТЗ</button>
-      <button class="button button--vtz" type="button" aria-label="">ВТЗ</button>
-      <button class="button button--tmk-artrom" type="button" aria-label="">ТМК ARTROM</button>
-      <button class="button button--tmk-ipsco" type="button" aria-label="">ТМК IPSCO</button>
-      <button class="button button--tagmet " type="button" aria-label="">Тагмет</button>
-      <button class="button button--sin-tz" type="button" aria-label="">СинТЗ</button>
-      <button class="button button--ktp" type="button" aria-label="">КТП</button>
-      <button class="button button--omz" type="button" aria-label="">ОМЗ</button>
-      <button class="button button--tmk-gipi" type="button" aria-label="">ТМК GIPI</button>
-      <button class="button button--tmk-resita" type="button" aria-label="">ТМК RESITA</button>
+      <ul>
+        <li>
+          <button class="button button--tmk-group" type="button" aria-label="" data-org-id="5">
+            <span>Группа ТМК</span>
+            <span class="visually-hidden">Группа ТМК</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--stz" type="button" data-org-id="6" aria-label="">
+            <span>СТЗ</span>
+            <span class="visually-hidden">Северский трубный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--vtz" type="button" data-org-id="7" aria-label="">
+            <span>ВТЗ</span>
+            <span class="visually-hidden">Волжский трубный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--tmk-artrom" type="button" data-org-id="8" aria-label="">
+            <span>ТМК ARTROM</span>
+            <span class="visually-hidden">ТМК ARTROM</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--tmk-ipsco" type="button" data-org-id="9" aria-label="">
+            <span>ТМК IPSCO</span>
+            <span class="visually-hidden">ТМК IPSCO</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--tagmet " type="button" data-org-id="10" aria-label="">
+            <span>Тагмет</span>
+            <span class="visually-hidden">Таганровгский металургический завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--sin-tz" type="button" data-org-id="11" aria-label="">
+            <span>СинТЗ</span>
+            <span class="visually-hidden">Синарский трубный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--ktp" type="button" data-org-id="12" aria-label="">
+            <span>КТП</span>
+            <span class="visually-hidden">Казтрубпром</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--omz" type="button" data-org-id="13" aria-label="">
+            <span>ОМЗ</span>
+            <span class="visually-hidden">Омский машиностроительный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--tmk-gipi" type="button" data-org-id="14" aria-label="">
+            <span>ТМК GIPI</span>
+            <span class="visually-hidden">ТМК GIPI</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="button button--tmk-resita" type="button" data-org-id="15" aria-label="">
+            <span>ТМК RESITA</span>
+            <span class="visually-hidden">ТМК RESITA</span>
+          </button>
+        </li>
+      </ul>
     </div>
 
     <div class="footer__filter footer__filter--events">
       <h2>События</h2>
       <p>Показать только</p>
-      <button class="button button--events" type="button" aria-label="">#производство</button>
-      <button class="button button--events" type="button" aria-label="">#научно-техническое развитие</button>
-      <button class="button button--events" type="button" aria-label="">#экология</button>
-      <button class="button button--events" type="button" aria-label="">#социальная ответственность</button>
+      <ul>
+        <li>
+          <button class="button button--events" type="button" data-event-id="1" aria-label="">#производство</button>
+        </li>
+        <li>
+          <button class="button button--events" type="button" data-event-id="2" aria-label="">#научно-техническое развитие</button>
+        </li>
+        <li>
+          <button class="button button--events" type="button" data-event-id="3" aria-label="">#экология</button>
+        </li>
+        <li>
+          <button class="button button--events" type="button" data-event-id="4" aria-label="">#социальная ответственность</button>
+        </li>
+      </ul>
     </div>
   </div>
 
 </footer>
-
-
-    <div class="modal modal--preload modal--feedback    ">
-  <div class="modal__wrapper">
-    <div class="modal__overlay"></div>
-    <div class="modal__content">
-
-      
-
-      <button class="modal__close-btn btn-reset" type="button" aria-label="Закрыть попап">
-        <svg width="15" height="15">
-          <use xlink:href="#icon-close"></use>
-        </svg>
-      </button>
-
-    </div>
-  </div>
-</div>
 
 
     <div class="modal modal--preload modal--success   modal--fit-content   modal--no-scale   modal--some-mod ">
@@ -196,7 +235,7 @@
     <div class="modal__content">
 
       <section class="popup">
-  <div class="popup-slider ">
+  <div class="popup-slider">
     <div class="popup-slider__slide swiper-slide">
       <article class="event">
         <div class="event__slider swiper-container">
@@ -209,6 +248,7 @@
               <use xlink:href="#icon-button-prev"></use>
             </svg>
           </button>
+          <!--  -->
           <button class="event__button-next" type="button">
             <svg width="16" height="27">
               <use xlink:href="#icon-button-prev"></use>
@@ -217,11 +257,11 @@
         </div>
         <!--  -->
         <div class="event__description">
-          <p>В&nbsp;2001 году в&nbsp;форме закрытого акционерного общества создана Трубная Металлургическая Компания
-            (ТМК). Также для совершения операций по&nbsp;продаже продукции и&nbsp;закупке сырья и основных материалов
-            создан Торговый дом ТМК (ТД&nbsp;ТМК).</p>
+          <div class="event__textx-container">
+            <p></p>
+          </div>
           <span class="button button--events">#производство</span>
-          <span class="button button--tmk-group">ТМК-Групп</span>
+          <span class="button button--enterprises button--tmk-group">ТМК-Групп</span>
         </div>
       </article>
     </div>

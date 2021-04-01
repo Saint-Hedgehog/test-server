@@ -3,17 +3,7 @@
 <head>
 
   @@include("source/html/base/head.html")
-  <title>ProjectName — Главная</title>
-  <link rel="preload" href="fonts/raleway-medium.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-semi-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-extra-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/raleway-black.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-light.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-regular.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-medium.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-semi-bold.woff2" as="font" crossorigin="anonymous">
-<link rel="preload" href="fonts/montserrat-bold.woff2" as="font" crossorigin="anonymous">
+  <title>ТМК — Главная</title>
 
 </head>
 <body>
@@ -23,12 +13,13 @@
   </div>
 
   <div class="wrapper wrapper--no-scrollbar">
+    <h1>История компании ТМК</h1>
     @@include("source/html/base/header.html", {
       "main": true
     })
 
     <main>
-      <section class="preloader">
+      <!-- <section class="preloader">
         @@include("source/html/base/header.html")
 
         <div class="container">
@@ -38,16 +29,8 @@
             <p>Сегодня ТМК&nbsp;&mdash; мировой лидер по&nbsp;объемам производства стальных труб, география наших поставок насчитывает более 80&nbsp;стран. Но&nbsp;мы&nbsp;на&nbsp;этом не&nbsp;останавливаемся. Мы&nbsp;продолжаем динамичное развитие, чтобы максимально соответствовать требованиям наших клиентов и&nbsp;во&nbsp;многом&nbsp;&mdash; предвосхищать их&nbsp;ожидания.</p>
             <p>В&nbsp;этот юбилейный год мы&nbsp;вспоминаем путь, который прошли за&nbsp;20&nbsp;лет, и&nbsp;приглашаем вас пройти его вместе с&nbsp;нами.</p>
           </div>
-
-          <!-- <span>'01</span>
-          <span>'07</span>
-          <span>'12</span>
-          <span>'14</span>
-          <span>'18</span>
-          <span>'19</span>
-          <span>21</span> -->
         </div>
-      </section>
+      </section> -->
 
       <section class="time-line">
         <div class="time-line__wrapper">
@@ -66,18 +49,9 @@
 
         </div>
       </section>
-
-      <!-- <div class="container">
-        <p><a href="#" data-modal="feedback" aria-label="">modal--feedback link</a></p>
-        <p><a href="#" data-modal="success">modal--success link</a></p>
-      </div> -->
     </main>
 
     @@include("source/html/base/footer.html")
-
-    @@include("source/html/base/modal.html", {
-      "name": "feedback"
-    })
 
     @@include("source/html/base/modal.html", {
       "name": "success",

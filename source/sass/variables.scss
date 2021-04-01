@@ -9,11 +9,6 @@ $color-default-white:               #ffffff;
 $color-transparent:                 rgba(255, 255, 255, 0);
 
 // Base
-$color-black:                     #0e0e0e;
-$color-blue:                      #2c39f2;
-
-$color-white:                       #f2f2f2;
-
 $color-tahiti-gold:                 #ee732c;
 $color-san-marino:                  #49709f;
 $color-mandy:                       #da4a54;
@@ -26,10 +21,10 @@ $color-beaver:                      #936c59;
 $color-martini:                     #b4aaa6;
 $color-scarlet:                     #f11e1e;
 
+$color-white:                       #f2f2f2;
 $color-grey:                        #828282;
 $color-zambezi:                     #5e5e5e;
 $color-matterhorn:                  #4f4f4f;
-
 $color-gainsboro:                   #e3e3e3;
 $color-silver:                      #bdbdbd;
 $color-gainsboro-2:                 #e0e0e0;
@@ -37,8 +32,6 @@ $color-persian-red:                 #c33d3d;
 $color-whisper:                     rgba(231, 231, 231, 0.886179);
 
 // Gradient
-/* $transparent-gainsboro-whisper-bottom: linear-gradient(180deg, $color-transparent 36.46%, $color-gainsboro 99.99%, $color-whisper 100%),
-  $color-default-white; */ // - предзагрузочный градиент
 $white-transparent-silver-to-bottom-right: linear-gradient(153.31deg, $color-default-white 20.72%, $color-transparent 135.93%),
   linear-gradient(0deg, $color-silver, $color-silver);
 $white-transparent-gainsboro-to-bottom: linear-gradient(180deg, $color-default-white 0%, $color-transparent 100%),
