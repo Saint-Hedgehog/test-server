@@ -1,7 +1,12 @@
 .footer {
+  display: block;
   min-height: 115px;
   margin-top: 36px;
   padding-bottom: 55px;
+
+  &--hidden {
+    display: none;
+  }
 }
 
 .footer .container {
@@ -30,6 +35,7 @@
   width: 20px;
   height: 20px;
   margin-bottom: 15px;
+  outline: none;
 
   &::before {
     content: "";
@@ -59,7 +65,8 @@
 
 .footer__filter {
   position: relative;
-  width: 655px;
+  width: 670px;
+  min-height: 160px;
   padding-left: 63px;
   border-left: 1px solid $color-grey;
 
@@ -114,6 +121,7 @@
 
 .footer__filter .button {
   position: relative;
+  outline: none;
 
   &::before {
     content: "";
@@ -145,9 +153,40 @@
     letter-spacing: normal;
     border-color: $color-gainsboro-2;
 
-    &:hover,
-    &:focus {
+    & span:nth-child(2n + 2) {
+      position: absolute;
+      visibility: hidden;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    &:hover {
+      span:nth-child(2n + 1) {
+        position: absolute;
+        visibility: hidden;
+        overflow: hidden;
+        opacity: 0;
+      }
+
+      span:nth-child(2n + 2) {
+        position: static;
+        display: block;
+        visibility: visible;
+        overflow: auto;
+        opacity: 1;
+      }
+    }
+  }
+
+  &--tmk-group {
+    &::before {
+      background-color: $color-tahiti-gold;
+    }
+
+    &.button--active {
       color: $color-white;
+      background-color: $color-tahiti-gold;
+      border-color: $color-tahiti-gold;
 
       &::before {
         background-color: $color-white;
@@ -155,157 +194,163 @@
     }
   }
 
-  &--tmk-group {
-    color: $color-tahiti-gold;
-
-    &::before {
-      background-color: $color-tahiti-gold;
-    }
-
-    &:hover,
-    &:focus {
-      background-color: $color-tahiti-gold;
-      border-color: $color-tahiti-gold;
-    }
-  }
-
   &--stz {
-    color: $color-san-marino;
-
     &::before {
       background-color: $color-san-marino;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-san-marino;
       border-color: $color-san-marino;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--vtz {
-    color: $color-mandy;
-
     &::before {
       background-color: $color-mandy;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-mandy;
       border-color: $color-mandy;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--tmk-artrom {
-    color: $color-beaver;
-
     &::before {
       background-color: $color-beaver;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-beaver;
       border-color: $color-beaver;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--tmk-ipsco {
-    color: $color-scarlet;
-
     &::before {
       background-color: $color-scarlet;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-scarlet;
       border-color: $color-scarlet;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--tagmet {
-    color: $color-fruit-salad;
-
     &::before {
       background-color: $color-fruit-salad;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-fruit-salad;
       border-color: $color-fruit-salad;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--sin-tz {
-    color: $color-gulf-stream;
-
     &::before {
       background-color: $color-gulf-stream;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-gulf-stream;
       border-color: $color-gulf-stream;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--ktp {
-    color: $color-cream-can;
-
     &::before {
       background-color: $color-cream-can;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-cream-can;
       border-color: $color-cream-can;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--omz {
-    color: $color-bouquet;
-
     &::before {
       background-color: $color-bouquet;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-bouquet;
       border-color: $color-bouquet;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--tmk-gipi {
-    color: $color-wewak;
-
     &::before {
       background-color: $color-wewak;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-wewak;
       border-color: $color-wewak;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 
   &--tmk-resita {
-    color: $color-martini;
-
     &::before {
       background-color: $color-martini;
     }
 
-    &:hover,
-    &:focus {
+    &.button--active {
+      color: $color-white;
       background-color: $color-martini;
       border-color: $color-martini;
+
+      &::before {
+        background-color: $color-white;
+      }
     }
   }
 }
@@ -319,10 +364,10 @@
     line-height: 20px;
     letter-spacing: normal;
 
-    &:hover,
-    &:focus {
-      color: $color-white;
-    }
+    // &:hover,
+    // &:focus {
+    //   color: $color-white;
+    // }
   }
 
   &--active {

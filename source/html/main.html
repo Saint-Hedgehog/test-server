@@ -13,26 +13,35 @@
   </div>
 
   <div class="wrapper wrapper--no-scrollbar">
-    <h1>История компании ТМК</h1>
-    @@include("source/html/base/header.html", {
-      "main": true
-    })
+    <!-- <h1>ТМК: история лидерства</h1> -->
+    <header class="header header--hidden">
+      <div class="header__wrapper container">
+        <h1>ТМК: история лидерства</h1>
+        <a class="header__link" aria-label="Переход на главную">
+          <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
+        </a>
+      </div>
+    </header>
 
     <main>
-      <!-- <section class="preloader">
-        @@include("source/html/base/header.html")
-
-        <div class="container">
-          <button class="preloader__button" type="button" aria-label="Переход на главную страницу">Узнать историю</button>
-          <div class="preloader__text-container">
+      <section class="preloader preloader--no-scrollbar">
+        <div class="preloader__container">
+          <div class="preloader__col-1">
+            <a aria-label="Переход на главную">
+              <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
+            </a>
+            <button class="preloader__button" type="button" aria-label="Переход на главную страницу">Узнать историю</button>
+          </div>
+          <div class="preloader__col-2">
+            <h2>ТМК: история лидерства</h2>
             <p>В&nbsp;этом году Трубной Металлургической Компании исполняется 20&nbsp;лет. Все эти годы мы&nbsp;ежедневно повышали качество и&nbsp;надежность нашей продукции, разрабатывали и&nbsp;внедряли инновационные решения для наших партнеров, бережно относились к&nbsp;окружающей среде, развивали потенциал и&nbsp;компетенции наших сотрудников.</p>
             <p>Сегодня ТМК&nbsp;&mdash; мировой лидер по&nbsp;объемам производства стальных труб, география наших поставок насчитывает более 80&nbsp;стран. Но&nbsp;мы&nbsp;на&nbsp;этом не&nbsp;останавливаемся. Мы&nbsp;продолжаем динамичное развитие, чтобы максимально соответствовать требованиям наших клиентов и&nbsp;во&nbsp;многом&nbsp;&mdash; предвосхищать их&nbsp;ожидания.</p>
             <p>В&nbsp;этот юбилейный год мы&nbsp;вспоминаем путь, который прошли за&nbsp;20&nbsp;лет, и&nbsp;приглашаем вас пройти его вместе с&nbsp;нами.</p>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <section class="time-line">
+      <section class="time-line time-line--hidden">
         <div class="time-line__wrapper">
           <!-- Пагинация -->
           <div class="pagination swiper-pagination"></div>
@@ -49,6 +58,7 @@
 
         </div>
       </section>
+
     </main>
 
     @@include("source/html/base/footer.html")

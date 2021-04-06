@@ -76,6 +76,11 @@
     width: 15px;
     height: 15px;
 
+    &:active,
+    &:focus {
+      outline: none;
+    }
+
     &::before {
       content: "";
       display: block;

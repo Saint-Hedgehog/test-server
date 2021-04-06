@@ -1,8 +1,14 @@
 .header {
+  display: block;
   margin-top: 39px;
   margin-bottom: 32px;
+
+  &--hidden {
+    display: none;
+  }
 }
 
+.header h1,
 .header h2 {
   margin: 0;
   margin-right: 30px;
@@ -20,5 +26,5 @@
 }
 
 .header a {
-  pointer-events: none;
+  cursor: pointer;
 }

@@ -1,15 +1,25 @@
 .popup {
   position: relative;
 
+  .popup-slider__button-next,
+  .popup-slider__button-prev {
+    outline: none;
+  }
+
   &--tmk-group {
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-tahiti-gold;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-tahiti-gold;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-tahiti-gold;
       }
     }
 
@@ -28,11 +38,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-san-marino;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-san-marino;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-san-marino;
       }
     }
 
@@ -51,11 +66,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-mandy;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-mandy;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-mandy;
       }
     }
 
@@ -74,11 +94,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-beaver;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-beaver;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-beaver;
       }
     }
 
@@ -97,11 +122,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-scarlet;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-scarlet;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-scarlet;
       }
     }
 
@@ -120,11 +150,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-fruit-salad;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-fruit-salad;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-fruit-salad;
       }
     }
 
@@ -143,11 +178,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-gulf-stream;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-gulf-stream;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-gulf-stream;
       }
     }
 
@@ -166,11 +206,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-cream-can;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-cream-can;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-cream-can;
       }
     }
 
@@ -189,11 +234,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-bouquet;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-bouquet;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-bouquet;
       }
     }
 
@@ -212,11 +262,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-wewak;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-wewak;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-wewak;
       }
     }
 
@@ -235,11 +290,16 @@
     .popup-slider__button-next,
     .popup-slider__button-prev {
       border-color: $color-martini;
-      transition: border-color $default-transition-settings;
+      transition: border-color $default-transition-settings,
+        background-color $default-transition-settings;
 
       svg {
         stroke: $color-martini;
         transition: stroke $default-transition-settings;
+      }
+
+      &:active {
+        background-color: $color-martini;
       }
     }
 

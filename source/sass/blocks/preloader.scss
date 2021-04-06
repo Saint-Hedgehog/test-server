@@ -1,55 +1,48 @@
 .preloader {
   position: fixed;
-  top: 0;
-  left: 0;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 80px;
   background-image: url("../img/bg/bg-start@1x.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
-  z-index: 5;
-  overflow: auto;
+  overflow-y: auto;
+
+  &--hidden {
+    display: none;
+  }
 
   @include retina {
     background-image: url("../img/bg/bg-start@2x.jpg");
   }
-}
 
-.preloader .header {
-  margin: 0;
-  padding-top: 78px;
-  padding-bottom: 40px;
-}
-
-.preloader .container {
-  padding-left: 21.459%;
-
-  @media (max-width: 1110px) {
-    padding-left: 13%;
+  @media (max-width: 1200px) {
+    padding-left: 4.884%;
   }
 }
 
-.preloader h2 {
-  order: 1;
-  max-width: 610px;
-  margin-left: 324px;
-  margin-right: 0;
-  font-weight: 900;
-  font-size: 90px;
-  line-height: 90px;
+.preloader__container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 934px;
+  height: calc(100vh - 78px);
+  margin: 0 auto;
+  padding-left: 56px;
+  padding-right: 20px;
+}
+
+.preloader__col-1 {
+  margin-right: 38px;
 }
 
 .preloader a {
-  position: fixed;
-  align-self: flex-start;
+  display: block;
   margin-top: 12px;
-}
-
-.preloader__text-container {
-  width: 497px;
-  margin-right: 112px;
-  margin-left: 324px;
+  margin-bottom: 205px;
 }
 
 .preloader img {
@@ -58,8 +51,8 @@
 }
 
 .preloader__button {
-  position: fixed;
   display: inline-block;
+  width: max-content;
   margin: 0 0 7px 1px;
   padding: 15px 41px;
   font-size: 25px;
@@ -74,6 +67,7 @@
   transition: background $default-transition-settings,
     box-shadow $default-transition-settings;
   cursor: pointer;
+  outline: none;
 
   &:hover,
   &:focus {
@@ -87,8 +81,30 @@
   }
 }
 
-.preloader__text-container p {
-  max-width: 497px;
+.preloader__col-2 {
+  max-width: 610px;
+  height: auto;
+  padding-bottom: 80px;
+  overflow: auto;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.preloader h2 {
+  margin: 0;
+  margin-bottom: 41px;
+  font-weight: 900;
+  font-size: 90px;
+  line-height: 90px;
+  color: $color-tahiti-gold;
+}
+
+.preloader p {
   margin: 0;
   margin-bottom: 27px;
   font-size: 20px;

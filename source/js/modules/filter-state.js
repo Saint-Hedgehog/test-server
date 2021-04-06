@@ -1,6 +1,6 @@
 const initFilterState = () => {
   const filterEventsBtns = document.querySelectorAll('.footer__filter--events .button');
-  const filterEnterprisesBtns = document.querySelectorAll('.footer__filter--enterprises .button');
+  // const filterEnterprisesBtns = document.querySelectorAll('.footer__filter--enterprises .button');
 
   if (filterEventsBtns) {
     filterEventsBtns.forEach((item) => {
@@ -12,15 +12,24 @@ const initFilterState = () => {
       item.addEventListener('click', toggleBackground);
     });
 
-    filterEnterprisesBtns.forEach((item) => {
-      const toggleContent = () => {
-        item.classList.toggle('button--active');
-        item.firstElementChild.classList.toggle('visually-hidden');
-        item.lastElementChild.classList.toggle('visually-hidden');
-      };
+    // const removeActive = () => {
+    //   filterEnterprisesBtns.forEach((item) => {
+    //     if (item.classList.contains('button--active')) {
+    //       item.classList.remove('button--active');
+    //     }
+    //   });
+    // };
 
-      item.addEventListener('click', toggleContent);
-    });
+    // filterEnterprisesBtns.forEach((item) => {
+    //   const toggleBackground = (evt) => {
+    //     const btn = evt.currentTarget;
+    //     removeActive();
+    //     btn.classList.toggle('button--active');//почему тогл не работает
+    //   };
+
+    // item.addEventListener('click', toggleBackground);
+
+    // });
   }
 };
 

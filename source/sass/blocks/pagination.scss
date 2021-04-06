@@ -27,9 +27,15 @@
   transition: color $default-transition-settings,
     background-color $default-transition-settings;
   letter-spacing: -0.02em;
+  outline: none;
   cursor: pointer;
 
-  &:not(:last-child)::before {
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &:not(:nth-child(4))::before {
     content: "";
     position: absolute;
     top: 10px;

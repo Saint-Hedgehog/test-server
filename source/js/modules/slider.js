@@ -14,11 +14,24 @@ const initSlider = () => {
     const orgElement = modalSuccess.querySelector('.event__description .button--enterprises');
     const prevCardBtn = modalSuccess.querySelector('.popup-slider__button-prev');
     const nextCardBtn = modalSuccess.querySelector('.popup-slider__button-next');
+    const eventSlider = document.querySelector('.event');
+    const eventBtnPrev = eventSlider.querySelector('.event__button-prev');
+    const eventBtnNext = eventSlider.querySelector('.event__button-next');
+    const preloaderBtn = document.querySelector('.preloader__button');
+    const timeLine = document.querySelector('.time-line');
 
     const eventsSlider = new Swiper('.event__slider', {
       slidesPerView: 1,
-      speed: 1000,
-      effect: 'fade',
+      speed: 0,
+      watchOverflow: true,
+      autoHeight: true,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      mousewheel: {
+        sensitivity: 1,
+      },
       pagination: {
         el: '.event__pagination',
         clickable: true,
@@ -46,16 +59,23 @@ const initSlider = () => {
       const {description, pictures, org, events} = card;
       eventsSlider.removeAllSlides();
       eventsSlider.appendSlide(pictures.map((picture) => `
-    <div class="event__slide swiper-slide">
-      <picture>
-        <!-- 1х: 433px; 2x: 866px -->
-        <source type="image/webp" srcset="${picture.img}@1x.webp 1x, ${picture.img}@2x.webp 2x">
-        <!-- 1х: 433px; 2x: 866px -->
-        <img src="${picture.img}@1x.jpg" alt="${picture.alt}" width="433" height="320"
-          srcset="${picture.img}@1x.jpg 2x" loading="lazy">
-      </picture>
-    </div>
-  `));
+        <div class="event__slide swiper-slide">
+          ${picture.video ? `
+          <video id="video" class="event__video" width="100%" height="100%" poster="">
+            <source src="https://mooviehosted.000webhostapp.com/trailer.mp4" type='video/mp4'>
+            <source src="${picture.video}.mp4" type='video/mp4'>
+          </video>
+          <div><button id="play" class="event__video-play" type="button" aria-label="Вопспроизвести видео"></button></div>
+          ` : `
+          <picture>
+            <!-- 1х: 433px -->
+            <source type="image/webp" srcset="${picture.img}.webp">
+            <!-- 1х: 433px -->
+            <img src="${picture.img}.jpg" alt="${picture.alt}" width="433" height="320" loading="lazy">
+          </picture>
+          `}
+          </div>
+      `));
       eventsSlider.slideTo(0);
       eventsSlider.updateSlides();
       descriptionElement.textContent = description;
@@ -74,6 +94,14 @@ const initSlider = () => {
       if (arr1ClassName.length > 2) {
         const removedClassName = arr1ClassName.splice(-2, 1).join();
         popup.classList.remove(`${removedClassName}`);
+      }
+
+      if (eventBtnPrev.classList.contains('swiper-button-lock') && eventBtnNext.classList.contains('swiper-button-lock')) {
+        eventBtnPrev.classList.add('visually-hidden');
+        eventBtnNext.classList.add('visually-hidden');
+      } else {
+        eventBtnPrev.classList.remove('visually-hidden');
+        eventBtnNext.classList.remove('visually-hidden');
       }
     };
 
@@ -110,14 +138,23 @@ const initSlider = () => {
 
     /* Главный слайдер */
     const slider = new Swiper('.slider', {
+      preloadImages: false,
+      lazy: {
+        loadOnTransitionStart: false,
+        loadPrevNext: false,
+      },
       speed: 1000,
       grabCursor: true,
       freeMode: true,
+      watchSlidesProgress: true,
       watchSlidesVisibility: true,
       slidesPerView: 'auto',
       keyboard: {
         enabled: true,
         onlyInViewport: true,
+      },
+      mousewheel: {
+        sensitivity: 1,
       },
       pagination: {
         el: '.pagination',
@@ -126,7 +163,11 @@ const initSlider = () => {
         bulletActiveClass: 'pagination__current-item',
         renderBullet(index, bulletClass) {
           const year = filteredYears[index];
-          return `<button class="${bulletClass}">${year}</button>`;
+          if (year) {
+            return `<button class="${bulletClass}" type="button">${year}</button>`;
+          } else {
+            return `<button class="visually-hidden" type="button">${year}</button>`;
+          }
         },
       },
     });
@@ -162,15 +203,22 @@ const initSlider = () => {
               <a href="#" class="slider__link" data-modal="success" aria-label="">
                 <div class="slider__img-container">
                   <div class="slider__img-label slider__img-label--${org.mod}"></div>
+                  ${cover.video ? `
+                  <video controls="controls" id="video">
+                    <source src="${cover.video}.mp4" type='video/mp4'>
+                    <source src="https://mooviehosted.000webhostapp.com/trailer.mp4" type='video/mp4'>
+                  </video>
+                  ` : `
                   <picture>
-                    <!-- 1х: 433px; 2x: 866px -->
-                    <source type="image/webp" srcset="${cover.img}@1x.webp 1x, ${cover.img}@2x.webp 2x">
-                    <!-- 1х: 433px; 2x: 866px -->
-                    <img src="${cover.img}@1x.jpg" alt="${cover.alt}" width="433" height="320"
-                      srcset="${cover.img}@1x.jpg 2x">
-                  </picture>
+                    <!-- 1х: 433px -->
+                    <source type="image/webp" data-srcset="${cover.img}.webp">
+                    <!-- 1х: 433px -->
+                    <img data-src="${cover.img}.jpg" data-srcset="${cover.img}.jpg" class="swiper-lazy" alt="${cover.alt}" width="433" height="320"/>
+                   </picture>
+                   <div class="swiper-lazy-preloader"></div>
+                  `}
                 </div>
-                <span class="button button--events">#${events[0].title}</span>
+                <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
                 <span class="button button--${org.mod}">${org.title}</span>
                 <p>${title}</p>
               </a>
@@ -240,9 +288,19 @@ const initSlider = () => {
       });
     });
 
+    const removeActive = () => {
+      document.querySelectorAll('.footer__filter--enterprises .button').forEach((item) => {
+        if (item.classList.contains('button--active')) {
+          item.classList.remove('button--active');
+        }
+      });
+    };
     document.querySelectorAll('.footer__filter--enterprises .button').forEach((btn) => {
+
       btn.addEventListener('click', () => {
         filter.org = Number(btn.dataset.orgId);
+        removeActive();
+        btn.classList.toggle('button--active');
         updateSlider();
       });
     });
@@ -257,6 +315,13 @@ const initSlider = () => {
         updateSlider();
       });
     });
+
+    preloaderBtn.addEventListener('click', () => {
+      if (!timeLine.classList.contains('time-line--hidden')) {
+        updateSlider();
+      }
+    });
+
     updateSlider();
   }
 };
