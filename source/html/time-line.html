@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+  @@include("source/html/base/head.html")
+  <title>ТМК: узнать историю</title>
+
+</head>
+<body>
+
+  <div style="display: none;">
+    @@include("build/img/sprite_auto.svg")
+  </div>
+
+  <div class="wrapper wrapper--no-scrollbar">
+    <header class="header">
+      <div class="header__wrapper container">
+        <h1>ТМК: история лидерства</h1>
+        <a href="main.html" class="header__link" aria-label="Переход на главную">
+          <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="time-line">
+        <div class="time-line__wrapper">
+          <!-- Пагинация -->
+          <div class="pagination swiper-pagination"></div>
+          <!-- Слайдер -->
+          <div class="slider swiper-container">
+            <div class="swiper-wrapper"></div>
+          </div>
+          <!-- Номер текущего слайда -->
+          <p>20</p>
+          <div class="time-line__text-container">
+            <p>0</p>
+            <p>1</p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    @@include("source/html/base/footer.html")
+
+    @@include("source/html/base/modal.html", {
+      "name": "success",
+      "fitContent": true,
+      "noScale": true,
+      "mod": "some-mod"
+    })
+  </div>
+
+  <script src="js/vendor.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

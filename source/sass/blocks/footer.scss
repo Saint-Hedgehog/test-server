@@ -1,12 +1,7 @@
 .footer {
-  display: block;
   min-height: 115px;
   margin-top: 36px;
   padding-bottom: 55px;
-
-  &--hidden {
-    display: none;
-  }
 }
 
 .footer .container {
@@ -47,8 +42,7 @@
     left: -50%;
   }
 
-  &:hover svg,
-  &:focus svg {
+  &:hover svg {
     fill: $color-tahiti-gold;
   }
 

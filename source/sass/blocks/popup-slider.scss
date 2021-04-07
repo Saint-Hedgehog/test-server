@@ -47,7 +47,8 @@
   stroke: $color-tahiti-gold;
 }
 
-.popup-slider__button-prev.swiper-button-disabled,
-.popup-slider__button-next.swiper-button-disabled {
+.swiper-button-disabled,
+.swiper-button-disabled {
   pointer-events: none;
+  opacity: .4;
 }

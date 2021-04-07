@@ -2,7 +2,7 @@
   position: fixed;
   display: block;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 80px;
@@ -43,6 +43,10 @@
   display: block;
   margin-top: 12px;
   margin-bottom: 205px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .preloader img {
@@ -84,8 +88,8 @@
 .preloader__col-2 {
   max-width: 610px;
   height: auto;
-  padding-bottom: 80px;
-  overflow: auto;
+  margin-bottom: 80px;
+  overflow-y: auto;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -95,7 +99,7 @@
   }
 }
 
-.preloader h2 {
+.preloader h1 {
   margin: 0;
   margin-bottom: 41px;
   font-weight: 900;

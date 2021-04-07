@@ -3,9 +3,20 @@
 <head>
 
   <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="История компании ТМК">
+
+<meta name="description" content="ТМК: история лидерства">
+<meta name="application-name" content="Компании ТМК — 20 лет.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ТМК: история лидерства">
+<meta property="og:title" content="Компании ТМК — 20 лет.">
+<meta property="og:description" content="Узнайте, какой путь она прошла за эти годы, став одним из крупнейших производителем труб в мире.">
+<meta property="og:url" content="http://htmlonelove.top/tmk/main.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="http://htmlonelove.top/tmk/img/content/fb.png">
 
 <!-- генерируйте favicon тут - https://realfavicongenerator.net/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
@@ -103,7 +114,7 @@
       </div>
     </main>
 
-    <footer class="footer footer--hidden">
+    <footer class="footer">
   <div class="container">
     <ul class="footer__social">
       <li class="footer__social-item">
@@ -130,79 +141,79 @@
     <div class="footer__filter footer__filter--enterprises">
       <h2>предприятия</h2>
       <p>Показать только</p>
-      <ul>
+      <ul class="enterprises-filter">
         <li>
-          <button class="button button--tmk-group" type="button" aria-label="" data-org-id="5">
+          <button class="enterprises-filter__button button button--tmk-group" type="button" aria-label="" data-org-id="5">
             <span>Группа ТМК</span>
             <span>Группа ТМК</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--stz" type="button" data-org-id="6" aria-label="">
+          <button class="enterprises-filter__button button button--stz" type="button" data-org-id="6" aria-label="">
             <span>СТЗ</span>
             <span>Северский трубный завод</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--vtz" type="button" data-org-id="7" aria-label="">
+          <button class="enterprises-filter__button button button--vtz" type="button" data-org-id="7" aria-label="">
             <span>ВТЗ</span>
             <span>Волжский трубный завод</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--tmk-artrom" type="button" data-org-id="8" aria-label="">
+          <button class="enterprises-filter__button button button--tmk-artrom" type="button" data-org-id="8" aria-label="">
             <span>ТМК ARTROM</span>
             <span>ТМК ARTROM</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--tmk-ipsco" type="button" data-org-id="9" aria-label="">
+          <button class="enterprises-filter__button button button--tmk-ipsco" type="button" data-org-id="9" aria-label="">
             <span>ТМК IPSCO</span>
             <span>ТМК IPSCO</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--tagmet " type="button" data-org-id="10" aria-label="">
+          <button class="enterprises-filter__button button button--tagmet " type="button" data-org-id="10" aria-label="">
             <span>ТАГМЕТ</span>
             <span>Таганровгский металургический завод</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--sin-tz" type="button" data-org-id="11" aria-label="">
+          <button class="enterprises-filter__button button button--sin-tz" type="button" data-org-id="11" aria-label="">
             <span>СинТЗ</span>
             <span>Синарский трубный завод</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--ktp" type="button" data-org-id="12" aria-label="">
+          <button class="enterprises-filter__button button button--ktp" type="button" data-org-id="12" aria-label="">
             <span>КТП</span>
             <span>Казтрубпром</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--omz" type="button" data-org-id="13" aria-label="">
+          <button class="enterprises-filter__button button button--omz" type="button" data-org-id="13" aria-label="">
             <span>ОМЗ</span>
             <span>Омский машиностроительный завод</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--tmk-gipi" type="button" data-org-id="14" aria-label="">
+          <button class="enterprises-filter__button button button--tmk-gipi" type="button" data-org-id="14" aria-label="">
             <span>ТМК GIPI</span>
             <span>ТМК GIPI</span>
           </button>
         </li>
         <!--  -->
         <li>
-          <button class="button button--tmk-resita" type="button" data-org-id="15" aria-label="">
+          <button class="enterprises-filter__button button button--tmk-resita" type="button" data-org-id="15" aria-label="">
             <span>ТМК RESITA</span>
             <span>ТМК RESITA</span>
           </button>
@@ -213,18 +224,18 @@
     <div class="footer__filter footer__filter--events">
       <h2>События</h2>
       <p>Показать только</p>
-      <ul>
+      <ul class="events-filter">
         <li>
-          <button class="button button--events" type="button" data-event-id="1" aria-label="">#производство</button>
+          <button class="events-filter__button button button--events" type="button" data-event-id="1" aria-label="">#производство</button>
         </li>
         <li>
-          <button class="button button--events" type="button" data-event-id="2" aria-label="">#научно-техническое развитие</button>
+          <button class="events-filter__button button button--events" type="button" data-event-id="2" aria-label="">#научно-техническое развитие</button>
         </li>
         <li>
-          <button class="button button--events" type="button" data-event-id="3" aria-label="">#экология</button>
+          <button class="events-filter__button button button--events" type="button" data-event-id="3" aria-label="">#экология</button>
         </li>
         <li>
-          <button class="button button--events" type="button" data-event-id="4" aria-label="">#социальная ответственность</button>
+          <button class="events-filter__button button button--events" type="button" data-event-id="4" aria-label="">#социальная ответственность</button>
         </li>
       </ul>
     </div>

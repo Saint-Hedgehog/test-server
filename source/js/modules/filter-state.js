@@ -1,6 +1,6 @@
 const initFilterState = () => {
   const filterEventsBtns = document.querySelectorAll('.footer__filter--events .button');
-  // const filterEnterprisesBtns = document.querySelectorAll('.footer__filter--enterprises .button');
+  const filterEnterprisesBtns = document.querySelectorAll('.footer__filter--enterprises .button');
 
   if (filterEventsBtns) {
     filterEventsBtns.forEach((item) => {
@@ -27,7 +27,7 @@ const initFilterState = () => {
     //     btn.classList.toggle('button--active');//почему тогл не работает
     //   };
 
-    // item.addEventListener('click', toggleBackground);
+    //   item.addEventListener('click', toggleBackground);
 
     // });
   }

@@ -35,7 +35,7 @@
 <!-- Стили -->
 <link rel="stylesheet" href="css/style.min.css">
 
-  <title>ТМК: история лидерства</title>
+  <title>ТМК: узнать историю</title>
 
 </head>
 <body>
@@ -57,26 +57,166 @@
 </symbol></svg>
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper wrapper--no-scrollbar">
+    <header class="header">
+      <div class="header__wrapper container">
+        <h1>ТМК: история лидерства</h1>
+        <a href="main.html" class="header__link" aria-label="Переход на главную">
+          <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
+        </a>
+      </div>
+    </header>
 
     <main>
-      <section class="preloader preloader--no-scrollbar">
-        <div class="preloader__container">
-          <div class="preloader__col-1">
-            <a aria-label="Переход на главную">
-              <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
-            </a>
-            <a href="time-line.html" class="preloader__button" aria-label="Переход на главную страницу">Узнать историю</a>
+      <section class="time-line">
+        <div class="time-line__wrapper">
+          <!-- Пагинация -->
+          <div class="pagination swiper-pagination"></div>
+          <!-- Слайдер -->
+          <div class="slider swiper-container">
+            <div class="swiper-wrapper"></div>
           </div>
-          <div class="preloader__col-2">
-            <h1>ТМК: история лидерства</h1>
-            <p>В&nbsp;этом году Трубной Металлургической Компании исполняется 20&nbsp;лет. Все эти годы мы&nbsp;ежедневно повышали качество и&nbsp;надежность нашей продукции, разрабатывали и&nbsp;внедряли инновационные решения для наших партнеров, бережно относились к&nbsp;окружающей среде, развивали потенциал и&nbsp;компетенции наших сотрудников.</p>
-            <p>Сегодня ТМК&nbsp;&mdash; мировой лидер по&nbsp;объемам производства стальных труб, география наших поставок насчитывает более 80&nbsp;стран. Но&nbsp;мы&nbsp;на&nbsp;этом не&nbsp;останавливаемся. Мы&nbsp;продолжаем динамичное развитие, чтобы максимально соответствовать требованиям наших клиентов и&nbsp;во&nbsp;многом&nbsp;&mdash; предвосхищать их&nbsp;ожидания.</p>
-            <p>В&nbsp;этот юбилейный год мы&nbsp;вспоминаем путь, который прошли за&nbsp;20&nbsp;лет, и&nbsp;приглашаем вас пройти его вместе с&nbsp;нами.</p>
+          <!-- Номер текущего слайда -->
+          <p>20</p>
+          <div class="time-line__text-container">
+            <p>0</p>
+            <p>1</p>
           </div>
+
         </div>
       </section>
+
     </main>
+
+    <footer class="footer">
+  <div class="container">
+    <ul class="footer__social">
+      <li class="footer__social-item">
+        <a href="https://vk.com" class="footer__social-link" aria-label="Мы в вконтакте" target="_blank" rel="noopener">
+          <svg width="20" height="20">
+            <use xlink:href="#icon-vk"></use>
+          </svg>
+        </a>
+
+        <a href="https://ok.ru" class="footer__social-link" aria-label="Мы в однокласниках" target="_blank" rel="noopener">
+          <svg width="20" height="20">
+            <use xlink:href="#icon-ok"></use>
+          </svg>
+        </a>
+
+        <a href="https://www.facebook.com" class="footer__social-link" aria-label="Мы в фейсбуке" target="_blank" rel="noopener">
+          <svg width="20" height="20">
+            <use xlink:href="#icon-fb"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <div class="footer__filter footer__filter--enterprises">
+      <h2>предприятия</h2>
+      <p>Показать только</p>
+      <ul class="enterprises-filter">
+        <li>
+          <button class="enterprises-filter__button button button--tmk-group" type="button" aria-label="" data-org-id="5">
+            <span>Группа ТМК</span>
+            <span>Группа ТМК</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--stz" type="button" data-org-id="6" aria-label="">
+            <span>СТЗ</span>
+            <span>Северский трубный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--vtz" type="button" data-org-id="7" aria-label="">
+            <span>ВТЗ</span>
+            <span>Волжский трубный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--tmk-artrom" type="button" data-org-id="8" aria-label="">
+            <span>ТМК ARTROM</span>
+            <span>ТМК ARTROM</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--tmk-ipsco" type="button" data-org-id="9" aria-label="">
+            <span>ТМК IPSCO</span>
+            <span>ТМК IPSCO</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--tagmet " type="button" data-org-id="10" aria-label="">
+            <span>ТАГМЕТ</span>
+            <span>Таганровгский металургический завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--sin-tz" type="button" data-org-id="11" aria-label="">
+            <span>СинТЗ</span>
+            <span>Синарский трубный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--ktp" type="button" data-org-id="12" aria-label="">
+            <span>КТП</span>
+            <span>Казтрубпром</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--omz" type="button" data-org-id="13" aria-label="">
+            <span>ОМЗ</span>
+            <span>Омский машиностроительный завод</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--tmk-gipi" type="button" data-org-id="14" aria-label="">
+            <span>ТМК GIPI</span>
+            <span>ТМК GIPI</span>
+          </button>
+        </li>
+        <!--  -->
+        <li>
+          <button class="enterprises-filter__button button button--tmk-resita" type="button" data-org-id="15" aria-label="">
+            <span>ТМК RESITA</span>
+            <span>ТМК RESITA</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__filter footer__filter--events">
+      <h2>События</h2>
+      <p>Показать только</p>
+      <ul class="events-filter">
+        <li>
+          <button class="events-filter__button button button--events" type="button" data-event-id="1" aria-label="">#производство</button>
+        </li>
+        <li>
+          <button class="events-filter__button button button--events" type="button" data-event-id="2" aria-label="">#научно-техническое развитие</button>
+        </li>
+        <li>
+          <button class="events-filter__button button button--events" type="button" data-event-id="3" aria-label="">#экология</button>
+        </li>
+        <li>
+          <button class="events-filter__button button button--events" type="button" data-event-id="4" aria-label="">#социальная ответственность</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</footer>
+
 
     <div class="modal modal--preload modal--success   modal--fit-content   modal--no-scale   modal--some-mod ">
   <div class="modal__wrapper">

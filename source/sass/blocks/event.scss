@@ -13,7 +13,8 @@
 .event__slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  //object-fit: contain;
+  object-fit: cover;
 }
 
 .event__description {
@@ -46,6 +47,27 @@
   line-height: 28px;
   letter-spacing: 0.05em;
   height: 290px;
+  padding-right: 15px;
+  margin-right: -15px;
+
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 5px;
+  }
+}
+
+.event__description h3 {
+  margin: 0;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 25px;
+  color: $color-tahiti-gold;
 }
 
 .event__description p {
@@ -176,16 +198,7 @@
   height: 40px;
   border: none;
   cursor: pointer;
-
-  &:hover svg,
-  &:focus svg {
-    opacity: 1;
-  }
-
-  &:active svg {
-    stroke: $color-gainsboro-2;
-    filter: none;
-  }
+  outline: none;
 }
 
 .event__button-next {
@@ -195,26 +208,8 @@
 
 .event__button-next svg,
 .event__button-prev svg {
-  stroke: $color-default-white;
+  stroke: $color-tahiti-gold;
   fill: none;
-  opacity: 0.6;
-  transition: opacity $default-transition-settings,
-    stroke $default-transition-settings,
-    filter $default-transition-settings;
-  filter: drop-shadow(0 0 10px rgba($color-default-black, 0.25));
-}
-
-.event__button-next:hover svg,
-.event__button-prev:hover svg {
   opacity: 1;
-}
-
-.event__button-prev.swiper-button-disabled,
-.event__button-next.swiper-button-disabled {
-  pointer-events: none;
-
-  & svg {
-    stroke: $color-gainsboro-2;
-    opacity: 0.3;
-  }
+  filter: drop-shadow(0 0 10px rgba($color-default-black, 0.25));
 }
