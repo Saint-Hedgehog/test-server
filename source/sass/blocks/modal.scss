@@ -112,19 +112,21 @@
       }
     }
 
-    @include viewport--sm {
-      position: fixed;
-      top: 40px;
-      right: 24px;
-      width: 40px;
-      height: 40px;
-      border: 1.5px solid $color-default-white;
-      border-radius: 50%;
+    // @include viewport--sm {
+    //   position: fixed;
+    //   top: 40px;
+    //   right: 24px;
+    //   z-index: 2;
+    //   // display: none;
+    //   width: 40px;
+    //   height: 40px;
+    //   border: 1.5px solid $color-default-white;
+    //   border-radius: 50%;
 
-      &::before {
-        display: none;
-      }
-    }
+    //   &::before {
+    //     display: none;
+    //   }
+    // }
   }
 
   &--responsive {
@@ -156,5 +158,12 @@
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+
+.modal__content > .modal__close-btn {
+  @include viewport--sm {
+    display: none;
   }
 }
