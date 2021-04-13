@@ -39,7 +39,9 @@
     padding: 60px 40px;
 
     @include viewport--sm {
-      padding: 60px 16px;
+      // padding: 60px 16px;
+      width: 375px;
+      padding: 0;
     }
   }
 
@@ -63,7 +65,8 @@
 
     @include viewport--sm {
       width: 100%;
-      padding: 20px;
+      // padding: 20px;
+      padding: 0;
     }
   }
 
@@ -92,11 +95,35 @@
 
     svg {
       stroke: $color-silver;
+      stroke-width: 3px;
+
+      @include viewport--sm {
+        stroke: $color-default-white;
+        stroke-width: 1.5px;
+      }
     }
 
     &:hover svg,
     &:focus svg {
       stroke: $color-tahiti-gold;
+
+      @include viewport--sm {
+        stroke: $color-default-white;
+      }
+    }
+
+    @include viewport--sm {
+      position: fixed;
+      top: 40px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid $color-default-white;
+      border-radius: 50%;
+
+      &::before {
+        display: none;
+      }
     }
   }
 

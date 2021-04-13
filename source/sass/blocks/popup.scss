@@ -30,6 +30,16 @@
       &::before {
         background-color: $color-tahiti-gold;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-tahiti-gold;
       }
     }
   }
@@ -58,6 +68,16 @@
       &::before {
         background-color: $color-san-marino;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-san-marino;
       }
     }
   }
@@ -86,6 +106,16 @@
       &::before {
         background-color: $color-mandy;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-mandy;
       }
     }
   }
@@ -114,6 +144,16 @@
       &::before {
         background-color: $color-beaver;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-beaver;
       }
     }
   }
@@ -142,6 +182,16 @@
       &::before {
         background-color: $color-scarlet;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-scarlet;
       }
     }
   }
@@ -170,6 +220,16 @@
       &::before {
         background-color: $color-fruit-salad;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-fruit-salad;
       }
     }
   }
@@ -198,6 +258,16 @@
       &::before {
         background-color: $color-gulf-stream;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-gulf-stream;
       }
     }
   }
@@ -226,6 +296,16 @@
       &::before {
         background-color: $color-cream-can;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-cream-can;
       }
     }
   }
@@ -254,6 +334,16 @@
       &::before {
         background-color: $color-bouquet;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-bouquet;
       }
     }
   }
@@ -282,35 +372,55 @@
       &::before {
         background-color: $color-wewak;
         transition: background-color $default-transition-settings;
+
+        @include viewport--sm {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--sm {
+        background-color: $color-wewak;
       }
     }
   }
 
-  &--tmk-resita {
-    .popup-slider__button-next,
-    .popup-slider__button-prev {
-      border-color: $color-martini;
-      transition: border-color $default-transition-settings,
-        background-color $default-transition-settings;
+  // &--tmk-resita {
+  //   .popup-slider__button-next,
+  //   .popup-slider__button-prev {
+  //     border-color: $color-martini;
+  //     transition: border-color $default-transition-settings,
+  //       background-color $default-transition-settings;
 
-      svg {
-        stroke: $color-martini;
-        transition: stroke $default-transition-settings;
-      }
+  //     svg {
+  //       stroke: $color-martini;
+  //       transition: stroke $default-transition-settings;
+  //     }
 
-      &:active {
-        background-color: $color-martini;
-      }
-    }
+  //     &:active {
+  //       background-color: $color-martini;
+  //     }
+  //   }
 
-    .event__description {
-      border-color: $color-martini;
-      transition: border-color $default-transition-settings;
+  //   .event__description {
+  //     border-color: $color-martini;
+  //     transition: border-color $default-transition-settings;
 
-      &::before {
-        background-color: $color-martini;
-        transition: background-color $default-transition-settings;
-      }
-    }
-  }
+  //     &::before {
+  //       background-color: $color-martini;
+  //       transition: background-color $default-transition-settings;
+
+  //       @include viewport--sm {
+  //         display: none;
+  //       }
+  //     }
+  //   }
+
+  //   h3 {
+  //     @include viewport--sm {
+  //       background-color: $color-martini;
+  //     }
+  //   }
+  // }
 }

@@ -1,10 +1,26 @@
 .pagination {
+  z-index: 3;
   margin: 0;
   margin-left: 22px;
   padding: 0;
   text-align: start;
   list-style: none;
-  z-index: 3;
+
+  @include viewport--sm {
+    position: fixed;
+    top: 139px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    // position: relative;
+    margin-left: 0;
+    padding-bottom: 20px;
+    padding-left: 24px;
+    background-color: $color-default-white;
+    // filter: drop-shadow(0px 4px 10px rgba(94, 94, 94, 0.1));
+    box-shadow: 0 4px 10px rgba(94, 94, 94, 0.1);
+  }
 }
 
 .pagination__item {
@@ -35,7 +51,7 @@
     outline: none;
   }
 
-  &:not(:nth-child(4))::before {
+  &:not(:last-child)::before {
     content: "";
     position: absolute;
     top: 10px;

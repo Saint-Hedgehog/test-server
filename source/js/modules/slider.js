@@ -1,10 +1,21 @@
 /* global Swiper */
 
-import data from '../../data/history.json';
+// import data from '../../data/history.json';
 import {setupModal} from '../utils/modal';
 import {gsap} from 'gsap';
 
-const initSlider = () => {
+const URL = './data/history.json';
+
+const getData = () => {
+  return fetch(URL)
+      .then((response) => response.json())
+      // eslint-disable-next-line no-unused-vars
+      .catch((error) => {
+      // что-то отрисовать вместо слайдера
+      });
+};
+
+const renderSlider = (data) => {
   if (!document.querySelector('.time-line')) {
     return;
   }
@@ -57,8 +68,7 @@ const initSlider = () => {
   };
   let filteredYears = [];
 
-  const openCard = (year, card) => {
-    currentYear = year;
+  const openCard = (card) => {
     currentCard = card;
     const {title, description, pictures, org, events} = card;
     eventsSlider.removeAllSlides();
@@ -108,36 +118,34 @@ const initSlider = () => {
       eventBtnPrev.classList.remove('visually-hidden');
       eventBtnNext.classList.remove('visually-hidden');
     }
+
+    const cards = data.cards[currentYear];
+    const currentCardIndex = cards.findIndex((cardItem) => cardItem === currentCard);
+    if (currentCardIndex > 0) {
+      prevCardBtn.classList.remove('popup-slider__button-prev--disabled');
+    } else {
+      prevCardBtn.classList.add('popup-slider__button-prev--disabled');
+    }
+
+    if (currentCardIndex < cards.length - 1) {
+      nextCardBtn.classList.remove('popup-slider__button-next--disabled');
+    } else {
+      nextCardBtn.classList.add('popup-slider__button-next--disabled');
+    }
   };
 
   prevCardBtn.addEventListener('click', () => {
-    const currentYearIndex = data.years.findIndex((year) => year === currentYear);
-    const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
+    const cards = data.cards[currentYear];
+    const currentCardIndex = cards.findIndex((card) => card === currentCard);
     if (currentCardIndex > 0) {
-      openCard(currentYear, data.cards[currentYear][currentCardIndex - 1]);
-    } else if (currentYearIndex > 0) {
-      const prevYear = data.years[currentYearIndex - 1];
-      const cardsCount = data.cards[prevYear].length;
-      openCard(prevYear, data.cards[prevYear][cardsCount - 1]);
-    } else {
-      const lastYear = data.years[data.years.length - 1];
-      const cardsCount = data.cards[lastYear].length;
-      openCard(lastYear, data.cards[lastYear][cardsCount - 1]);
+      openCard(cards[currentCardIndex - 1]);
     }
   });
   nextCardBtn.addEventListener('click', () => {
-    const currentYearIndex = data.years.findIndex((year) => year === currentYear);
-    const currentCardIndex = data.cards[currentYear].findIndex((card) => card === currentCard);
-    const cardsCount = data.cards[currentYear].length;
-    const yearsCount = data.years.length;
-    if (currentCardIndex < cardsCount - 1) {
-      openCard(currentYear, data.cards[currentYear][currentCardIndex + 1]);
-    } else if (currentYearIndex < yearsCount - 1) {
-      const nextYear = data.years[currentYearIndex + 1];
-      openCard(nextYear, data.cards[nextYear][0]);
-    } else {
-      const firstYear = data.years[0];
-      openCard(firstYear, data.cards[firstYear][0]);
+    const cards = data.cards[currentYear];
+    const currentCardIndex = cards.findIndex((card) => card === currentCard);
+    if (currentCardIndex < cards.length - 1) {
+      openCard(cards[currentCardIndex + 1]);
     }
   });
 
@@ -146,16 +154,34 @@ const initSlider = () => {
     preloadImages: false,
     speed: 1000,
     grabCursor: true,
-    freeMode: true,
+    // freeMode: true,
     watchSlidesProgress: true,
     watchSlidesVisibility: true,
-    slidesPerView: 'auto',
+    // slidesPerView: 'auto',
     keyboard: {
       enabled: true,
       onlyInViewport: true,
     },
-    mousewheel: {
-      sensitivity: 1,
+    // mousewheel: {
+    //   sensitivity: 0.5,
+    // },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        freeMode: false,
+        autoHeight: true,
+      },
+      1024: {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        freeMode: true,
+      },
+    },
+    navigation: {
+      clickable: true,
+      nextEl: '.time-line__button-next',
+      prevEl: '.time-line__button-prev',
     },
     pagination: {
       el: '.pagination',
@@ -202,7 +228,7 @@ const initSlider = () => {
         `}
           ${cards.map(({id, title, cover, events, org, preview}) => `
           <article class="slider__card" data-id="${id}">
-            <a href="#" class="slider__link" data-modal="success" aria-label="">
+            <a href="#" class="slider__link" data-modal="success" aria-label="" tabindex="-1">
               <div class="slider__img-container">
                 <div class="slider__img-label slider__img-label--${org.mod}"></div>
                 ${cover.video ? `
@@ -244,17 +270,28 @@ const initSlider = () => {
       const cardId = btn.closest('.slider__card').dataset.id;
       const card = data.cards[year].find((c) => String(c.id) === cardId);
       setupModal(modalSuccess, null, [btn], () => {
-        openCard(year, card);
+        currentYear = year;
+        openCard(card);
       });
     });
   });
 
-  let currentNum1 = document.querySelector('.time-line__text-container p:nth-child(2n + 1)');
-  let currentNum2 = document.querySelector('.time-line__text-container p:nth-child(2n + 2)');
+  let currentNum1 = document.querySelector('.time-line__first-number');
+  let currentNum2 = document.querySelector('.time-line__second-number');
 
   // смена цифр
   slider.on('slideChange', () => {
+    const countPrev = document.querySelector('.time-line__count-prev');
+    const countNext = document.querySelector('.time-line__count-next');
+    if (countPrev && countNext) {
+      const yearPrev = filteredYears[slider.realIndex - 1];
+      const yearNext = filteredYears[slider.realIndex + 1];
+
+      countPrev.textContent = yearPrev;
+      countNext.textContent = yearNext;
+    }
     const year = filteredYears[slider.realIndex];
+
     let firstDigit = year[2];
     let secondDigit = year[3];
 
@@ -292,6 +329,18 @@ const initSlider = () => {
     });
   });
 
+  slider.on('update', () => {
+    const countPrev = document.querySelector('.time-line__count-prev');
+    const countNext = document.querySelector('.time-line__count-next');
+
+    if (countPrev && countNext) {
+      const yearPrev = filteredYears[slider.realIndex - 1];
+      const yearNext = filteredYears[slider.realIndex + 1];
+
+      countPrev.textContent = yearPrev;
+      countNext.textContent = yearNext;
+    }
+  });
 
   // фильтры
   const filterEnterprisesWrap = document.querySelector('.enterprises-filter');
@@ -301,7 +350,14 @@ const initSlider = () => {
     btn.addEventListener('click', () => {
       filterEnterpr(btn);
     });
+    const hasEnterprises = data.years.some((year) => {
+      return data.cards[year].some((card) => btn.dataset.orgId === String(card.org.id));
+    });
+    if (!hasEnterprises) {
+      btn.classList.add('button--disabled');
+    }
   });
+
 
   let filterEnterpr = function (btn) {
     let activeBtn = filterEnterprisesWrap.querySelector('.button--active');
@@ -327,6 +383,13 @@ const initSlider = () => {
     btn.addEventListener('click', () => {
       filterEvents(btn);
     });
+    const hasEvents = data.years.some((year) => {
+      // eslint-disable-next-line max-nested-callbacks
+      return data.cards[year].some((card) => card.events.some((evt) => btn.dataset.eventId === String(evt.id)));
+    });
+    if (!hasEvents) {
+      btn.classList.add('button--disabled');
+    }
   });
 
   let filterEvents = function (btn) {
@@ -343,6 +406,10 @@ const initSlider = () => {
 
   updateSlider();
 
+};
+
+const initSlider = () => {
+  getData().then(renderSlider);
 };
 
 export {initSlider};

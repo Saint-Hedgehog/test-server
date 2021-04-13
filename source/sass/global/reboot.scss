@@ -27,6 +27,10 @@ body {
   background-color: $color-default-white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @include viewport--sm {
+    min-width: 375px;
+  }
 }
 
 a {
@@ -43,6 +47,24 @@ video {
 
 textarea {
   resize: none;
+}
+
+.IE11 {
+  display: none;
+
+  &--show {
+    position:absolute;
+    width: 100%;
+    top: 50%;
+    display: block;
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 90px;
+    line-height: 100%;
+    color: $color-tahiti-gold;
+  }
 }
 
 // chrome autofill background removal

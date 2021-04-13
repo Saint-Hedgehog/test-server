@@ -1,10 +1,21 @@
 .header {
   margin-top: 39px;
   margin-bottom: 32px;
+
+  @include viewport--sm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    margin: 0;
+    padding-top: 39px;
+    padding-bottom: 23px;
+    background-color: $color-default-white;
+  }
 }
 
-.header h1,
-.header h2 {
+.header h1 {
   margin: 0;
   margin-right: 30px;
   padding-bottom: 1px;
@@ -12,14 +23,44 @@
   font-size: 60px;
   line-height: 60px;
   color: $color-tahiti-gold;
+
+  @include viewport--sm {
+    margin-right: 0;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 38px;
+  }
 }
 
 .header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include viewport--sm {
+    align-items: flex-start;
+  }
 }
 
-.header a {
+.header__link {
   cursor: pointer;
+
+  @include viewport--sm {
+    display: none;
+  }
+}
+
+.header__filter {
+  display: none;
+
+  @include viewport--sm {
+    display: block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    svg {
+      fill: none;
+    }
+  }
 }

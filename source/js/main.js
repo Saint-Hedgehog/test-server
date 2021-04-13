@@ -2,8 +2,7 @@ import {ieFix} from './utils/ie-fix';
 import {iosVhFix} from './utils/ios-vh-fix';
 
 import {initModals} from './modules/init-modals';
-// import {hidePreloader} from './modules/preloader';
-//import {initFilterState} from './modules/filter-state';
+import {initIE11} from './modules/initIE11';
 import {initSlider} from './modules/slider';
 
 // Utils
@@ -16,8 +15,5 @@ iosVhFix();
 // ---------------------------------
 
 initModals();
-// hidePreloader();
-//initFilterState();
+initIE11();
 initSlider();
-
-

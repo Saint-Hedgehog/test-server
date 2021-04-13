@@ -19,6 +19,11 @@
     transition: background-color $default-transition-settings;
   }
 
+  &--disabled {
+    pointer-events: none;
+    cursor: text;
+  }
+
   &--events,
   &--tmk-group,
   &--stz,
@@ -40,12 +45,22 @@
     &:not(.button--events):hover {
       box-shadow: 0 0 10px rgba($color-default-black, 0.15);
     }
+
+    @include viewport--sm {
+      padding: 2px 21px 2px 19px;
+      border-radius: 25.6px;
+    }
   }
 
   &--events {
     margin-right: 11px;
     color: $color-grey;
     border-color: $color-grey;
+
+    @include viewport--sm {
+      padding: 2px 18px 2px 14px;
+      border-color: $color-gainsboro-2;
+    }
   }
 
   &--tmk-group {
@@ -98,8 +113,14 @@
     border-color: $color-wewak;
   }
 
-  &--tmk-resita {
-    color: $color-martini;
-    border-color: $color-martini;
+  // &--tmk-resita {
+  //   color: $color-martini;
+  //   border-color: $color-martini;
+  // }
+
+  @include viewport--sm {
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: normal;
   }
 }

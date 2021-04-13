@@ -21,6 +21,11 @@
         <a href="main.html" class="header__link" aria-label="Переход на главную">
           <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
         </a>
+        <a href="#" class="header__filter">
+          <svg width="40" height="40">
+            <use xlink:href="#icon-filter"></use>
+          </svg>
+        </a>
       </div>
     </header>
 
@@ -29,27 +34,32 @@
         <div class="time-line__wrapper">
           <!-- Пагинация -->
           <div class="pagination swiper-pagination"></div>
-          <!-- Слайдер -->
-          <div class="slider swiper-container">
-            <div class="swiper-wrapper"></div>
-          </div>
           <!-- Номер текущего слайда -->
           <p>20</p>
           <div class="time-line__text-container">
             <p class="time-line__first-number">0</p>
             <p class="time-line__second-number">1</p>
           </div>
-
-          <button class="time-line__button-prev" type="button">
-            <svg width="50" height="50">
-              <use xlink:href="#icon-main-slider-button-prev"></use>
-            </svg>
-          </button>
-          <button class="time-line__button-next" type="button">
-            <svg width="50" height="50">
-              <use xlink:href="#icon-main-slider-button-prev"></use>
-            </svg>
-          </button>
+          <!-- Слайдер -->
+          <div class="slider swiper-container">
+            <div class="swiper-wrapper"></div>
+          </div>
+          <div class="time-line__navigation-container">
+            <button class="time-line__button-prev" type="button">
+              <svg width="50" height="50">
+                <use class="time-line__desktop-use" xlink:href="#icon-main-slider-button-prev"></use>
+                <path d="M29 31L21 25L29 19" stroke-width="2"/>
+              </svg>
+            </button>
+            <p class="time-line__count-prev"></p>
+            <p class="time-line__count-next"></p>
+            <button class="time-line__button-next" type="button">
+              <svg width="50" height="50">
+                <use xlink:href="#icon-main-slider-button-prev"></use>
+                <path d="M29 31L21 25L29 19" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 
