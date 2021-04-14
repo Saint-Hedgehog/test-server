@@ -51,9 +51,6 @@
 }
 
 .preloader__col-1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   margin-right: 120px;
   margin-bottom: 80px;
 
@@ -66,7 +63,7 @@
 .preloader a {
   display: block;
   margin-top: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 205px;
 
   &:last-child {
     margin-bottom: 0;

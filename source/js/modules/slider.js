@@ -75,12 +75,11 @@ const renderSlider = (data) => {
     eventsSlider.appendSlide(pictures.map((picture) => `
       <div class="event__slide swiper-slide">
         ${picture.video ? `
-        <iframe
-        src="${picture.video}"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-        </iframe>
+        <video controls="controls">
+        poster="https://s.cdpn.io/6035/vp_poster.jpg" width="380"
+          <source src="${picture.video}.mp4">
+          <source src="https://www.youtube.com/embed/NnpaIIHW824">
+        </video>
         ` : `
         <picture>
           <!-- 1х: 433px -->

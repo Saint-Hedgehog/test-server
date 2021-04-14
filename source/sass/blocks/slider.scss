@@ -38,6 +38,10 @@
   display: flex;
   width: auto;
 
+  &:last-of-type {
+    width: 100%;
+  }
+
   @include viewport--sm {
     flex-direction: column;
     flex-wrap: wrap;
