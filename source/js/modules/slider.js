@@ -75,11 +75,12 @@ const renderSlider = (data) => {
     eventsSlider.appendSlide(pictures.map((picture) => `
       <div class="event__slide swiper-slide">
         ${picture.video ? `
-        <video controls="controls">
-        poster="https://s.cdpn.io/6035/vp_poster.jpg" width="380"
-          <source src="${picture.video}.mp4" type='video/mp4'>
-          <source src="https://mooviehosted.000webhostapp.com/trailer.mp4" type='video/mp4'>
-        </video>
+        <iframe
+        src="https://youtu.be/NnpaIIHW824"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
         ` : `
         <picture>
           <!-- 1х: 433px -->
@@ -153,7 +154,7 @@ const renderSlider = (data) => {
   const slider = new Swiper('.slider', {
     preloadImages: false,
     speed: 1000,
-    grabCursor: true,
+    // grabCursor: true,
     // freeMode: true,
     watchSlidesProgress: true,
     watchSlidesVisibility: true,
@@ -229,29 +230,31 @@ const renderSlider = (data) => {
         `}
           ${cards.map(({id, title, cover, events, org, preview}) => `
           <article class="slider__card" data-id="${id}">
-            <a href="#" class="slider__link" data-modal="success" aria-label="" tabindex="-1">
-              <div class="slider__img-container">
-                <div class="slider__img-label slider__img-label--${org.mod}"></div>
-                ${cover.video ? `
-                <video controls="controls">
-                  <source src="${cover.video}.mp4" type='video/mp4'>
-                  <source src="https://mooviehosted.000webhostapp.com/trailer.mp4" type='video/mp4'>
-                </video>
-                ` : `
-                <picture>
-                  <!-- 1х: 433px -->
-                  <source type="image/webp" data-srcset="${cover.img}.webp">
-                  <!-- 1х: 433px -->
-                  <img src="${cover.img}.jpg" data-srcset="${cover.img}.jpg" alt="${cover.alt}" width="433" height="320"/>
-                 </picture>
-                 <div class="swiper-lazy-preloader"></div>
-                `}
-              </div>
-            </a>
-            <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
-            <span class="button button--${org.mod}">${org.title}</span>
-            <h3>${title}</h3>
-            <p class="slider__text">${preview}</p>
+            <div class="slider__link-container">
+              <a href="#" class="slider__link" data-modal="success" aria-label="" tabindex="-1">
+                <div class="slider__img-container">
+                  <div class="slider__img-label slider__img-label--${org.mod}"></div>
+                  ${cover.video ? `
+                  <video controls="controls">
+                    <source src="${cover.video}.mp4" type='video/mp4'>
+                    <source src="https://mooviehosted.000webhostapp.com/trailer.mp4" type='video/mp4'>
+                  </video>
+                  ` : `
+                  <picture>
+                    <!-- 1х: 433px -->
+                    <source type="image/webp" data-srcset="${cover.img}.webp">
+                    <!-- 1х: 433px -->
+                    <img src="${cover.img}.jpg" data-srcset="${cover.img}.jpg" alt="${cover.alt}" width="433" height="320"/>
+                  </picture>
+                  <div class="swiper-lazy-preloader"></div>
+                  `}
+                </div>
+              </a>
+              <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
+              <span class="button button--${org.mod}">${org.title}</span>
+              <h3>${title}</h3>
+              <p class="slider__text">${preview}</p>
+            </div>
           </article>
           `).join('')}
           </div>`;

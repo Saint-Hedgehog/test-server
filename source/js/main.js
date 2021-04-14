@@ -3,6 +3,7 @@ import {iosVhFix} from './utils/ios-vh-fix';
 
 import {initModals} from './modules/init-modals';
 import {initIE11} from './modules/initIE11';
+import {initResize} from './modules/initResize';
 import {initSlider} from './modules/slider';
 
 // Utils
@@ -16,4 +17,5 @@ iosVhFix();
 
 initModals();
 initIE11();
+initResize();
 initSlider();

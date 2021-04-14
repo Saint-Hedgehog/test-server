@@ -3,7 +3,7 @@
   display: block;
   width: 100%;
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 78px;
   padding-bottom: 80px;
   background-image: url("../img/bg/bg-start@1x.jpg");
   background-repeat: no-repeat;
@@ -51,7 +51,11 @@
 }
 
 .preloader__col-1 {
-  margin-right: 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 120px;
+  margin-bottom: 80px;
 
   @include viewport--sm {
     min-height: 667px;
@@ -62,7 +66,7 @@
 .preloader a {
   display: block;
   margin-top: 12px;
-  margin-bottom: 205px;
+  margin-bottom: 15px;
 
   &:last-child {
     margin-bottom: 0;
@@ -75,8 +79,8 @@
 }
 
 .preloader img {
-  width: 175px;
-  height: 94px;
+  width: 150px;
+  height: 81px;
 
   @include viewport--sm {
     width: 131px;
@@ -123,7 +127,7 @@
 }
 
 .preloader__col-2 {
-  max-width: 600px;
+  max-width: 551px;
   height: auto;
   margin-bottom: 80px;
   overflow-y: auto;
@@ -147,10 +151,10 @@
 
 .preloader h1 {
   margin: 0;
-  margin-bottom: 41px;
+  margin-bottom: 26px;
   font-weight: 900;
-  font-size: 90px;
-  line-height: 90px;
+  font-size: 50px;
+  line-height: 50px;
   color: $color-tahiti-gold;
 
   @include viewport--sm {
@@ -163,9 +167,13 @@
 .preloader p {
   margin: 0;
   margin-bottom: 27px;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   letter-spacing: 0.05em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   @include viewport--sm {
     margin-bottom: 14px;

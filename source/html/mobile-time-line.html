@@ -12,16 +12,17 @@
     @@include("build/img/sprite_auto.svg")
   </div>
 
-  <p class="IE11">Ваш браузер не поддерживается!</p>
+  <p class="IE11">Этот веб-сайт не работает с Internet Explorer. Пожалуйста, используйте для просмотра другой браузер.</p>
+  <p class="resize-text">Мобильная версия этого веб-сайт находится в разработке. Пожалуйста, используйте для просмотра настольный ПК.</p>
 
   <div class="wrapper wrapper--no-scrollbar">
     <header class="header">
       <div class="header__wrapper container">
         <h1>ТМК: история лидерства</h1>
-        <a href="main.html" class="header__link" aria-label="Переход на главную">
+        <a href="mobile-main.html" class="header__link" aria-label="Переход на главную">
           <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
         </a>
-        <a href="#" class="header__filter" aria-label="Открыть фильтры">
+        <a href="#" class="header__filter" data-modal="filter" aria-label="Открыть фильтры">
           <svg width="40" height="40">
             <use xlink:href="#icon-filter"></use>
           </svg>
@@ -69,6 +70,13 @@
 
     @@include("source/html/base/modal.html", {
       "name": "success",
+      "fitContent": true,
+      "noScale": true,
+      "mod": "some-mod"
+    })
+
+    @@include("source/html/base/modal.html", {
+      "name": "filter",
       "fitContent": true,
       "noScale": true,
       "mod": "some-mod"

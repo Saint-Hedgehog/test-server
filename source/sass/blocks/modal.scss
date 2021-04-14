@@ -159,6 +159,10 @@
     opacity: 1;
     pointer-events: auto;
   }
+
+  @include viewport--sm {
+    width: 375px;
+  }
 }
 
 

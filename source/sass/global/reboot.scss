@@ -53,15 +53,35 @@ textarea {
   display: none;
 
   &--show {
-    position:absolute;
-    width: 100%;
-    top: 50%;
+    position: absolute;
+    top: 30%;
+    left: 60px;
     display: block;
+    width: calc(100vw - 120px);
     margin: 0;
     text-align: center;
     font-style: normal;
     font-weight: 900;
     font-size: 90px;
+    line-height: 100%;
+    color: $color-tahiti-gold;
+  }
+}
+
+.resize-text {
+  display: none;
+
+  &--show {
+    position: absolute;
+    top: 20%;
+    left: 60px;
+    display: block;
+    width: calc(100vw - 120px);
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 70px;
     line-height: 100%;
     color: $color-tahiti-gold;
   }

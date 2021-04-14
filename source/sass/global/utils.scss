@@ -16,7 +16,6 @@
   min-height: 100vh;
   min-height: calc(100 * var(--vh, 1vh));
   overflow-x: hidden;
-
   &--no-scrollbar {
     height: 100vh;
     height: calc(100 * var(--vh, 1vh));
@@ -36,6 +35,10 @@
 
   main {
     flex-grow: 1;
+  }
+
+  @include viewport--sm {
+    width: 375px;
   }
 }
 

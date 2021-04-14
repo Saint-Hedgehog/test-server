@@ -83,16 +83,16 @@
 </symbol></svg>
   </div>
 
-  <p class="IE11">Ваш браузер не поддерживается!</p>
+  <p class="IE11">Этот веб-сайт не работает с Internet Explorer. Пожалуйста, используйте для просмотра другой браузер.</p>
 
   <div class="wrapper wrapper--no-scrollbar">
     <header class="header">
       <div class="header__wrapper container">
         <h1>ТМК: история лидерства</h1>
-        <a href="main.html" class="header__link" aria-label="Переход на главную">
+        <a href="mobile-main.html" class="header__link" aria-label="Переход на главную">
           <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
         </a>
-        <a href="#" class="header__filter" aria-label="Открыть фильтры">
+        <a href="#" class="header__filter" data-modal="filter" aria-label="Открыть фильтры">
           <svg width="40" height="40">
             <use xlink:href="#icon-filter"></use>
           </svg>
@@ -327,6 +327,28 @@
     </button>
   </div>
 </section>
+
+
+      <button class="modal__close-btn btn-reset" type="button" aria-label="Закрыть попап">
+        <svg width="15" height="15">
+          <use xlink:href="#icon-close"></use>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="modal modal--preload modal--filter   modal--fit-content   modal--no-scale   modal--some-mod ">
+  <div class="modal__wrapper">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+
+      <div class="event__tag-container">
+  <span class="button button--events">#производство</span>
+  <span class="button button--enterprises button--tmk-group">ТМК-Групп</span>
+</div>
 
 
       <button class="modal__close-btn btn-reset" type="button" aria-label="Закрыть попап">

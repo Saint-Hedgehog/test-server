@@ -1,5 +1,6 @@
 .time-line {
   @include viewport--sm {
+    width: 375px;
     height: 100vh;
     padding-top: 182px;
     padding-bottom: 124px;
@@ -10,6 +11,10 @@
   position: relative;
   max-width: 1390px;
   margin: 0 auto;
+
+  @include viewport--sm {
+    max-width: 375px;
+  }
 }
 
 .time-line__text-container {
@@ -59,7 +64,7 @@
 }
 
 .time-line__text-container p {
-  top: 0;
+  top: 12px;
   left: 0;
 
   &:nth-child(2n + 2) {
@@ -69,6 +74,10 @@
       top: -40px;
       left: 21px;
     }
+  }
+
+  @include viewport--sm {
+    top: 0;
   }
 }
 
