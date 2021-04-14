@@ -176,6 +176,7 @@ const renderSlider = (data) => {
         slidesPerView: 'auto',
         spaceBetween: 0,
         freeMode: true,
+        allowTouchMove: false,
       },
     },
     navigation: {
@@ -246,11 +247,11 @@ const renderSlider = (data) => {
                  <div class="swiper-lazy-preloader"></div>
                 `}
               </div>
-              <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
-              <span class="button button--${org.mod}">${org.title}</span>
-              <h3>${title}</h3>
-              <p class="slider__text">${preview}</p>
             </a>
+            <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
+            <span class="button button--${org.mod}">${org.title}</span>
+            <h3>${title}</h3>
+            <p class="slider__text">${preview}</p>
           </article>
           `).join('')}
           </div>`;
@@ -281,15 +282,6 @@ const renderSlider = (data) => {
 
   // смена цифр
   slider.on('slideChange', () => {
-    const countPrev = document.querySelector('.time-line__count-prev');
-    const countNext = document.querySelector('.time-line__count-next');
-    if (countPrev && countNext) {
-      const yearPrev = filteredYears[slider.realIndex - 1];
-      const yearNext = filteredYears[slider.realIndex + 1];
-
-      countPrev.textContent = yearPrev;
-      countNext.textContent = yearNext;
-    }
     const year = filteredYears[slider.realIndex];
 
     let firstDigit = year[2];
@@ -329,7 +321,7 @@ const renderSlider = (data) => {
     });
   });
 
-  slider.on('update', () => {
+  slider.on('update slideChange', () => {
     const countPrev = document.querySelector('.time-line__count-prev');
     const countNext = document.querySelector('.time-line__count-next');
 

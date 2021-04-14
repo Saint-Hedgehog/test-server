@@ -5,7 +5,8 @@
 
   @include viewport--sm {
     position: fixed;
-    top: calc(100% - 95px);
+    // top: calc(100% - 95px);
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 1001;
@@ -61,7 +62,6 @@
 
   @include viewport--sm {
     flex-direction: row;
-    flex-wrap: wrap;
     margin: 0;
     margin-bottom: 16px;
 

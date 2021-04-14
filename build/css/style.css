@@ -1614,7 +1614,7 @@ button,
     display: -ms-flexbox;
     display: flex;
     width: 327px;
-    margin: 0 24px; } }
+    margin: 0 24px 116px 24px; } }
 
 .time-line__navigation-container p {
   display: none; }
@@ -1902,7 +1902,7 @@ button,
   @media (max-width: 767px) {
     .footer {
       position: fixed;
-      top: calc(100% - 95px);
+      bottom: 0;
       left: 0;
       right: 0;
       z-index: 1001;
@@ -1965,8 +1965,6 @@ button,
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
       margin: 0;
       margin-bottom: 16px; }
       .footer__social-item:last-child {
