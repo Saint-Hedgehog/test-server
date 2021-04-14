@@ -1,5 +1,6 @@
 .time-line {
   @include viewport--sm {
+    height: 100vh;
     padding-top: 182px;
     padding-bottom: 124px;
   }

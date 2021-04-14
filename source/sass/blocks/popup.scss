@@ -423,4 +423,8 @@
   //     }
   //   }
   // }
+
+  @include viewport--sm {
+    height: 100vh;
+  }
 }

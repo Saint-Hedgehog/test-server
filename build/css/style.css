@@ -1468,6 +1468,7 @@ button,
 
 @media (max-width: 767px) {
   .time-line {
+    height: 100vh;
     padding-top: 182px;
     padding-bottom: 124px; } }
 
@@ -2881,6 +2882,9 @@ button,
   @media (max-width: 767px) {
     .popup--tmk-gipi h3 {
       background-color: #fb94a2; } }
+  @media (max-width: 767px) {
+    .popup {
+      height: 100vh; } }
 
 .popup-slider,
 .popup-slider__slide {
