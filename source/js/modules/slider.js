@@ -76,7 +76,7 @@ const renderSlider = (data) => {
       <div class="event__slide swiper-slide">
         ${picture.video ? `
         <iframe
-        src="https://youtu.be/NnpaIIHW824"
+        src="${picture.video}"
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>

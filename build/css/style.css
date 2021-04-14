@@ -1028,6 +1028,22 @@ textarea {
     line-height: 100%;
     color: #ee732c; }
 
+.resize-text {
+  display: none; }
+  .resize-text--show {
+    position: absolute;
+    top: 20%;
+    left: 60px;
+    display: block;
+    width: calc(100vw - 120px);
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 100%;
+    color: #ee732c; }
+
 input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0 1000px #ffffff;
           box-shadow: inset 0 0 0 1000px #ffffff;
