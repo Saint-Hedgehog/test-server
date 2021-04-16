@@ -1,4 +1,4 @@
-/* global Swiper */
+/* global Swiper, YT */
 
 // import data from '../../data/history.json';
 import {setupModal} from '../utils/modal';
@@ -69,27 +69,29 @@ const renderSlider = (data) => {
   let filteredYears = [];
 
   const openCard = (card) => {
+    // останавливаем видео с предыдущего слайда
+    document.dispatchEvent(new CustomEvent('stopVideo'));
+
     currentCard = card;
     const {title, description, pictures, org, events} = card;
     eventsSlider.removeAllSlides();
-    eventsSlider.appendSlide(pictures.map((picture) => `
-      <div class="event__slide swiper-slide">
-        ${picture.video ? `
-        <video controls="controls">
-        poster="https://s.cdpn.io/6035/vp_poster.jpg" width="380"
-          <source src="${picture.video}.mp4">
-          <source src="https://www.youtube.com/embed/NnpaIIHW824">
-        </video>
-        ` : `
-        <picture>
-          <!-- 1х: 433px -->
-          <source type="image/webp" srcset="${picture.img}.webp">
-          <!-- 1х: 433px -->
-          <img src="${picture.img}.jpg" alt="${picture.alt}" width="433" height="320" >
-        </picture>
-        `}
-        </div>
-    `));
+    eventsSlider.appendSlide(pictures.map((picture) => {
+      const videoId = picture.video;
+      return `
+        <div class="event__slide swiper-slide">
+          ${videoId ? `
+          <div class="video-container" id="${videoId}"></div>
+          ` : `
+          <picture>
+            <!-- 1х: 433px -->
+            <source type="image/webp" srcset="${picture.img}.webp">
+            <!-- 1х: 433px -->
+            <img src="${picture.img}.jpg" alt="${picture.alt}" width="433" height="320" >
+          </picture>
+          `}
+          </div>
+      `;
+    }));
     eventsSlider.slideTo(0);
     eventsSlider.updateSlides();
     descriptionH3.textContent = title;
@@ -149,6 +151,33 @@ const renderSlider = (data) => {
     }
   });
 
+  eventsSlider.on('update slideChange', () => {
+    document.dispatchEvent(new CustomEvent('stopVideo'));
+    const containers = document.querySelectorAll('.video-container');
+    containers.forEach((container) => {
+      if (container.childNodes.length) {
+        return;
+      }
+      const videoId = container.id;
+      const player = new YT.Player(videoId, {
+        videoId,
+        events: {
+          'onReady': () => {
+            const onStopVideo = () => {
+              if (!player || !player.getIframe()) {
+                document.addEventListener('stopVideo', onStopVideo);
+              }
+              player.stopVideo();
+            };
+            document.addEventListener('stopVideo', onStopVideo);
+          },
+        },
+      });
+
+
+    });
+  });
+
   /* Главный слайдер */
   const slider = new Swiper('.slider', {
     preloadImages: false,
@@ -162,9 +191,9 @@ const renderSlider = (data) => {
       enabled: true,
       onlyInViewport: true,
     },
-    // mousewheel: {
-    //   sensitivity: 0.5,
-    // },
+    mousewheel: {
+      sensitivity: 0.5,
+    },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -285,7 +314,6 @@ const renderSlider = (data) => {
   // смена цифр
   slider.on('slideChange', () => {
     const year = filteredYears[slider.realIndex];
-
     let firstDigit = year[2];
     let secondDigit = year[3];
 
@@ -402,8 +430,19 @@ const renderSlider = (data) => {
 
 };
 
+const loadYoutubeScript = () => {
+  return new Promise((resolve, reject) => {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    tag.onload = resolve;
+    tag.onerror = reject;
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
 const initSlider = () => {
-  getData().then(renderSlider);
+  Promise.all([loadYoutubeScript(), getData()]).then(([script, data]) => renderSlider(data));
 };
 
 export {initSlider};

@@ -22,6 +22,8 @@ const closeModal = (modal, callback, preventScrollLock) => {
   if (!preventScrollLock) {
     setTimeout(enableScrolling, 300);
   }
+
+  document.dispatchEvent(new CustomEvent('stopVideo'));
 };
 
 const onEscPress = (evt, modal, callback) => {

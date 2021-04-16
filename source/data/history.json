@@ -24,7 +24,8 @@
            },
            "pictures":[
               {
-                 "video":"https://youtu.be/NnpaIIHW824"
+                 "img":"img/slides/slides-photo-1",
+                 "alt":"photo"
               }
            ]
         }
@@ -48,24 +49,24 @@
            "preview":"В состав ТМК вошли Волжский трубный завод",
            "description":"Волжский трубный завод (ВТЗ) предприятия — сварные спиральношовные трубы большого диаметра для ТЭК и ЖКХ. К моменту вхождения в ТМК завод обладал мощностями по производству сварных спиральношовных труб большого диаметра, горячекатаных бесшовных труб и горячепрессованных бесшовных труб, а также собственным электросталеплавильным комплексом по производству непрерывнолитой стальной заготовки.",
            "cover":{
-              "img":"img/slides/2002/event-1/1 труба - 10 пятилетке",
+              "img":"img/slides/2002/event-1/1-truba-10-pyatiletke",
               "alt":"1 труба - 10 пятилетке"
            },
            "pictures":[
               {
-                 "img":"img/slides/2002/event-1/1 труба - 10 пятилетке",
+                 "img":"img/slides/2002/event-1/1-truba-10-pyatiletke",
                  "alt":"1 труба - 10 пятилетке"
               },
               {
-                 "img":"img/slides/2002/event-1/1 Труба 10 пятилетки",
+                 "img":"img/slides/2002/event-1/1-truba-10-pyatiletke1",
                  "alt":"1 Труба 10 пятилетки"
               },
               {
-                 "img":"img/slides/2002/event-1/первая труба на машине",
+                 "img":"img/slides/2002/event-1/pervaya-truba-na-mashune",
                  "alt":"первая труба на машине"
               },
               {
-                 "img":"img/slides/2002/event-1/Первая труба ТЭСЦ",
+                 "img":"img/slides/2002/event-1/pervaya-truba-TECTC",
                  "alt":"Первая труба ТЭСЦ"
               }
            ]
@@ -113,95 +114,99 @@
                  "alt":"OLDz_001"
               },
               {
-                 "img":"img/slides/2002/event-2/Апрель 1964 первый вагон труб для нефтянников Куйбышева",
+                 "img":"img/slides/2002/event-2/aprel-1964-pervui-vagon-trub-dlya-neftyanikov-kuibusheva",
                  "alt":"Апрель 1964 первый вагон труб для нефтянников Куйбышева"
               },
               {
-                 "img":"img/slides/2002/event-2/Завод 30-е",
+                 "img":"img/slides/2002/event-2/zavod-30-е",
                  "alt":"Завод 30-е"
               },
               {
-                 "img":"img/slides/2002/event-2/Завод 30-е_1",
+                 "img":"img/slides/2002/event-2/zavod-30-е_1",
                  "alt":"Завод 30-е_1"
               },
               {
-                 "img":"img/slides/2002/event-2/Заливка фундамента Т-1",
+                 "img":"img/slides/2002/event-2/zalivka-fundamenta-Т-1",
                  "alt":"Заливка фундамента Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Наладка оборудования в ТЭСЦ-2",
+                 "img":"img/slides/2002/event-2/naladka-oborudovaniya-v-TECTC-2",
                  "alt":"Наладка оборудования в ТЭСЦ-2"
               },
               {
-                 "img":"img/slides/2002/event-2/новый-16",
+                 "img":"img/slides/2002/event-2/novui-16",
                  "alt":"новый-16"
               },
               {
-                 "img":"img/slides/2002/event-2/Октябрь 1961 первые фундаменты Т-1",
+                 "img":"img/slides/2002/event-2/oktyabr-1961-pervue-fundamentu-T-1",
                  "alt":"Октябрь 1961 первые фундаменты Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Октябрь 1962г первая колонная цеха Т-1",
+                 "img":"img/slides/2002/event-2/oktyabr-1962-pervaya-kolonnaya-tseha-T-1",
                  "alt":"Октябрь 1962г первая колонная цеха Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Первый комсомольский блок перекрытий Т-1",
+                 "img":"img/slides/2002/event-2/pervui-komsomolskii-block-perekruti-T-1",
                  "alt":"Первый комсомольский блок перекрытий Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Первый фундамент Т-1",
+                 "img":"img/slides/2002/event-2/pervui-fundament-T-1",
                  "alt":"Первый фундамент Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Подъем красного флага над последним блоком покрытия цеха Т-1",
+                 "img":"img/slides/2002/event-2/podem-krasnogo-flaga-nad-poslednim-blokom-perekrutiya-tseha-T-1",
                  "alt":"Подъем красного флага над последним блоком покрытия цеха Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Сентябрь 1960 первый ковш грунта цеха Т-1",
+                 "img":"img/slides/2002/event-2/sentyabr-1960-pervui-kovsh-grunta-tseha-T-1",
                  "alt":"Сентябрь 1960 первый ковш грунта цеха Т-1"
               },
               {
-                 "img":"img/slides/2002/event-2/Старое1",
+                 "img":"img/slides/2002/event-2/staroe",
+                 "alt":"Старое"
+              },
+              {
+                 "img":"img/slides/2002/event-2/staroe1",
                  "alt":"Старое1"
               },
               {
-                 "img":"img/slides/2002/event-2/Строительство кольцевой печи № 1",
+                 "img":"img/slides/2002/event-2/stroitelstvo-koltsevoi-pechi-№1",
                  "alt":"Строительство кольцевой печи № 1"
               },
               {
-                 "img":"img/slides/2002/event-2/Строительство мартеновских труб",
+                 "img":"img/slides/2002/event-2/stroitelstvo-martenovskih-trub",
                  "alt":"Строительство мартеновских труб"
               },
               {
-                 "img":"img/slides/2002/event-2/Стройка",
+                 "img":"img/slides/2002/event-2/stroika",
                  "alt":"Стройка"
               },
               {
-                 "img":"img/slides/2002/event-2/Стройка1",
+                 "img":"img/slides/2002/event-2/stroika1",
                  "alt":"Стройка1"
               },
               {
-                 "img":"img/slides/2002/event-2/Стройка2",
+                 "img":"img/slides/2002/event-2/stroika2",
                  "alt":"Стройка2"
               },
               {
-                 "img":"img/slides/2002/event-2/Стройка3",
+                 "img":"img/slides/2002/event-2/stroika3",
                  "alt":"Стройка3"
               },
               {
-                 "img":"img/slides/2002/event-2/Стройка4",
+                 "img":"img/slides/2002/event-2/stroika4",
                  "alt":"Стройка4"
               },
               {
-                 "img":"img/slides/2002/event-2/Стройка5",
+                 "img":"img/slides/2002/event-2/stroika5",
                  "alt":"Стройка5"
               },
               {
-                 "img":"img/slides/2002/event-2/СтройкаТ1_1",
+                 "img":"img/slides/2002/event-2/stroikaТ1_1",
                  "alt":"СтройкаТ1_1"
               },
               {
-                 "img":"img/slides/2002/event-2/Т-1 стройка",
+                 "img":"img/slides/2002/event-2/Т-1-stroika",
                  "alt":"Т-1 стройка"
               },
               {
@@ -209,7 +214,7 @@
                  "alt":"Т-1_002"
               },
               {
-                 "img":"img/slides/2002/event-2/ТЭСЦ-2_001",
+                 "img":"img/slides/2002/event-2/TECTC-2_001",
                  "alt":"ТЭСЦ-2_001"
               }
            ]
@@ -232,28 +237,28 @@
            "preview":"В состав ТМК вошли Синарский трубный завод",
            "description":"Синарский трубный завод (СинТЗ) был основан в 1934 году. Первая продукция завода — фасонные части к чугунным трубам. Сейчас предприятие выпускает трубы нефтяного сортамента: бурильные, обсадные, насосно-компрессорные, нефтегазопроводные, а также бесшовные горячекатаные и холоднодеформированные трубы, нержавеющие трубы, теплоизолированные лифтовые трубы. Эту  продукцию используют нефтегазодобыващие компании, машиностроительные предприятия, энергетические комплексы, строительные и коммунальные организации.",
            "cover":{
-              "img":"img/slides/2002/event-3/Untitled 01",
+              "img":"img/slides/2002/event-3/Untitled01",
               "alt":"Untitled 0"
            },
            "pictures":[
               {
-                 "img":"img/slides/2002/event-3/Untitled 01",
+                 "img":"img/slides/2002/event-3/Untitled01",
                  "alt":"Untitled 0"
               },
               {
-                 "img":"img/slides/2002/event-3/Untitled 1_6",
+                 "img":"img/slides/2002/event-3/Untitled1_6",
                  "alt":"Untitled 1_6"
               },
               {
-                 "img":"img/slides/2002/event-3/Untitled 02",
+                 "img":"img/slides/2002/event-3/Untitled02",
                  "alt":"Untitled 02"
               },
               {
-                 "img":"img/slides/2002/event-3/Untitled 57",
+                 "img":"img/slides/2002/event-3/Untitled57",
                  "alt":"Untitled 57"
               },
               {
-                 "img":"img/slides/2002/event-3/дизель - генераторы",
+                 "img":"img/slides/2002/event-3/disel-generatoru",
                  "alt":"дизель - генераторы"
               }
            ]
@@ -278,12 +283,12 @@
            "preview":"На СТЗ начата крупномасштабная модернизация сталеплавильного производства",
            "description":"На первом этапе реконструкции сталеплавильного производства СТЗ была введена в эксплуатацию установка внепечной обработки стали «печь-ковш» немецкой фирмы SMS DEMAG. Этот агрегат позволил заводу получать сталь   марок высокого качества и выпускать продукцию с повышенными потребительскими характеристиками.",
            "cover":{
-              "img":"img/slides/2003/event-1/Печь-ковш",
+              "img":"img/slides/2003/event-1/pech-kovsh",
               "alt":"Печь-ковш"
            },
            "pictures":[
               {
-                 "img":"img/slides/2003/event-1/Печь-ковш",
+                 "img":"img/slides/2003/event-1/pech-kovsh",
                  "alt":"Печь-ковш"
               }
            ]
@@ -357,15 +362,15 @@
                  "alt":"Domna"
               },
               {
-                 "img":"img/slides/2004/event-1/мартен_1911",
+                 "img":"img/slides/2004/event-1/marten_1911",
                  "alt":"мартен_1911"
               },
               {
-                 "img":"img/slides/2004/event-1/мартен-2",
+                 "img":"img/slides/2004/event-1/marten-2",
                  "alt":"мартен-2"
               },
               {
-                 "img":"img/slides/2004/event-1/Чубенко_Петренко_1962",
+                 "img":"img/slides/2004/event-1/Chubachenko-Petrenko_1962",
                  "alt":"Чубенко_Петренко_1962"
               }
            ]
