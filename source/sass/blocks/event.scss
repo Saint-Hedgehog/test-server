@@ -65,26 +65,47 @@
     padding-top: 0;
 
     &::before {
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 375px;
-      height: 104px;
+      display: none;
     }
   }
 }
 
+.event__text-container-wrap {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0) 100%);
+  }
+
+  &::after {
+    bottom: 0;
+    background: linear-gradient(0deg, #fff 0%, rgba(255,255,255,0) 100%);
+  }
+}
+
 .event__text-container {
-  height: 290px;
-  margin-bottom: 55px;
-  margin-right: -15px;
-  padding-right: 15px;
-  padding-left: 2px;
+  position: relative;
   font-weight: normal;
   font-size: 18px;
   line-height: 28px;
   letter-spacing: 0.05em;
   overflow: auto;
+  padding: 25px 15px 25px 2px;
+  margin: -25px -15px 35px 0;
+  height: 330px;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -100,6 +121,8 @@
     display: contents;
     height: 179px;
     padding-left: 0;
+    font-size: 16px;
+    line-height: 24px;
     overflow: visible;
   }
 }
@@ -152,7 +175,7 @@
     width: 375px;
     // margin-top: 16px;
     // margin-bottom: 14px;
-    padding: 16px 24px 14px 24px;
+    padding: 16px 24px;
     background-color: $color-default-white;
   }
 }
@@ -165,17 +188,7 @@
   letter-spacing: normal;
   pointer-events: none;
 
-  &--tmk-group,
-  &--stz,
-  &--vtz,
-  &--tmk-artrom,
-  &--tmk-ipsco,
-  &--tagmet,
-  &--sin-tz,
-  &--ktp,
-  &--omz,
-  &--tmk-gipi,
-  &--tmk-resita {
+  .enterprises-filter__button {
     position: relative;
     padding-left: 20px;
     padding-right: 8px;
@@ -305,6 +318,10 @@
 
 .event__pagination.swiper-pagination {
   bottom: 42px;
+
+  @include viewport--sm {
+    bottom: 9px;
+  }
 }
 
 .event__pagination-item,
@@ -317,6 +334,11 @@
   border: 2px solid rgba($color-default-white, 0.8);
   border-radius: 50%;
   cursor: pointer;
+
+  @include viewport--sm {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 .event__pagination-current-item {

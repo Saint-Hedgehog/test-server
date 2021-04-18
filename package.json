@@ -23,6 +23,7 @@
     "source/sass/**/*.{sass,scss}"
   ],
   "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "7.10.4",
     "@htmlacademy/editorconfig-cli": "1.x",
     "autoprefixer": "9.5.x",

@@ -13,7 +13,13 @@ const openModal = (modal, callback, preventScrollLock) => {
 };
 
 const closeModal = (modal, callback, preventScrollLock) => {
+  const videos = document.querySelectorAll('#video');
+
   modal.classList.remove('modal--active');
+
+  videos.forEach((video) => {
+    video.setAttribute('src', ' ');
+  });
 
   if (callback) {
     callback();
@@ -22,8 +28,6 @@ const closeModal = (modal, callback, preventScrollLock) => {
   if (!preventScrollLock) {
     setTimeout(enableScrolling, 300);
   }
-
-  document.dispatchEvent(new CustomEvent('stopVideo'));
 };
 
 const onEscPress = (evt, modal, callback) => {
@@ -62,6 +66,9 @@ const setupModal = (modal, closeCallback, modalBtns, openCallback, noPrevDefault
         if (!noPrevDefault) {
           evt.preventDefault();
         }
+        //todo - починить или сделать для модалки контента
+        // document.body.classList.add('modal-loader-on');
+
         openModal(modal, openCallback, preventScrollLock);
       });
     });

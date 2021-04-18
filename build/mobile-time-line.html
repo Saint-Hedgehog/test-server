@@ -82,9 +82,11 @@
 <path d="M10 0C4.47708 0 0 4.47708 0 10C0 15.5229 4.47708 20 10 20C15.5229 20 20 15.5229 20 10C20 4.47708 15.5229 0 10 0ZM13.8458 11.2823C13.8458 11.2823 14.7302 12.1552 14.9479 12.5604C14.9542 12.5688 14.9573 12.5771 14.9594 12.5812C15.0479 12.7302 15.0688 12.8458 15.025 12.9323C14.9521 13.076 14.7021 13.1469 14.6167 13.1531H13.0542C12.9458 13.1531 12.7188 13.125 12.4437 12.9354C12.2323 12.7875 12.024 12.5448 11.8208 12.3083C11.5177 11.9562 11.2552 11.6521 10.9906 11.6521C10.957 11.652 10.9236 11.6573 10.8917 11.6677C10.6917 11.7323 10.4354 12.0177 10.4354 12.7781C10.4354 13.0156 10.2479 13.1521 10.1156 13.1521H9.4C9.15625 13.1521 7.88646 13.0667 6.76146 11.8802C5.38437 10.4271 4.14479 7.5125 4.13437 7.48542C4.05625 7.29687 4.21771 7.19583 4.39375 7.19583H5.97187C6.18229 7.19583 6.25104 7.32396 6.29896 7.4375C6.35521 7.56979 6.56146 8.09583 6.9 8.6875C7.44896 9.65208 7.78542 10.0437 8.05521 10.0437C8.1058 10.0432 8.15548 10.0303 8.2 10.0062C8.55208 9.81042 8.48646 8.55521 8.47083 8.29479C8.47083 8.24583 8.46979 7.73333 8.28958 7.4875C8.16042 7.30937 7.94062 7.24167 7.80729 7.21667C7.86126 7.1422 7.93236 7.08182 8.01458 7.04062C8.25625 6.91979 8.69167 6.90208 9.12396 6.90208H9.36458C9.83333 6.90833 9.95417 6.93854 10.124 6.98125C10.4677 7.06354 10.475 7.28542 10.4448 8.04479C10.4354 8.26042 10.426 8.50417 10.426 8.79167C10.426 8.85417 10.4229 8.92083 10.4229 8.99167C10.4125 9.37812 10.4 9.81667 10.6729 9.99687C10.7085 10.0192 10.7497 10.0311 10.7917 10.0312C10.8865 10.0312 11.1719 10.0312 11.9448 8.70521C12.1832 8.27839 12.3903 7.83487 12.5646 7.37812C12.5802 7.35104 12.626 7.26771 12.6802 7.23542C12.7202 7.21504 12.7645 7.20467 12.8094 7.20521H14.6646C14.8667 7.20521 15.0052 7.23542 15.0312 7.31354C15.0771 7.4375 15.0229 7.81562 14.176 8.9625L13.7979 9.46146C13.0302 10.4677 13.0302 10.5188 13.8458 11.2823Z"/>
 </symbol></svg>
   </div>
-
+  <div class="preloader-before-modal">
+    <img src="../img/svg/loading.svg" alt="загрузка..."/>
+  </div>
   <p class="IE11">Этот веб-сайт не работает с Internet Explorer. Пожалуйста, используйте для просмотра другой браузер.</p>
-  <p class="resize-text">Мобильная версия этого веб-сайт находится в разработке. Пожалуйста, используйте для просмотра настольный ПК.</p>
+  <!-- <p class="resize-text">Мобильная версия этого веб-сайт находится в разработке. Пожалуйста, используйте для просмотра настольный ПК.</p> -->
 
   <div class="wrapper wrapper--no-scrollbar">
     <header class="header">
@@ -94,8 +96,17 @@
           <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
         </a>
         <a href="#" class="header__filter" data-modal="filter" aria-label="Открыть фильтры">
-          <svg width="40" height="40">
-            <use xlink:href="#icon-filter"></use>
+          <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20"/>
+            <path d="M14.2739 13.3491H10.5882C10.2633 13.3491 10 13.0803 10 12.749C10 12.4177 10.2633 12.1489 10.5882 12.1489H14.2739C14.5988 12.1489 14.8621 12.4177 14.8621 12.749C14.8621 13.0803 14.5988 13.3491 14.2739 13.3491Z"/>
+            <path d="M16.3799 15.4974C14.8942 15.4974 13.6855 14.2644 13.6855 12.7488C13.6855 11.233 14.8942 10 16.3799 10C17.8656 10 19.0743 11.233 19.0743 12.7488C19.0743 14.2644 17.8656 15.4974 16.3799 15.4974ZM16.3799 11.2002C15.5429 11.2002 14.862 11.895 14.862 12.7488C14.862 13.6027 15.5429 14.2972 16.3799 14.2972C17.2169 14.2972 17.8978 13.6027 17.8978 12.7488C17.8978 11.895 17.2169 11.2002 16.3799 11.2002Z"/>
+            <path d="M29.4116 13.3491H20.62C20.2951 13.3491 20.0317 13.0803 20.0317 12.749C20.0317 12.4177 20.2951 12.1489 20.62 12.1489H29.4116C29.7365 12.1489 29.9998 12.4177 29.9998 12.749C29.9998 13.0803 29.7365 13.3491 29.4116 13.3491Z"/>
+            <path d="M24.2779 22.7485C22.7921 22.7485 21.5835 21.5155 21.5835 20C21.5835 18.4845 22.7921 17.2515 24.2779 17.2515C25.7636 17.2515 26.9722 18.4845 26.9722 20C26.9722 21.5155 25.7636 22.7485 24.2779 22.7485ZM24.2779 18.4517C23.4409 18.4517 22.76 19.1461 22.76 20C22.76 20.8538 23.4409 21.5483 24.2779 21.5483C25.1149 21.5483 25.7958 20.8538 25.7958 20C25.7958 19.1461 25.1149 18.4517 24.2779 18.4517Z"/>
+            <path d="M20.0381 20.6001H10.5882C10.2633 20.6001 10 20.3313 10 20C10 19.6687 10.2633 19.3999 10.5882 19.3999H20.0381C20.363 19.3999 20.6263 19.6687 20.6263 20C20.6263 20.3313 20.363 20.6001 20.0381 20.6001Z"/>
+            <path d="M29.4117 20.6001H26.3841C26.0592 20.6001 25.7959 20.3313 25.7959 20C25.7959 19.6687 26.0592 19.3999 26.3841 19.3999H29.4117C29.7366 19.3999 29.9999 19.6687 29.9999 20C29.9999 20.3313 29.7366 20.6001 29.4117 20.6001Z"/>
+            <path d="M15.722 30.0003C14.2362 30.0003 13.0276 28.7673 13.0276 27.2514C13.0276 25.7359 14.2362 24.5029 15.722 24.5029C17.2077 24.5029 18.4163 25.7359 18.4163 27.2514C18.4163 28.7673 17.2077 30.0003 15.722 30.0003ZM15.722 25.7031C14.885 25.7031 14.204 26.3976 14.204 27.2514C14.204 28.1053 14.885 28.8001 15.722 28.8001C16.559 28.8001 17.2399 28.1053 17.2399 27.2514C17.2399 26.3976 16.559 25.7031 15.722 25.7031Z"/>
+            <path d="M29.4116 27.8515H19.9618C19.6369 27.8515 19.3735 27.5827 19.3735 27.2514C19.3735 26.9202 19.6369 26.6514 19.9618 26.6514H29.4116C29.7365 26.6514 29.9999 26.9202 29.9999 27.2514C29.9999 27.5827 29.7365 27.8515 29.4116 27.8515Z"/>
+            <path d="M13.6158 27.8516H10.5882C10.2633 27.8516 10 27.5828 10 27.2514C10 26.9202 10.2633 26.6514 10.5882 26.6514H13.6158C13.9407 26.6514 14.204 26.9202 14.204 27.2514C14.204 27.5828 13.9407 27.8516 13.6158 27.8516Z"/>
           </svg>
         </a>
       </div>
@@ -166,82 +177,6 @@
       <h2>предприятия</h2>
       <p>Показать только</p>
       <ul class="enterprises-filter">
-        <li>
-          <button class="enterprises-filter__button button button--tmk-group" type="button" aria-label="" data-org-id="5">
-            <span>Группа ТМК</span>
-            <span>Группа ТМК</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--stz" type="button" data-org-id="6" aria-label="">
-            <span>СТЗ</span>
-            <span>Северский трубный завод</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--vtz" type="button" data-org-id="7" aria-label="">
-            <span>ВТЗ</span>
-            <span>Волжский трубный завод</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--tmk-artrom" type="button" data-org-id="8" aria-label="">
-            <span>ТМК-ARTROM</span>
-            <span>ТМК-ARTROM</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--tmk-ipsco" type="button" data-org-id="9" aria-label="">
-            <span>ТМК IPSCO</span>
-            <span>ТМК IPSCO</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--tagmet " type="button" data-org-id="10" aria-label="">
-            <span>ТАГМЕТ</span>
-            <span>Таганрогский металлургический завод</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--sin-tz" type="button" data-org-id="11" aria-label="">
-            <span>СинТЗ</span>
-            <span>Синарский трубный завод</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--ktp" type="button" data-org-id="12" aria-label="">
-            <span>КТП</span>
-            <span>Казтрубпром</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--omz" type="button" data-org-id="13" aria-label="">
-            <span>ОМЗ</span>
-            <span>Омский машиностроительный завод</span>
-          </button>
-        </li>
-        <!--  -->
-        <li>
-          <button class="enterprises-filter__button button button--tmk-gipi" type="button" data-org-id="14" aria-label="">
-            <span>ТМК GIPI</span>
-            <span>ТМК GIPI</span>
-          </button>
-        </li>
-        <!--  -->
-        <!-- <li>
-          <button class="enterprises-filter__button button button--tmk-resita" type="button" data-org-id="15" aria-label="">
-            <span>ТМК RESITA</span>
-            <span>ТМК RESITA</span>
-          </button>
-        </li> -->
       </ul>
     </div>
 
@@ -249,18 +184,6 @@
       <h2>События</h2>
       <p>Показать только</p>
       <ul class="events-filter">
-        <li>
-          <button class="events-filter__button button button--events" type="button" data-event-id="1" aria-label="">#производство</button>
-        </li>
-        <li>
-          <button class="events-filter__button button button--events" type="button" data-event-id="2" aria-label="">#научно-техническое развитие</button>
-        </li>
-        <li>
-          <button class="events-filter__button button button--events" type="button" data-event-id="3" aria-label="">#экология</button>
-        </li>
-        <li>
-          <button class="events-filter__button button button--events" type="button" data-event-id="4" aria-label="">#социальная ответственность</button>
-        </li>
       </ul>
     </div>
   </div>
@@ -282,13 +205,13 @@
           <!-- Пагинация -->
           <div class="event__pagination swiper-pagination"></div>
           <!-- Кнопки навигации -->
-          <button class="event__button-prev" type="button">
+          <button id="event__button-prev" class="event__button-prev" type="button">
             <svg width="16" height="27">
               <use xlink:href="#icon-button-prev"></use>
             </svg>
           </button>
           <!--  -->
-          <button class="event__button-next" type="button">
+          <button id="event__button-next" class="event__button-next" type="button">
             <svg width="16" height="27">
               <use xlink:href="#icon-button-prev"></use>
             </svg>
@@ -346,9 +269,25 @@
     <div class="modal__overlay"></div>
     <div class="modal__content">
 
-      <div class="event__tag-container">
-  <span class="button button--events">#производство</span>
-  <span class="button button--enterprises button--tmk-group">ТМК-Групп</span>
+      <div class="filter">
+  <div class="filter__header">
+    <h3>Фильтр событий по тегам</h3>
+    <button class="modal__close-btn btn-reset" type="button" aria-label="Закрыть попап">
+      <svg width="15" height="15">
+        <use xlink:href="#icon-close"></use>
+      </svg>
+    </button>
+  </div>
+
+  <div class="filter__enterprises">
+    <h2>предприятия</h2>
+    <ul class="filter__enterprises-list enterprises-filter"></ul>
+  </div>
+
+  <div class="filter__events">
+    <h2>События</h2>
+    <ul class="filter__events-list events-filter"></ul>
+  </div>
 </div>
 
 

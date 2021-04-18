@@ -24,18 +24,7 @@
     cursor: text;
   }
 
-  &--events,
-  &--tmk-group,
-  &--stz,
-  &--vtz,
-  &--tmk-artrom,
-  &--tmk-ipsco,
-  &--tagmet,
-  &--sin-tz,
-  &--ktp,
-  &--omz,
-  &--tmk-gipi,
-  &--tmk-resita {
+  &--timeline-enterprises {
     padding: 0 7px;
     font-size: 10px;
     line-height: 23px;
@@ -60,63 +49,159 @@
     @include viewport--sm {
       padding: 2px 18px 2px 14px;
       border-color: $color-gainsboro-2;
+
+      &.button--active {
+        color: $color-white;
+        background-color: $color-grey;
+        border-color: $color-grey;
+      }
+    }
+
+    &:empty {
+      display: none;
     }
   }
 
+  &--2,
   &--tmk-group {
     color: $color-tahiti-gold;
     border-color: $color-tahiti-gold;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-tahiti-gold;
+        border-color: $color-tahiti-gold;
+      }
+    }
   }
 
-  &--stz {
-    color: $color-san-marino;
-    border-color: $color-san-marino;
-  }
-
+  &--15,
+  &--3,
   &--vtz {
     color: $color-mandy;
     border-color: $color-mandy;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-mandy;
+        border-color: $color-mandy;
+      }
+    }
   }
 
+  &--4,
+  &--stz {
+    color: $color-san-marino;
+    border-color: $color-san-marino;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-san-marino;
+        border-color: $color-san-marino;
+      }
+    }
+  }
+
+  &--8,
   &--tmk-artrom {
     color: $color-beaver;
     border-color: $color-beaver;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-beaver;
+        border-color: $color-beaver;
+      }
+    }
   }
 
+  &--9,
   &--tmk-ipsco {
     color: $color-scarlet;
     border-color: $color-scarlet;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-scarlet;
+        border-color: $color-scarlet;
+      }
+    }
   }
 
+  &--7,
   &--tagmet {
     color: $color-fruit-salad;
     border-color: $color-fruit-salad;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-fruit-salad;
+        border-color: $color-fruit-salad;
+      }
+    }
   }
 
+  &--5,
   &--sin-tz {
     color: $color-gulf-stream;
     border-color: $color-gulf-stream;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-gulf-stream;
+        border-color: $color-gulf-stream;
+      }
+    }
   }
 
+  &--10,
   &--ktp {
     color: $color-cream-can;
     border-color: $color-cream-can;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-cream-can;
+        border-color: $color-cream-can;
+      }
+    }
   }
 
+  &--11,
   &--omz {
     color: $color-bouquet;
     border-color: $color-bouquet;
+
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-bouquet;
+        border-color: $color-bouquet;
+      }
+    }
   }
 
+  &--12,
   &--tmk-gipi {
     color: $color-wewak;
     border-color: $color-wewak;
-  }
 
-  // &--tmk-resita {
-  //   color: $color-martini;
-  //   border-color: $color-martini;
-  // }
+    @include viewport--sm {
+      &.button--active {
+        color: $color-white;
+        background-color: $color-wewak;
+        border-color: $color-wewak;
+      }
+    }
+  }
 
   @include viewport--sm {
     font-size: 15px;

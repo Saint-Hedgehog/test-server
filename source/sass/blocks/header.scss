@@ -61,7 +61,27 @@
     cursor: pointer;
 
     svg {
+      width: 41px;
       fill: none;
+    }
+
+    svg path {
+      fill: $color-tahiti-gold;
+    }
+
+    svg circle {
+      stroke: $color-tahiti-gold;
+    }
+
+    &--active {
+      svg path {
+        fill: $color-default-white;
+      }
+
+      svg circle {
+        stroke: none;
+        fill: $color-tahiti-gold;
+      }
     }
   }
 }

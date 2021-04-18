@@ -1,17 +1,25 @@
-/* global Swiper, YT */
+/* global Swiper*/
 
-// import data from '../../data/history.json';
 import {setupModal} from '../utils/modal';
 import {gsap} from 'gsap';
 
-const URL = './data/history.json';
+const URL = 'https://tmk.stillbeta.app/api/cards/all';
 
-const getData = () => {
+const loadData = function () {
   return fetch(URL)
-      .then((response) => response.json())
-      // eslint-disable-next-line no-unused-vars
-      .catch((error) => {
-      // что-то отрисовать вместо слайдера
+      .then((res) => res.json())
+      .then(({cards, years, events, orgs}) => {
+        const cards_by_years = {};
+        if (cards && cards.length > 0) {
+          cards.forEach((card) => {
+            const {year} = card;
+            if (!cards_by_years[year]) {
+              cards_by_years[year] = [];
+            }
+            cards_by_years[year].push(card);
+          });
+        }
+        return {cards: cards_by_years, years, events, orgs};
       });
 };
 
@@ -33,7 +41,8 @@ const renderSlider = (data) => {
   const eventSlider = document.querySelector('.event');
   const eventBtnPrev = eventSlider.querySelector('.event__button-prev');
   const eventBtnNext = eventSlider.querySelector('.event__button-next');
-
+  const headerFilterBtn = document.querySelector('.header__filter');
+  let videoSrc;
 
   // слайдер в модальном
   const eventsSlider = new Swiper('.event__slider', {
@@ -59,6 +68,22 @@ const renderSlider = (data) => {
       nextEl: '.event__button-next',
       prevEl: '.event__button-prev',
     },
+    on: {
+      slideChangeTransitionEnd() {
+        let videoSlide = popup.querySelector('.swiper-slide--video');
+
+        if (videoSlide) {
+          let video = videoSlide.querySelector('iframe');
+          videoSrc = video.getAttribute('data-src');
+
+          if (videoSlide.classList.contains('swiper-slide-active')) {
+            video.setAttribute('src', videoSrc);
+          } else {
+            video.setAttribute('src', '');
+          }
+        }
+      },
+    },
   });
   let currentYear;
   let currentCard;
@@ -73,40 +98,41 @@ const renderSlider = (data) => {
     document.dispatchEvent(new CustomEvent('stopVideo'));
 
     currentCard = card;
-    const {title, description, pictures, org, events} = card;
+    const {title, description, slides, org, events} = card;
     eventsSlider.removeAllSlides();
-    eventsSlider.appendSlide(pictures.map((picture) => {
-      const videoId = picture.video;
-      return `
-        <div class="event__slide swiper-slide">
-          ${videoId ? `
-          <div class="video-container" id="${videoId}"></div>
-          ` : `
+    eventsSlider.appendSlide(slides.map((slide) => `
+      <div class="event__slide swiper-slide ${slide.video ? 'swiper-slide--video' : ''}">
+        ${slide.video ? `
+          <iframe class="loaded-element" id="video" frameborder="0" allowfullscreen"
+          data-src="${slide.video}" src="${slide.video}">
+          </iframe>
+        ` : `
           <picture>
             <!-- 1х: 433px -->
-            <source type="image/webp" srcset="${picture.img}.webp">
+            <source type="image/webp" srcset="${slide.image}">
             <!-- 1х: 433px -->
-            <img src="${picture.img}.jpg" alt="${picture.alt}" width="433" height="320" >
+            <img class="loaded-element" src="${slide.image}" width="433" height="320" >
           </picture>
-          `}
-          </div>
-      `;
-    }));
+        `}
+        </div>
+    `));
     eventsSlider.slideTo(0);
     eventsSlider.updateSlides();
-    descriptionH3.textContent = title;
-    descriptionP.textContent = description;
-    eventsElement.textContent = `#${events[0].title}`;
+    descriptionH3.innerHTML = title;
+    descriptionP.innerHTML = description;
+    if (events.length) {
+      eventsElement.textContent = `#${events[0].title}`;
+    }
     orgElement.textContent = org.title;
 
-    orgElement.classList.add(`button--${org.mod}`);
+    orgElement.classList.add(`button--${org.id}`);
     const arrClassName = orgElement.className.split(' ');
     if (arrClassName.length > 3) {
       const removedClassName = arrClassName.splice(-2, 1).join();
       orgElement.classList.remove(`${removedClassName}`);
     }
 
-    popup.classList.add(`popup--${org.mod}`);
+    popup.classList.add(`popup--${org.id}`);
     const arr1ClassName = popup.className.split(' ');
     if (arr1ClassName.length > 2) {
       const removedClassName = arr1ClassName.splice(-2, 1).join();
@@ -134,6 +160,11 @@ const renderSlider = (data) => {
     } else {
       nextCardBtn.classList.add('popup-slider__button-next--disabled');
     }
+
+    let loaded = document.querySelector('.loaded-element');
+    loaded.addEventListener('load', () => {
+      document.body.classList.remove('modal-loader-on');
+    });
   };
 
   prevCardBtn.addEventListener('click', () => {
@@ -151,38 +182,10 @@ const renderSlider = (data) => {
     }
   });
 
-  eventsSlider.on('update slideChange', () => {
-    document.dispatchEvent(new CustomEvent('stopVideo'));
-    const containers = document.querySelectorAll('.video-container');
-    containers.forEach((container) => {
-      if (container.childNodes.length) {
-        return;
-      }
-      const videoId = container.id;
-      const player = new YT.Player(videoId, {
-        videoId,
-        events: {
-          'onReady': () => {
-            const onStopVideo = () => {
-              if (!player || !player.getIframe()) {
-                document.addEventListener('stopVideo', onStopVideo);
-              }
-              player.stopVideo();
-            };
-            document.addEventListener('stopVideo', onStopVideo);
-          },
-        },
-      });
-
-
-    });
-  });
-
   /* Главный слайдер */
   const slider = new Swiper('.slider', {
     preloadImages: false,
     speed: 1000,
-    // grabCursor: true,
     // freeMode: true,
     watchSlidesProgress: true,
     watchSlidesVisibility: true,
@@ -229,26 +232,46 @@ const renderSlider = (data) => {
     },
   });
 
-  const updateSlider = () => {
-    slider.removeAllSlides();
-    filteredYears = [];
-    const filteredSlides = data.years.map((year, index) => {
-      const cards = data.cards[year].filter((card) => {
-        // eslint-disable-next-line max-nested-callbacks
-        const hasEvents = !filter.events.length || card.events.some(({id}) => filter.events.some((evt) => evt === id));
-        const hasOrg = !filter.org || filter.org === card.org.id;
-        return hasEvents && hasOrg;
-      });
+  const buildSlideItem = ({id, title, cover, events, org, short_description}) => {
+    return `
+      <article class="slider__card" data-id="${id}">
+        <div class="slider__link-container">
+          <a href="#" class="slider__link" data-modal="success" aria-label="" tabindex="-1">
+            <div class="slider__img-container">
+              <div class="slider__img-label slider__img-label--${org.id}"></div>
+              <picture>
+                <img src="${cover}" data-srcset="${cover}" width="433" height="320"/>
+              </picture>
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+          </a>
+          <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
+          <span class="button button--timeline-enterprises button--${org.id}">${org.title}</span>
+          <h3>${title}</h3>
+          <p class="slider__text">${short_description}</p>
+        </div>
+      </article>
+    `;
+  };
 
-      if (cards.length) {
-        filteredYears.push(year);
-      } else {
-        return null;
-      }
+  const buildSlide = (year) => {
+    const cards = data.cards[year].filter((card) => {
+      // eslint-disable-next-line max-nested-callbacks
+      const hasEvents = !filter.events.length || card.events.some(({id}) => filter.events.some((event_id) => event_id === id));
+      const hasOrg = !filter.org || filter.org === card.org.id;
+      return hasEvents && hasOrg;
+    });
 
-      return `
-        <div class="slider__slide swiper-slide" data-year="${year}">
-        ${index === 0 ? '' : `
+    if (cards.length) {
+      filteredYears.push(year);
+    } else {
+      return null;
+    }
+    const first_year = data.years[0];
+
+    return `
+      <div class="slider__slide swiper-slide" data-year="${year}">
+        ${year === first_year ? '' : `
           <div class="slider__divider">
             <div class="slider__divider-line"></div>
             <span>
@@ -256,44 +279,31 @@ const renderSlider = (data) => {
             </span>
           </div>
         `}
-          ${cards.map(({id, title, cover, events, org, preview}) => `
-          <article class="slider__card" data-id="${id}">
-            <div class="slider__link-container">
-              <a href="#" class="slider__link" data-modal="success" aria-label="" tabindex="-1">
-                <div class="slider__img-container">
-                  <div class="slider__img-label slider__img-label--${org.mod}"></div>
-                  ${cover.video ? `
-                  <video controls="controls">
-                    <source src="${cover.video}.mp4" type='video/mp4'>
-                    <source src="https://mooviehosted.000webhostapp.com/trailer.mp4" type='video/mp4'>
-                  </video>
-                  ` : `
-                  <picture>
-                    <!-- 1х: 433px -->
-                    <source type="image/webp" data-srcset="${cover.img}.webp">
-                    <!-- 1х: 433px -->
-                    <img src="${cover.img}.jpg" data-srcset="${cover.img}.jpg" alt="${cover.alt}" width="433" height="320"/>
-                  </picture>
-                  <div class="swiper-lazy-preloader"></div>
-                  `}
-                </div>
-              </a>
-              <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
-              <span class="button button--${org.mod}">${org.title}</span>
-              <h3>${title}</h3>
-              <p class="slider__text">${preview}</p>
-            </div>
-          </article>
-          `).join('')}
-          </div>`;
-    }).filter((markup) => !!markup);
-    slider.appendSlide(filteredSlides);
-    slider.update();
-    if (filteredYears[0]) {
-      currentNum1.textContent = filteredYears[0][2];
-      currentNum2.textContent = filteredYears[0][3];
-    }
+        ${cards.map(buildSlideItem).join('')}
+    </div>`;
   };
+
+  const appendSlides = (year) => {
+    const slide = buildSlide(year);
+    if (!slide) {
+      return;
+    }
+    slider.appendSlide(slide);
+  };
+
+  const updateSlider = () => {
+    slider.removeAllSlides();
+    filteredYears = [];
+    data.years.forEach(appendSlides);
+  };
+
+  slider.on('update resize', () => {
+    if (window.innerWidth < 1024) {
+      slider.mousewheel.disable();
+    } else {
+      slider.mousewheel.enable();
+    }
+  });
 
   slider.on('progress', () => {
     const modalSuccessBtns = document.querySelectorAll('.swiper-slide-visible .slider__link[data-modal="success"]');
@@ -313,9 +323,11 @@ const renderSlider = (data) => {
 
   // смена цифр
   slider.on('slideChange', () => {
-    const year = filteredYears[slider.realIndex];
+    const year = filteredYears[slider.realIndex].toString();
     let firstDigit = year[2];
     let secondDigit = year[3];
+    currentNum1.textContent = year[2];
+    currentNum2.textContent = filteredYears[0][3];
 
     gsap.to(currentNum1, 0.3, {
       force3D: true,
@@ -365,84 +377,84 @@ const renderSlider = (data) => {
   });
 
   // фильтры
-  const filterEnterprisesWrap = document.querySelector('.enterprises-filter');
-  const filterEnterprisesBtns = filterEnterprisesWrap.querySelectorAll('.enterprises-filter__button');
+  const filterEnterprisesWraps = document.querySelectorAll('.enterprises-filter');
+  filterEnterprisesWraps.forEach((filterEnterprisesWrap) => {
+    filterEnterprisesWrap.innerHTML = data.orgs.map((org) => `
+    <li class="enterprises-filter__item enterprises-filter__item--${org.id}">
+      <button class="enterprises-filter__button button button--${org.id}" type="button" aria-label="" data-org-id="${org.id}">
+        <span>${org.short_title}</span>
+        <span>${org.title}</span>
+      </button>
+    </li>
+  `).join('');
 
-  filterEnterprisesBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterEnterpr(btn);
+    const filterEnterprisesBtns = filterEnterprisesWrap.querySelectorAll('.enterprises-filter__button');
+
+    filterEnterprisesBtns.forEach((btn) => {
+      btn.addEventListener('click', () => filterEnterpr(btn));
     });
-    const hasEnterprises = data.years.some((year) => {
-      return data.cards[year].some((card) => btn.dataset.orgId === String(card.org.id));
-    });
-    if (!hasEnterprises) {
-      btn.classList.add('button--disabled');
-    }
+
+    const filterEnterpr = function (btn) {
+      const orgId = parseInt(btn.dataset.orgId);
+      if (filter.org === orgId) {
+        filter.org = null;
+        btn.classList.remove('button--active');
+      } else {
+        filter.org = orgId;
+        const active = filterEnterprisesWrap.querySelector('.button--active');
+        if (active) {
+          active.classList.remove('button--active');
+        }
+        btn.classList.add('button--active');
+      }
+
+      if (btn.classList.contains('button--active')) {
+        headerFilterBtn.classList.add('header__filter--active');
+      } else {
+        headerFilterBtn.classList.remove('header__filter--active');
+      }
+
+      updateSlider();
+    };
   });
 
+  const filterEventsWraps = document.querySelectorAll('.events-filter');
+  filterEventsWraps.forEach((filterEventsWrap) => {
+    filterEventsWrap.innerHTML = data.events.map((event) => `
+    <li>
+      <button class="events-filter__button button button--events" type="button" data-event-id="${event.id}" aria-label="">#${event.title}</button>
+    </li>
+  `).join('');
+    const filterEventsBtns = filterEventsWrap.querySelectorAll('.events-filter__button');
 
-  let filterEnterpr = function (btn) {
-    let activeBtn = filterEnterprisesWrap.querySelector('.button--active');
-    if (activeBtn && activeBtn.dataset.orgId !== btn.dataset.orgId) {
-      activeBtn.classList.remove('button--active');
-    }
-
-    if (btn.classList.contains('button--active')) {
-      filter.org = '';
-      btn.classList.remove('button--active');
-    } else {
-      filter.org = Number(btn.dataset.orgId);
-      btn.classList.add('button--active');
-    }
-
-    updateSlider();
-  };
-
-  const filterEventsWrap = document.querySelector('.events-filter');
-  const filterEventsBtns = filterEventsWrap.querySelectorAll('.events-filter__button');
-
-  filterEventsBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterEvents(btn);
+    filterEventsBtns.forEach((btn) => {
+      btn.addEventListener('click', () => filterEvents(btn));
     });
-    const hasEvents = data.years.some((year) => {
-      // eslint-disable-next-line max-nested-callbacks
-      return data.cards[year].some((card) => card.events.some((evt) => btn.dataset.eventId === String(evt.id)));
-    });
-    if (!hasEvents) {
-      btn.classList.add('button--disabled');
-    }
+
+    const filterEvents = (btn) => {
+      const eventId = parseInt(btn.dataset.eventId);
+      if (!btn.classList.contains('button--active')) {
+        filter.events.push(eventId);
+      } else {
+        filter.events.splice(filter.events.findIndex((value) => value === eventId), 1);
+      }
+
+      btn.classList.toggle('button--active');
+
+      if (btn.classList.contains('button--active')) {
+        headerFilterBtn.classList.add('header__filter--active');
+      } else {
+        headerFilterBtn.classList.remove('header__filter--active');
+      }
+      updateSlider();
+    };
   });
-
-  let filterEvents = function (btn) {
-    const eventId = Number(btn.dataset.eventId);
-    if (!btn.classList.contains('button--active')) {
-      filter.events.push(eventId);
-    } else {
-      filter.events.splice(filter.events.findIndex((value) => value === eventId), 1);
-    }
-
-    btn.classList.toggle('button--active');
-    updateSlider();
-  };
 
   updateSlider();
-
-};
-
-const loadYoutubeScript = () => {
-  return new Promise((resolve, reject) => {
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    tag.onload = resolve;
-    tag.onerror = reject;
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  });
 };
 
 const initSlider = () => {
-  Promise.all([loadYoutubeScript(), getData()]).then(([script, data]) => renderSlider(data));
+  loadData().then(renderSlider);
 };
 
 export {initSlider};

@@ -98,6 +98,9 @@
       stroke-width: 3px;
 
       @include viewport--sm {
+        width: 16px;
+        height: 16px;
+        margin-top: 3px;
         stroke: $color-default-white;
         stroke-width: 1.5px;
       }
@@ -111,22 +114,6 @@
         stroke: $color-default-white;
       }
     }
-
-    // @include viewport--sm {
-    //   position: fixed;
-    //   top: 40px;
-    //   right: 24px;
-    //   z-index: 2;
-    //   // display: none;
-    //   width: 40px;
-    //   height: 40px;
-    //   border: 1.5px solid $color-default-white;
-    //   border-radius: 50%;
-
-    //   &::before {
-    //     display: none;
-    //   }
-    // }
   }
 
   &--responsive {
@@ -165,9 +152,32 @@
   }
 }
 
+.modal.modal--filter {
+  @include viewport--sm {
+    transform: translateX(100%);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.modal.modal--filter.modal--active {
+  @include viewport--sm {
+    transform: none;
+  }
+}
 
 .modal__content > .modal__close-btn {
   @include viewport--sm {
     display: none;
   }
 }
+
+.modal--filter {
+  @include viewport--sm {
+    z-index: 1001;
+  }
+}
+
+// .modal--filter .modal__content {
+//   height: 100vh;
+// }
