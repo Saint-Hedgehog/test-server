@@ -1,30 +1,35 @@
 const initScrollAnim = () => {
-  // вверху объявляем наши константы (избегаем магических значений)
   const MOBILE_WIDTH = 1024;
   const SCROLL_STEP = 10;
-
-  let wrapper = document.querySelector('.wrapper'); // вынесем поиск элемента из функции - он же всегда на странице (лишняя операция)
+  const wrapper = document.querySelector('.wrapper');
+  const header = document.querySelector('.header'); // объект модификации
 
   // создаем наш обработчик скролла
   const onScrollToggleClass = () => {
-    if (window.pageYOffset > SCROLL_STEP) {
-      wrapper.classList.add('wrapper--active');
+    if (wrapper.scrollTop > SCROLL_STEP) {
+      wrapper.classList.add('wrapper--active'); // todo модифицируй header
     } else {
-      wrapper.classList.remove('wrapper--active');
+      wrapper.classList.remove('wrapper--active'); // todo сними модификацию header
+    }
+  };
+
+  const onResize = () => {
+    if (window.innerWidth < MOBILE_WIDTH) {
+      wrapper.addEventListener('scroll', onScrollToggleClass);
+    } else {
+      wrapper.removeEventListener('scroll', onScrollToggleClass);
     }
   };
 
   // делаем привязку к ширине экрана (добавляем/удаляем обработчики на скролл)
-  window.addEventListener('resize', () => {
-    if (window.innerWidth < MOBILE_WIDTH) {
-      window.addEventListener('scroll', onScrollToggleClass);
-    } else {
-      window.removeEventListener('scroll', onScrollToggleClass);
-    }
-  });
+  window.addEventListener('resize', onResize);
 
   // при загрузке приложения делаем подписку
-  window.addEventListener('load', onScrollToggleClass);
+  window.addEventListener('load', () =>{
+    onResize();
+    onScrollToggleClass();
+  });
+
 };
 
 export {initScrollAnim};

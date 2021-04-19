@@ -3269,3 +3269,7 @@ button,
   .filter__events-list .button {
     margin-right: 8px;
     margin-bottom: 8px; } }
+
+@media (max-width: 767px) {
+  .filter__events-list .events-filter__button:last-of-type {
+    max-width: 261px; } }

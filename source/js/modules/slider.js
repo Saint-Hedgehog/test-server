@@ -41,7 +41,7 @@ const renderSlider = (data) => {
   const eventSlider = document.querySelector('.event');
   const eventBtnPrev = eventSlider.querySelector('.event__button-prev');
   const eventBtnNext = eventSlider.querySelector('.event__button-next');
-  const headerFilterBtn = document.querySelector('.header__filter');
+
   let videoSrc;
 
   // слайдер в модальном
@@ -161,7 +161,8 @@ const renderSlider = (data) => {
       nextCardBtn.classList.add('popup-slider__button-next--disabled');
     }
 
-    let loaded = document.querySelector('.loaded-element');
+    let loaded = document.querySelectorAll('.loaded-element');
+
     loaded.addEventListener('load', () => {
       document.body.classList.remove('modal-loader-on');
     });
@@ -230,6 +231,26 @@ const renderSlider = (data) => {
         }
       },
     },
+    // on: {
+    //   slidesLengthChange(swiper) {
+    //     setTimeout(() => {
+    //       const {slides, activeIndex} = swiper;
+    //       slides.forEach((slide, i) => {
+    //         if (i !== activeIndex) {
+    //           slide.style.display = 'none';
+    //         }
+    //       });
+    //     }, 500);
+    //   },
+    //   slideChangeTransitionEnd(swiper) {
+    //     const {slides, previousIndex} = swiper;
+    //     slides[previousIndex].style.display = 'none';
+    //   },
+    //   slideChangeTransitionStart(swiper) {
+    //     const {slides, activeIndex} = swiper;
+    //     slides[activeIndex].style.display = '';
+    //   },
+    // },
   });
 
   const buildSlideItem = ({id, title, cover, events, org, short_description}) => {
@@ -246,7 +267,7 @@ const renderSlider = (data) => {
             </div>
           </a>
           <span class="button button--events">${events.map((event) => `#${event.title}`)}</span>
-          <span class="button button--timeline-enterprises button--${org.id}">${org.title}</span>
+          <span class="button button--timeline-enterprises button--${org.id}" data-org-id="${org.id}">${org.title}</span>
           <h3>${title}</h3>
           <p class="slider__text">${short_description}</p>
         </div>
@@ -378,7 +399,26 @@ const renderSlider = (data) => {
 
   // фильтры
   const filterEnterprisesWraps = document.querySelectorAll('.enterprises-filter');
+  const filterEventsWraps = document.querySelectorAll('.events-filter');
+  const modalBtn = document.querySelector('.header__filter');
+
+  let filterEventsBtns;
+  let filterEnterprisesBtns;
+
+  const checkActiveFilters = () => {
+    // todo проверка на ширину экрана и retun если не нужна кнопка
+    // делаем активной кнопку для открытия модалки
+    const active = Array.prototype.some.call(filterEnterprisesBtns, (btn) => btn.classList.contains('button--active'))
+    || Array.prototype.some.call(filterEventsBtns, (btn) => btn.classList.contains('button--active'));
+    if (active) {
+      modalBtn.classList.add('header__filter--active');
+    } else {
+      modalBtn.classList.remove('header__filter--active');
+    }
+  };
+
   filterEnterprisesWraps.forEach((filterEnterprisesWrap) => {
+    // это фильтры - где карточка???
     filterEnterprisesWrap.innerHTML = data.orgs.map((org) => `
     <li class="enterprises-filter__item enterprises-filter__item--${org.id}">
       <button class="enterprises-filter__button button button--${org.id}" type="button" aria-label="" data-org-id="${org.id}">
@@ -388,14 +428,14 @@ const renderSlider = (data) => {
     </li>
   `).join('');
 
-    const filterEnterprisesBtns = filterEnterprisesWrap.querySelectorAll('.enterprises-filter__button');
+    filterEnterprisesBtns = filterEnterprisesWrap.querySelectorAll('.enterprises-filter__button');
 
     filterEnterprisesBtns.forEach((btn) => {
       btn.addEventListener('click', () => filterEnterpr(btn));
     });
 
     const filterEnterpr = function (btn) {
-      const orgId = parseInt(btn.dataset.orgId);
+      const orgId = parseInt(btn.dataset.orgId, 10);
       if (filter.org === orgId) {
         filter.org = null;
         btn.classList.remove('button--active');
@@ -408,31 +448,36 @@ const renderSlider = (data) => {
         btn.classList.add('button--active');
       }
 
-      if (btn.classList.contains('button--active')) {
-        headerFilterBtn.classList.add('header__filter--active');
-      } else {
-        headerFilterBtn.classList.remove('header__filter--active');
-      }
+      checkActiveFilters();
 
       updateSlider();
+
+      // const recolorBtns = document.querySelectorAll(`.slider__card .button--${btn.dataset.orgId}`);
+      // recolorBtns.forEach((recolorBtn) => {
+      //   if (filter.org === orgId) {
+      //     recolorBtn.classList.add('button--active');
+      //   } else {
+      //     recolorBtn.classList.remove('button--active');
+      //   }
+      // });
     };
   });
 
-  const filterEventsWraps = document.querySelectorAll('.events-filter');
+
   filterEventsWraps.forEach((filterEventsWrap) => {
     filterEventsWrap.innerHTML = data.events.map((event) => `
     <li>
       <button class="events-filter__button button button--events" type="button" data-event-id="${event.id}" aria-label="">#${event.title}</button>
     </li>
   `).join('');
-    const filterEventsBtns = filterEventsWrap.querySelectorAll('.events-filter__button');
+    filterEventsBtns = filterEventsWrap.querySelectorAll('.events-filter__button');
 
     filterEventsBtns.forEach((btn) => {
       btn.addEventListener('click', () => filterEvents(btn));
     });
 
     const filterEvents = (btn) => {
-      const eventId = parseInt(btn.dataset.eventId);
+      const eventId = parseInt(btn.dataset.eventId, 10);
       if (!btn.classList.contains('button--active')) {
         filter.events.push(eventId);
       } else {
@@ -441,12 +486,13 @@ const renderSlider = (data) => {
 
       btn.classList.toggle('button--active');
 
-      if (btn.classList.contains('button--active')) {
-        headerFilterBtn.classList.add('header__filter--active');
-      } else {
-        headerFilterBtn.classList.remove('header__filter--active');
-      }
+      checkActiveFilters();
       updateSlider();
+
+      // const recolorBtns2 = document.querySelectorAll('.slider__card .button--events');
+      // recolorBtns2.forEach((recolorBtn) => {
+      //   recolorBtn.classList.toggle('button--active');
+      // });
     };
   });
 

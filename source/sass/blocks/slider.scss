@@ -45,6 +45,11 @@
   @include viewport--sm {
     flex-direction: column;
     flex-wrap: wrap;
+    // display: none;
+
+    // &.swiper-slide-visible {
+    //   display: flex;
+    // }
     // height: 100vh;
     // overflow-y: auto;
   }

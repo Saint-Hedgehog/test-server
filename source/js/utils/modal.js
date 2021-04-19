@@ -66,7 +66,7 @@ const setupModal = (modal, closeCallback, modalBtns, openCallback, noPrevDefault
         if (!noPrevDefault) {
           evt.preventDefault();
         }
-        //todo - починить или сделать для модалки контента
+        // todo - починить или сделать для модалки контента
         // document.body.classList.add('modal-loader-on');
 
         openModal(modal, openCallback, preventScrollLock);
