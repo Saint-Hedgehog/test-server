@@ -1,9 +1,23 @@
-.time-line {
+
+.time-line-main {
+
+  @include viewport--md {
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
   @include viewport--sm {
-    width: 375px;
-    height: 100vh;
-    padding-top: 182px;
-    padding-bottom: 124px;
+    padding-top: 180px;
+  }
+}
+
+.time-line {
+  width: 100%;
+
+  @include viewport--xl {
+    padding-left: 50px;
+  }
+  @include viewport--md {
+    padding-left: 0;
   }
 }
 
@@ -12,20 +26,56 @@
   max-width: 1390px;
   margin: 0 auto;
 
-  @include viewport--sm {
-    max-width: 375px;
+
+  @include viewport--md {
+    width: 100%;
   }
+
+  & > p {
+    top: -10px;
+
+    @include viewport--md {
+      top: 18px;
+      left: 24px!important;
+    }
+  }
+
 }
 
 .time-line__text-container {
   position: absolute;
-  left: 26px;
-  top: 119px;
+  left: 0;
+  top: 64px;
   width: 170px;
-  height: 80px;
+  height: 90px;
   overflow: hidden;
 
-  @include viewport--sm {
+  p {
+    top: -2px;
+    left: 0;
+
+    @include viewport--md {
+      top: 0;
+    }
+
+    &:nth-child(2n + 2) {
+      left: 77px;
+
+      @include viewport--xl {
+        left: 50px;
+      }
+
+      @include viewport--md {
+        top: -40px;
+        left: 21px;
+      }
+    }
+  }
+
+  @include viewport--xl {
+    left: 0;
+  }
+  @include viewport--md {
     position: relative;
     left: 65px;
     top: -22px;
@@ -37,18 +87,21 @@
 .time-line__wrapper > p,
 .time-line__text-container p {
   position: absolute;
-  top: 64px;
   left: 26px;
   display: block;
   margin: 0;
   font-weight: 800;
   font-size: 90px;
-  line-height: 40px;
+  line-height: 70px;
   color: $color-tahiti-gold;
   letter-spacing: -0.03em;
   z-index: 20;
 
-  @include viewport--sm {
+  @include viewport--xl {
+    left: 0;
+  }
+
+  @include viewport--md {
     position: relative;
     font-size: 36px;
     line-height: 40px;
@@ -56,36 +109,11 @@
   }
 }
 
-.time-line__wrapper > p {
-  @include viewport--sm {
-    top: 18px;
-    left: 24px;
-  }
-}
-
-.time-line__text-container p {
-  top: 12px;
-  left: 0;
-
-  &:nth-child(2n + 2) {
-    left: 57px;
-
-    @include viewport--sm {
-      top: -40px;
-      left: 21px;
-    }
-  }
-
-  @include viewport--sm {
-    top: 0;
-  }
-}
-
 .time-line__button-prev,
 .time-line__button-next {
   position: absolute;
-  top: 325px;
-  left: 31px;
+  left: 0;
+  top: 260px;
   z-index: 1;
   display: block;
   margin: 0;
@@ -96,108 +124,100 @@
   border: none;
   cursor: pointer;
   outline: none;
+  color: $color-tahiti-gold;
+  transition: opacity $default-transition-settings;
+  opacity: 1;
 
-  @include viewport--sm {
+  &:hover {
+    opacity: .6;
+  }
+
+  &.swiper-button-disabled {
+    pointer-events: none;
+    color: $color-gainsboro-2;
+
+    @include viewport--md {
+      border-color: $color-gainsboro-2;
+
+      svg {
+        color: $color-gainsboro-2;
+      }
+    }
+  }
+
+  @include viewport--md {
     position: relative;
     top: 0;
     left: 0;
-    display: inline-block;
-    vertical-align: middle;
-    border: 1px solid $color-tahiti-gold;
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    width: auto;
 
-    &:hover svg {
-      transform: scale(1.3);
-      transition: transform $default-transition-settings;
+    svg {
+      min-width: 50px;
+      max-width: 50px;
+      color: $color-tahiti-gold;
     }
   }
 }
 
 .time-line__button-next {
-  top: 325px;
-  left: 81px;
-  transform: rotate(180deg);
+  left: 55px;
 
-  @include viewport--sm {
-    top: 0;
-    left: 17px;
+  @include viewport--md {
+    left: 0;
   }
 }
 
-.time-line__button-next svg,
-.time-line__button-prev svg {
-  fill: $color-tahiti-gold;
-  transition: fill $default-transition-settings;
-  opacity: 1;
+.time-line--mobile {
+  display: none;
+}
 
-  & > path {
+
+.time-line__navigation-container {
+  p {
     display: none;
   }
 
-  @include viewport--sm {
-    & use {
-      display: none;
-    }
-
-    & > path {
-      display: block;
-      fill: none;
-      stroke: $color-tahiti-gold;
+  .time-line__count-prev {
+    @include viewport--md {
+      margin-left: 16px;
     }
   }
-}
 
-.time-line__button-prev.swiper-button-disabled,
-.time-line__button-next.swiper-button-disabled {
-  pointer-events: none;
-
-  @include viewport--sm {
-    border-color: $color-gainsboro-2;
-  }
-}
-
-.time-line__button-prev.swiper-button-disabled svg,
-.time-line__button-next.swiper-button-disabled svg {
-  fill: $color-gainsboro-2;
-
-  @include viewport--sm {
-    path:nth-child(2) {
-      fill: none;
-      stroke: $color-gainsboro-2;
+    .time-line__count-next {
+    @include viewport--md {
+      margin-right: 16px;
     }
   }
-}
 
-.time-line__navigation-container {
-  @include viewport--sm {
+  @include viewport--md {
     display: flex;
-    width: 327px;
-    margin: 0 24px 116px 24px;
+    margin: 0 25px 70px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+
+
+    p {
+      display: block;
+      margin: 0 17px;
+
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+      color: $color-tahiti-gold;
+    }
   }
 }
 
-.time-line__navigation-container p {
-  display: none;
 
-  @include viewport--sm {
-    display: block;
-    margin: 0;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 40px;
-    color: $color-tahiti-gold;
-    // vertical-align: middle;
+@include viewport--md {
+  .time-line--desc {
+    display: none!important;
   }
-}
-
-.time-line__navigation-container .time-line__count-prev {
-  @include viewport--sm {
-    margin-left: 16px;
-  }
-}
-
-.time-line__navigation-container .time-line__count-next {
-  @include viewport--sm {
-    margin-left: 121px;
+  .time-line--mobile {
+    display: flex;
   }
 }

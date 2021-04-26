@@ -37,12 +37,6 @@
     width: 100%;
     min-height: 100%;
     padding: 60px 40px;
-
-    @include viewport--sm {
-      // padding: 60px 16px;
-      width: 375px;
-      padding: 0;
-    }
   }
 
   &__overlay {
@@ -59,15 +53,10 @@
   &__content {
     position: relative;
 
-    width: 600px;
+    width: 100%;
+    max-width: 1144px;
 
     background-color: $color-default-white;
-
-    @include viewport--sm {
-      width: 100%;
-      // padding: 20px;
-      padding: 0;
-    }
   }
 
   &__close-btn {
@@ -96,23 +85,11 @@
     svg {
       stroke: $color-silver;
       stroke-width: 3px;
-
-      @include viewport--sm {
-        width: 16px;
-        height: 16px;
-        margin-top: 3px;
-        stroke: $color-default-white;
-        stroke-width: 1.5px;
-      }
     }
 
     &:hover svg,
     &:focus svg {
       stroke: $color-tahiti-gold;
-
-      @include viewport--sm {
-        stroke: $color-default-white;
-      }
     }
   }
 
@@ -125,10 +102,6 @@
   &--fit-content {
     .modal__content {
       width: auto;
-
-      @include viewport--sm {
-        width: 100%;
-      }
     }
   }
 
@@ -146,14 +119,58 @@
     opacity: 1;
     pointer-events: auto;
   }
+}
 
-  @include viewport--sm {
-    width: 375px;
+.modal {
+  @include viewport--md {
+    width: 100%;
+    background-color: $color-default-white;
+  }
+
+  &__wrapper {
+    width: 100%;
+
+    @include viewport--md {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  &__content {
+    @include viewport--md {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  &__close-btn {
+    svg {
+      @include viewport--md {
+        width: 16px;
+        height: 16px;
+        margin-top: 3px;
+        stroke: $color-default-white;
+        stroke-width: 1.5px;
+      }
+    }
+
+    &:hover svg,
+    &:focus svg {
+      @include viewport--md {
+        stroke: $color-default-white;
+      }
+    }
+  }
+
+  &--fit-content {
+    @include viewport--md {
+      width: 100%;
+    }
   }
 }
 
 .modal.modal--filter {
-  @include viewport--sm {
+  @include viewport--md {
     transform: translateX(100%);
     visibility: visible;
     opacity: 1;
@@ -161,23 +178,19 @@
 }
 
 .modal.modal--filter.modal--active {
-  @include viewport--sm {
+  @include viewport--md {
     transform: none;
   }
 }
 
 .modal__content > .modal__close-btn {
-  @include viewport--sm {
+  @include viewport--md {
     display: none;
   }
 }
 
 .modal--filter {
-  @include viewport--sm {
+  @include viewport--md {
     z-index: 1001;
   }
 }
-
-// .modal--filter .modal__content {
-//   height: 100vh;
-// }

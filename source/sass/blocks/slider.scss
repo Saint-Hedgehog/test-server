@@ -1,36 +1,28 @@
 .slider {
   position: relative;
   //width: calc(100vw - 155px);
-  min-height: 570px;
+  // min-height: 570px;
   margin-right: 0;
   margin-left: 155px;
-  padding-top: 55px;
+  //padding-top: 55px;
   overflow: visible;
+
+  @include viewport--md {
+    min-height: auto;
+    margin: 0;
+    padding: 0 24px 0;
+    overflow: hidden;
+  }
 
   &::before {
     content: "";
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: -100px;
     background: white;
     width: 100vw;
     right: 100%;
     z-index: 10;
-  }
-
-  @include viewport--sm {
-    min-height: auto;
-    margin-top: -2px;
-    margin-left: 24px;
-    margin-right: 24px;
-    padding-top: 0;
-
-    // -ms-overflow-style: none;
-    // scrollbar-width: none;
-
-    // &::-webkit-scrollbar {
-    //   display: none;
-    // }
   }
 }
 
@@ -39,19 +31,12 @@
   width: auto;
 
   &:last-of-type {
-    width: 100%;
+    min-width: 100%;
   }
-
   @include viewport--sm {
     flex-direction: column;
     flex-wrap: wrap;
-    // display: none;
-
-    // &.swiper-slide-visible {
-    //   display: flex;
-    // }
-    // height: 100vh;
-    // overflow-y: auto;
+    height: auto;
   }
 }
 
@@ -64,7 +49,8 @@
   margin-right: 20px;
   text-align: center;
 
-  @include viewport--sm {
+
+  @include viewport--md {
     display: none;
   }
 }
@@ -87,16 +73,19 @@
   margin-right: 20px;
   overflow: hidden;
 
-  @include viewport--sm {
-    width: 327px;
-    margin-right: 0;
-  }
-
   .button--events {
     max-width: 50%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+  @include viewport--sm {
+    margin-right: 0;
+
+    .button--events {
+      max-width: none;
+      white-space: normal;
+    }
   }
 }
 
@@ -107,14 +96,9 @@
   font-size: 24px;
   line-height: 1;
   color: $color-tahiti-gold;
-  max-height: 3 * 24px * 1;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 3;
-  text-overflow: ellipsis;
 
-  @include viewport--sm {
-    max-width: 327px;
+  @include viewport--md {
+    width: 100%;
     margin-top: 15px;
     margin-bottom: 17px;
   }
@@ -123,25 +107,29 @@
 .slider__link {
   display: block;
   outline: none;
-
-  @include viewport--sm {
-    width: 327px;
-  }
 }
 
 .slider__link-container {
   max-width: 368px;
   overflow: hidden;
+
+  @include viewport--sm {
+    max-width: 100%;
+  }
 }
 
 .slider__text {
   width: 368px;
   margin: 0;
 
-  @include viewport--sm {
-    width: 327px;
+  @include viewport--md {
+    width: 100%;
     max-height: none;
+    margin-bottom: 64px;
+  }
+  @include viewport--sm {
     margin-bottom: 44px;
+    width: 100%;
   }
 }
 
@@ -150,21 +138,22 @@
   width: 368px;
   height: 320px;
   margin-bottom: 16px;
-  // background: url("../img/svg/loading.svg") center / 50px no-repeat;
 
   &:hover img {
     transform: scale(1.26);
     filter: grayscale(0%);
+  }
 
-    @include viewport--sm {
+
+  @include viewport--sm {
+    width: 100%;
+  }
+
+  &:hover img {
+    @include viewport--md {
       transform: scale(1);
       filter: grayscale(100%);
     }
-  }
-
-  @include viewport--sm {
-    width: 327px;
-    height: 240px;
   }
 }
 
@@ -243,19 +232,18 @@
   filter: grayscale(100%);
 }
 
-.slider__img-container video {
-  height: 320px;
-  object-fit: cover;
-}
-
 .slider .button {
   margin-right: 11px;
   margin-bottom: 11px;
   pointer-events: none;
 
-  @include viewport--sm {
-    margin-right: 4px;
+  @include viewport--md {
+    margin-right: 0;
     margin-bottom: 8px;
+
+    &--events {
+      margin-right: 4px;
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 .popup {
   position: relative;
+  width: 100%;
 
   .popup-slider__button-next,
   .popup-slider__button-prev {
@@ -30,16 +31,6 @@
       &::before {
         background-color: $color-tahiti-gold;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-tahiti-gold;
       }
     }
   }
@@ -68,16 +59,6 @@
       &::before {
         background-color: $color-san-marino;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-san-marino;
       }
     }
   }
@@ -106,16 +87,6 @@
       &::before {
         background-color: $color-mandy;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-mandy;
       }
     }
   }
@@ -144,16 +115,6 @@
       &::before {
         background-color: $color-beaver;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-beaver;
       }
     }
   }
@@ -182,16 +143,6 @@
       &::before {
         background-color: $color-scarlet;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-scarlet;
       }
     }
   }
@@ -220,16 +171,6 @@
       &::before {
         background-color: $color-fruit-salad;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-fruit-salad;
       }
     }
   }
@@ -258,16 +199,6 @@
       &::before {
         background-color: $color-gulf-stream;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-gulf-stream;
       }
     }
   }
@@ -296,16 +227,6 @@
       &::before {
         background-color: $color-cream-can;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-cream-can;
       }
     }
   }
@@ -334,16 +255,6 @@
       &::before {
         background-color: $color-bouquet;
         transition: background-color $default-transition-settings;
-
-        @include viewport--sm {
-          display: none;
-        }
-      }
-    }
-
-    h3 {
-      @include viewport--sm {
-        background-color: $color-bouquet;
       }
     }
   }
@@ -372,59 +283,174 @@
       &::before {
         background-color: $color-wewak;
         transition: background-color $default-transition-settings;
+      }
+    }
+  }
+}
 
-        @include viewport--sm {
+
+.popup {
+  @include viewport--md {
+    height: calc(100 * var(--vh, 1vh));
+  }
+
+  &--2 {
+    .event__description {
+      &::before {
+        @include viewport--md {
           display: none;
         }
       }
     }
 
     h3 {
-      @include viewport--sm {
-        background-color: $color-wewak;
+      @include viewport--md {
+        background-color: $color-tahiti-gold;
       }
     }
   }
 
-  // &--tmk-resita {
-  //   .popup-slider__button-next,
-  //   .popup-slider__button-prev {
-  //     border-color: $color-martini;
-  //     transition: border-color $default-transition-settings,
-  //       background-color $default-transition-settings;
+  &--4 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
 
-  //     svg {
-  //       stroke: $color-martini;
-  //       transition: stroke $default-transition-settings;
-  //     }
+    h3 {
+      @include viewport--md {
+        background-color: $color-san-marino;
+      }
+    }
+  }
 
-  //     &:active {
-  //       background-color: $color-martini;
-  //     }
-  //   }
+  &--15 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
 
-  //   .event__description {
-  //     border-color: $color-martini;
-  //     transition: border-color $default-transition-settings;
+    h3 {
+      @include viewport--md {
+        background-color: $color-mandy;
+      }
+    }
+  }
 
-  //     &::before {
-  //       background-color: $color-martini;
-  //       transition: background-color $default-transition-settings;
+  &--8 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
 
-  //       @include viewport--sm {
-  //         display: none;
-  //       }
-  //     }
-  //   }
+    h3 {
+      @include viewport--md {
+        background-color: $color-beaver;
+      }
+    }
+  }
 
-  //   h3 {
-  //     @include viewport--sm {
-  //       background-color: $color-martini;
-  //     }
-  //   }
-  // }
+  &--9 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
 
-  @include viewport--sm {
-    height: 100vh;
+    h3 {
+      @include viewport--md {
+        background-color: $color-scarlet;
+      }
+    }
+  }
+
+  &--7 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--md {
+        background-color: $color-fruit-salad;
+      }
+    }
+  }
+
+  &--5 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--md {
+        background-color: $color-gulf-stream;
+      }
+    }
+  }
+
+  &--10 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--md {
+        background-color: $color-cream-can;
+      }
+    }
+  }
+
+  &--11 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--md {
+        background-color: $color-bouquet;
+      }
+    }
+  }
+
+  &--12 {
+    .event__description {
+      &::before {
+        @include viewport--md {
+          display: none;
+        }
+      }
+    }
+
+    h3 {
+      @include viewport--md {
+        background-color: $color-wewak;
+      }
+    }
   }
 }

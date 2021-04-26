@@ -8,7 +8,7 @@
   background-image: url("../img/bg/bg-start@1x.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: right bottom;
   overflow-y: auto;
 
   &--hidden {
@@ -22,31 +22,22 @@
   @media (max-width: 1200px) {
     padding-left: 4.884%;
   }
-
-  @include viewport--sm {
-    height: 100vh;
-    padding: 24px;
-    background-image: url("../img/bg/bg-mobile-start@1x.jpg");
-    background-position: center bottom;
-
-    @include retina {
-      background-image: url("../img/bg/bg-mobile-start@2x.jpg");
-    }
-  }
 }
 
 .preloader__container {
   display: flex;
   justify-content: space-between;
   max-width: 934px;
-  height: calc(100vh - 78px);
+  height: calc(100 * var(--vh, 1vh) - 78px);
   margin: 0 auto;
   padding-left: 56px;
   padding-right: 20px;
 
-  @include viewport--sm {
+  @include viewport--md {
     max-width: none;
     padding: 0;
+    flex-direction: column;
+    height: calc(100 * var(--vh, 1vh) - 178px);
   }
 }
 
@@ -54,9 +45,10 @@
   margin-right: 120px;
   margin-bottom: 80px;
 
-  @include viewport--sm {
-    min-height: 667px;
+  @include viewport--md {
+   // min-height: 667px;
     margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -69,20 +61,15 @@
     margin-bottom: 0;
   }
 
-  @include viewport--sm {
+  @include viewport--md {
     margin-top: 0;
-    margin-bottom: 379px;
+    margin-bottom: 0;
   }
 }
 
 .preloader img {
   width: 150px;
   height: 81px;
-
-  @include viewport--sm {
-    width: 131px;
-    height: 75px;
-  }
 }
 
 .preloader__button {
@@ -114,13 +101,6 @@
     background: $color-tahiti-gold;
     box-shadow: inset 0 0 5px rgba($color-default-black, 0.25);
   }
-
-  @include viewport--sm {
-    margin: 0;
-    padding: 12px 46px 11px 52px;
-    font-size: 20px;
-    line-height: 25px;
-  }
 }
 
 .preloader__col-2 {
@@ -136,13 +116,11 @@
     display: none;
   }
 
-  @include viewport--sm {
-    position: absolute;
-    top: 105px;
-    max-width: 327px;
-    width: 327px;
-    height: 341px;
+  @include viewport--md {
+    position: relative;
+    padding-right: 24px;
     overflow: auto;
+    margin-bottom: 20px;
   }
 }
 
@@ -153,12 +131,6 @@
   font-size: 50px;
   line-height: 50px;
   color: $color-tahiti-gold;
-
-  @include viewport--sm {
-    margin-bottom: 20px;
-    font-size: 48px;
-    line-height: 48px;
-  }
 }
 
 .preloader p {
@@ -170,13 +142,6 @@
 
   &:last-child {
     margin-bottom: 0;
-  }
-
-  @include viewport--sm {
-    margin-bottom: 14px;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.04em;
   }
 }
 
@@ -207,5 +172,83 @@
 
   .modal--success {
     opacity: 0!important;
+  }
+}
+
+
+.preloader {
+  @include viewport--md {
+    height: calc(100 * var(--vh, 1vh));
+    padding: 24px;
+    background-image: url("../img/bg/bg-mobile-start@1x.jpg");
+
+    @include retina {
+      background-image: url("../img/bg/bg-mobile-start@2x.jpg");
+    }
+  }
+}
+
+.preloader__container {
+}
+
+.preloader__col-1 {
+}
+
+.preloader a {
+}
+
+.preloader img {
+  @include viewport--md {
+    width: 131px;
+    height: 75px;
+  }
+}
+
+.preloader__button {
+  @include viewport--md {
+    margin: 0;
+    padding: 12px 46px 11px 52px;
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.preloader__col-2 {
+
+}
+
+.preloader h1 {
+  @include viewport--md {
+    margin-bottom: 20px;
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+.preloader p {
+  @include viewport--md {
+    margin-bottom: 14px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+  }
+}
+
+
+.preloader__button--desc {
+
+}
+
+.preloader__button--mobile {
+  display: none!important;
+}
+
+@include viewport--md {
+  .preloader__button--desc {
+    display: none!important;
+  }
+
+  .preloader__button--mobile {
+    display: block!important;
   }
 }

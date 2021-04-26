@@ -37,6 +37,7 @@ const renderSlider = (data) => {
   const orgElement = modalSuccess.querySelector('.event__description .button--enterprises');
   const prevCardBtn = modalSuccess.querySelector('.popup-slider__button-prev');
   const nextCardBtn = modalSuccess.querySelector('.popup-slider__button-next');
+  const textContainer = modalSuccess.querySelector('.event__text-container');
 
   const eventSlider = document.querySelector('.event');
   const eventBtnPrev = eventSlider.querySelector('.event__button-prev');
@@ -103,7 +104,7 @@ const renderSlider = (data) => {
     eventsSlider.appendSlide(slides.map((slide) => `
       <div class="event__slide swiper-slide ${slide.video ? 'swiper-slide--video' : ''}">
         ${slide.video ? `
-          <iframe class="loaded-element" id="video" frameborder="0" allowfullscreen"
+          <iframe width="560" height="560" class="loaded-element" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
           data-src="${slide.video}" src="${slide.video}">
           </iframe>
         ` : `
@@ -111,7 +112,7 @@ const renderSlider = (data) => {
             <!-- 1х: 433px -->
             <source type="image/webp" srcset="${slide.image}">
             <!-- 1х: 433px -->
-            <img class="loaded-element" src="${slide.image}" width="433" height="320" >
+            <img class="loaded-element" src="${slide.image}" alt="${title}" width="433" height="320" >
           </picture>
         `}
         </div>
@@ -161,8 +162,7 @@ const renderSlider = (data) => {
       nextCardBtn.classList.add('popup-slider__button-next--disabled');
     }
 
-    let loaded = document.querySelectorAll('.loaded-element');
-
+    let loaded = document.querySelector('.loaded-element');
     loaded.addEventListener('load', () => {
       document.body.classList.remove('modal-loader-on');
     });
@@ -174,6 +174,7 @@ const renderSlider = (data) => {
     if (currentCardIndex > 0) {
       openCard(cards[currentCardIndex - 1]);
     }
+    textContainer.scrollTo(0, 0);
   });
   nextCardBtn.addEventListener('click', () => {
     const cards = data.cards[currentYear];
@@ -181,10 +182,14 @@ const renderSlider = (data) => {
     if (currentCardIndex < cards.length - 1) {
       openCard(cards[currentCardIndex + 1]);
     }
+    textContainer.scrollTo(0, 0);
   });
 
+  const wrapper = document.querySelector('.wrapper');
+
   /* Главный слайдер */
-  const slider = new Swiper('.slider', {
+  let mainSlider = document.querySelector('.slider')
+  const slider = new Swiper(mainSlider, {
     preloadImages: false,
     speed: 1000,
     // freeMode: true,
@@ -196,7 +201,20 @@ const renderSlider = (data) => {
       onlyInViewport: true,
     },
     mousewheel: {
-      sensitivity: 0.5,
+      //sensitivity: 0.5,
+    },
+    on: {
+      'beforeResize': function () {
+        let slides = mainSlider.querySelectorAll('.swiper-slide');
+        slides.forEach((slide) => {
+          slide.style = '';
+        });
+      },
+      'slideChangeTransitionStart': function () {
+        if (window.innerWidth < 481) {
+          wrapper.scrollTo({top: 20, behavior: 'smooth'});
+        }
+      },
     },
     breakpoints: {
       0: {
@@ -204,12 +222,22 @@ const renderSlider = (data) => {
         spaceBetween: 24,
         freeMode: false,
         autoHeight: true,
+        allowTouchMove: false,
+        speed: 500,
+      },
+      480: {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        freeMode: true,
+        allowTouchMove: true,
+        autoHeight: true,
       },
       1024: {
         slidesPerView: 'auto',
         spaceBetween: 0,
         freeMode: true,
-        allowTouchMove: false,
+        allowTouchMove: true,
+        autoHeight: false,
       },
     },
     navigation: {
@@ -231,26 +259,6 @@ const renderSlider = (data) => {
         }
       },
     },
-    // on: {
-    //   slidesLengthChange(swiper) {
-    //     setTimeout(() => {
-    //       const {slides, activeIndex} = swiper;
-    //       slides.forEach((slide, i) => {
-    //         if (i !== activeIndex) {
-    //           slide.style.display = 'none';
-    //         }
-    //       });
-    //     }, 500);
-    //   },
-    //   slideChangeTransitionEnd(swiper) {
-    //     const {slides, previousIndex} = swiper;
-    //     slides[previousIndex].style.display = 'none';
-    //   },
-    //   slideChangeTransitionStart(swiper) {
-    //     const {slides, activeIndex} = swiper;
-    //     slides[activeIndex].style.display = '';
-    //   },
-    // },
   });
 
   const buildSlideItem = ({id, title, cover, events, org, short_description}) => {
@@ -261,7 +269,7 @@ const renderSlider = (data) => {
             <div class="slider__img-container">
               <div class="slider__img-label slider__img-label--${org.id}"></div>
               <picture>
-                <img src="${cover}" data-srcset="${cover}" width="433" height="320"/>
+                <img src="${cover}" data-srcset="${cover}" alt="${title}" width="433" height="320"/>
               </picture>
               <div class="swiper-lazy-preloader"></div>
             </div>
@@ -316,6 +324,7 @@ const renderSlider = (data) => {
     slider.removeAllSlides();
     filteredYears = [];
     data.years.forEach(appendSlides);
+    updateYear();
   };
 
   slider.on('update resize', () => {
@@ -341,6 +350,14 @@ const renderSlider = (data) => {
 
   let currentNum1 = document.querySelector('.time-line__first-number');
   let currentNum2 = document.querySelector('.time-line__second-number');
+
+  const updateYear = () => {
+    const year = filteredYears[slider.realIndex].toString();
+    let firstDigit = year[2];
+    let secondDigit = year[3];
+    currentNum1.textContent = firstDigit;
+    currentNum2.textContent = secondDigit;
+  }
 
   // смена цифр
   slider.on('slideChange', () => {
@@ -462,7 +479,6 @@ const renderSlider = (data) => {
       // });
     };
   });
-
 
   filterEventsWraps.forEach((filterEventsWrap) => {
     filterEventsWrap.innerHTML = data.events.map((event) => `

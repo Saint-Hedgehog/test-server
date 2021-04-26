@@ -28,8 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @include viewport--sm {
-    min-width: 375px;
+  @include viewport--md {
+    min-width: 310px;
   }
 }
 
@@ -65,25 +65,37 @@ textarea {
     font-size: 90px;
     line-height: 100%;
     color: $color-tahiti-gold;
+
+    @mixin viewport--sm {
+      top: 10%;
+      left: 10px;
+      font-size: 60px;
+      line-height: 100%;
+    }
   }
 }
 
 .resize-text {
   display: none;
 
-  &--show {
-    position: absolute;
-    top: 20%;
-    left: 60px;
+  @include viewport--md {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10100;
     display: block;
-    width: calc(100vw - 120px);
+    width: 100vw;
+    height: calc(100 * var(--vh, 1vh));
     margin: 0;
+    padding: 50px;
     text-align: center;
     font-style: normal;
     font-weight: 900;
     font-size: 70px;
     line-height: 100%;
+    background-color: $color-default-white;
     color: $color-tahiti-gold;
+    overflow: auto;
   }
 }
 

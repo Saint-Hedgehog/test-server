@@ -2,34 +2,50 @@
   margin-top: 39px;
   margin-bottom: 32px;
 
-  @include viewport--sm {
+  @include viewport--md {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 3;
-    width: 375px;
+    width: 100%;
     margin: 0;
     padding-top: 39px;
-    padding-bottom: 23px;
+    padding-bottom: 20px;
     background-color: $color-default-white;
   }
-}
 
-.header h1 {
-  margin: 0;
-  margin-right: 30px;
-  padding-bottom: 1px;
-  font-weight: bold;
-  font-size: 60px;
-  line-height: 60px;
-  color: $color-tahiti-gold;
+  h1 {
+    margin: 0 30px 0 0;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    color: $color-tahiti-gold;
+    pointer-events: none;
+    display: block;
 
-  @include viewport--sm {
-    margin-right: 0;
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 38px;
+    @include viewport--md {
+      margin-right: 0;
+      font-weight: 900;
+      font-size: 32px;
+      line-height: 38px;
+      opacity: 1;
+      transition: opacity $default-transition-settings;
+    }
+  }
+
+  h2 {
+    display: none;
+
+    @include viewport--md {
+      min-height: 22px;
+      padding-right: 20px;
+      margin: 8px 0;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 26px;
+      color: $color-tahiti-gold;
+    }
   }
 }
 
@@ -37,16 +53,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
 
-  @include viewport--sm {
+  @include viewport--md {
     align-items: flex-start;
+    margin-bottom: 24px;
   }
 }
 
 .header__link {
   cursor: pointer;
 
-  @include viewport--sm {
+  @include viewport--md {
     display: none;
   }
 }
@@ -54,34 +72,20 @@
 .header__filter {
   display: none;
 
-  @include viewport--sm {
+  @include viewport--md {
     display: block;
     width: 40px;
     height: 40px;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-
-    svg {
-      width: 41px;
-      fill: none;
-    }
-
-    svg path {
-      fill: $color-tahiti-gold;
-    }
-
-    svg circle {
-      stroke: $color-tahiti-gold;
-    }
+    outline: none;
+    color: $color-tahiti-gold;
 
     &--active {
-      svg path {
-        fill: $color-default-white;
-      }
-
-      svg circle {
-        stroke: none;
-        fill: $color-tahiti-gold;
-      }
+      color: $color-default-white;
     }
   }
 }

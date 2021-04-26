@@ -28,6 +28,9 @@ const closeModal = (modal, callback, preventScrollLock) => {
   if (!preventScrollLock) {
     setTimeout(enableScrolling, 300);
   }
+
+  const textContainer = document.querySelector('.event__text-container');
+  textContainer.scrollTo(0, 0);
 };
 
 const onEscPress = (evt, modal, callback) => {
@@ -66,8 +69,8 @@ const setupModal = (modal, closeCallback, modalBtns, openCallback, noPrevDefault
         if (!noPrevDefault) {
           evt.preventDefault();
         }
-        // todo - починить или сделать для модалки контента
-        // document.body.classList.add('modal-loader-on');
+
+        document.body.classList.add('modal-loader-on');
 
         openModal(modal, openCallback, preventScrollLock);
       });

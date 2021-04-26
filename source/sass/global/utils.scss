@@ -1,51 +1,24 @@
 .visually-hidden {
   position: absolute;
-
   width: 1px;
   height: 1px;
   margin: -1px;
-
   clip: rect(0 0 0 0);
 }
 
 .wrapper {
   position: relative;
-
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   min-height: calc(100 * var(--vh, 1vh));
   overflow-x: hidden;
 
   &--no-scrollbar {
-    height: 100vh;
     height: calc(100 * var(--vh, 1vh));
-
-    -ms-overflow-style: none;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
-    }
-
-    @include viewport--sm {
-      &.wrapper--active h1 {
-        margin: 8px 0 7px 0;
-        font-weight: 800;
-        font-size: 20px;
-        line-height: 26px;
-        transition: margin $default-transition-settings,
-          font-weight $default-transition-settings,
-          font-size $default-transition-settings,
-          line-height $default-transition-settings;
-      }
-
-      &.wrapper--active .pagination {
-        top: 104px;
-        box-shadow: 0 4px 10px rgba(94, 94, 94, 0.1);
-        transition: box-shadow $default-transition-settings,
-          top $default-transition-settings;
-      }
     }
   }
 
@@ -56,10 +29,29 @@
 
   main {
     flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  @include viewport--sm {
-    width: 375px;
+  &.wrapper--active {
+    @include viewport--sm {
+      .time-line-main {
+        padding-top: 160px;
+      }
+
+      h1 {
+        display: none;
+      }
+
+      h2 {
+        display: block;
+      }
+      .header {
+        box-shadow: 0 4px 10px rgba(94, 94, 94, 0.1);
+      }
+    }
   }
 }
 

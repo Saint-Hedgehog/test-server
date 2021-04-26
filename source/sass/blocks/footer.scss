@@ -1,37 +1,58 @@
 .footer {
   min-height: 115px;
   margin-top: 36px;
-  padding-bottom: 55px;
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 10;
 
-  @include viewport--sm {
+  @include viewport--md {
     position: fixed;
-    // top: calc(100% - 95px);
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1001;
-    width: 375px;
+    width: 100%;
     min-height: 80px;
     margin-top: 15px;
     padding-top: 24px;
     padding-bottom: 32px;
     background-color: $color-default-white;
-    // filter: drop-shadow(0 -4px 10px rgba(94, 94, 94, 0.1));
     box-shadow: 0 -4px 10px 0 rgba(94, 94, 94, 0.1);
+    overflow: auto;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .container {
+      justify-content: space-between;
+    }
+  }
+
+  .ya-share2 {
+    &__title {
+      display: none;
+    }
   }
 }
 
 .footer .container {
   display: flex;
+
+  @include viewport--md {
+    align-items: center;
+  }
 }
 
 .footer__social-text {
   display: none;
 
-  @include viewport--sm {
+  @include viewport--md {
     z-index: 1;
-    align-self: flex-end;
-    display: block;
+    display: flex;
     min-width: 160px;
     margin: 0;
     font-weight: 500;
@@ -43,15 +64,19 @@
 
 .footer__social {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 130px;
+  width: 155px;
   margin: 0;
   padding: 0;
   list-style: none;
 
-  @include viewport--sm {
-    width: 120px;
+  @include viewport--md {
     margin-left: auto;
+    flex-direction: row;
+    margin-right: -8px;
+    width: auto;
+    flex-wrap: nowrap;
   }
 }
 
@@ -61,15 +86,14 @@
   margin-right: 8px;
   margin-bottom: 8px;
 
-  @include viewport--sm {
+  @include viewport--md {
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 0;
-    margin-bottom: 16px;
 
     &:last-child {
       margin-bottom: 0;
     }
-    // margin-left: 16px;
   }
 }
 
@@ -78,8 +102,8 @@
   display: block;
   width: 20px;
   height: 20px;
-  margin-bottom: 15px;
   outline: none;
+  margin: 5px 0;
 
   &::before {
     content: "";
@@ -99,29 +123,29 @@
     opacity: 0.7;
   }
 
-  @include viewport--sm {
+  @include viewport--md {
     width: 24px;
     height: 24px;
-    margin-left: 16px;
-    margin-bottom: 0;
+    margin: 0 8px;
 
     &::before {
       top: -8px;
       left: -8px;
     }
   }
-}
 
-.footer__social-link svg {
-  fill: $color-silver;
-  transition: fill $default-transition-settings,
+  svg {
+    fill: $color-silver;
+    transition: fill $default-transition-settings,
     opacity $default-transition-settings;
 
-  @include viewport--sm {
-    width: 24px;
-    height: 24px;
+    @include viewport--md {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
+
 
 .footer__filter {
   position: relative;
@@ -135,7 +159,7 @@
     margin-left: auto;
   }
 
-  @include viewport--sm {
+  @include viewport--md {
     display: none;
   }
 }
@@ -161,8 +185,7 @@
 }
 
 .footer__filter p {
-  margin: 0;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -176,6 +199,7 @@
   padding: 0;
   list-style: none;
 }
+
 
 .footer__filter li {
   margin-right: 21px;
@@ -219,26 +243,18 @@
     border-color: $color-gainsboro-2;
 
     & span:nth-child(2n + 2) {
-      position: absolute;
-      visibility: hidden;
-      overflow: hidden;
-      opacity: 0;
+      display: none;
     }
 
     &:hover {
-      span:nth-child(2n + 1) {
-        position: absolute;
-        visibility: hidden;
-        overflow: hidden;
-        opacity: 0;
-      }
+      @media(min-width: 1200px) {
+        span:nth-child(2n + 1) {
+          display: none;
+        }
 
-      span:nth-child(2n + 2) {
-        position: static;
-        display: block;
-        visibility: visible;
-        overflow: auto;
-        opacity: 1;
+        span:nth-child(2n + 2) {
+          display: block;
+        }
       }
     }
   }
@@ -439,6 +455,8 @@
     font-size: 12px;
     line-height: 20px;
     letter-spacing: normal;
+    text-align: left;
+    white-space: nowrap;
   }
 
   &--active {

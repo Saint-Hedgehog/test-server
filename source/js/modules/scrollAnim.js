@@ -2,7 +2,6 @@ const initScrollAnim = () => {
   const MOBILE_WIDTH = 1024;
   const SCROLL_STEP = 10;
   const wrapper = document.querySelector('.wrapper');
-  const header = document.querySelector('.header'); // объект модификации
 
   // создаем наш обработчик скролла
   const onScrollToggleClass = () => {

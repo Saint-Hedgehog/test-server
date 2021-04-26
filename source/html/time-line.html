@@ -11,54 +11,90 @@
   <div style="display: none;">
     @@include("build/img/sprite_auto.svg")
   </div>
-  <div class="preloader-before-modal">
-    <img src="../img/svg/loading.svg" alt="загрузка..."/>
-  </div>
   <p class="IE11">Этот веб-сайт не работает с Internet Explorer. Пожалуйста, используйте для просмотра другой браузер.</p>
   <!-- <p class="resize-text">Мобильная версия этого веб-сайт находится в разработке. Пожалуйста, используйте для просмотра настольный ПК.</p> -->
 
   <div class="wrapper wrapper--no-scrollbar">
     <header class="header">
-      <div class="header__wrapper container">
-        <h1>ТМК: история лидерства</h1>
-        <a href="main.html" class="header__link" aria-label="Переход на главную">
-          <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
-        </a>
+      <div class="container">
+        <div class="header__wrapper">
+          <h1>ТМК: история лидерства</h1>
+          <h2>ТМК: история лидерства</h2>
+          <a href="mobile-main.html" class="header__link" aria-label="Переход на главную">
+            <img src="img/svg/logo-main.svg" alt="Логотип ТМК" width="112" height="60">
+          </a>
+          <button class="header__filter" type="button" aria-label="Открыть фильтры">
+            <svg width="40" height="40">
+              <use xlink:href="#icon-filter"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Пагинация -->
+        <div class="pagination swiper-pagination"></div>
       </div>
     </header>
 
-    <main>
+    <main class="time-line-main">
       <section class="time-line">
         <div class="time-line__wrapper">
-          <!-- Пагинация -->
-          <div class="pagination swiper-pagination"></div>
-          <!-- Слайдер -->
-          <div class="slider swiper-container">
-            <div class="swiper-wrapper"></div>
-          </div>
           <!-- Номер текущего слайда -->
           <p>20</p>
           <div class="time-line__text-container">
             <p class="time-line__first-number">0</p>
             <p class="time-line__second-number">1</p>
           </div>
-
-          <button class="time-line__button-prev" type="button">
-            <svg width="50" height="50">
-              <use xlink:href="#icon-main-slider-button-prev"></use>
-            </svg>
-          </button>
-          <button class="time-line__button-next" type="button">
-            <svg width="50" height="50">
-              <use xlink:href="#icon-main-slider-button-prev"></use>
-            </svg>
-          </button>
+          <!-- Слайдер -->
+          <div class="slider swiper-container">
+            <div class="swiper-wrapper"></div>
+          </div>
+          <div class="time-line__navigation-container">
+            <button class="time-line__button time-line__button-prev" type="button">
+              <svg class="time-line--desc" width="50" height="50">
+                <use xlink:href="#icon-main-slider-button-prev"></use>
+              </svg>
+              <svg class="time-line--mobile" width="50" height="50">
+                <use xlink:href="#icon-mobile-button-prev"></use>
+              </svg>
+              <span class="time-line--mobile time-line__count-prev"></span>
+            </button>
+            <button class="time-line__button time-line__button-next" type="button">
+              <span class="time-line--mobile time-line__count-next"></span>
+              <svg class="time-line--mobile" width="50" height="50">
+                <use xlink:href="#icon-mobile-button-next"></use>
+              </svg>
+              <svg class="time-line--desc" width="50" height="50">
+                <use xlink:href="#icon-main-slider-button-next"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 
     </main>
 
-    @@include("source/html/base/footer.html")
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__social-text">Поделиться в соцсетях:</p>
+        <div class="js-footer-social" data-url="https://history.tmk-group.ru/"></div>
+
+        <div class="footer__filter footer__filter--enterprises">
+          <h2>предприятия</h2>
+          <p>Показать только</p>
+          <ul class="enterprises-filter">
+          </ul>
+        </div>
+
+        <div class="footer__filter footer__filter--events">
+          <h2>События</h2>
+          <p>Показать только</p>
+          <ul class="events-filter">
+          </ul>
+        </div>
+      </div>
+
+    </footer>
+
 
     @@include("source/html/base/modal.html", {
       "name": "success",
@@ -66,6 +102,25 @@
       "noScale": true,
       "mod": "some-mod"
     })
+
+    <section class="filter">
+      <h2>Фильтр событий по тегам</h2>
+      <button class="filter__close-btn btn-reset" type="button" aria-label="Закрыть попап">
+        <svg width="15" height="15">
+          <use xlink:href="#icon-close"></use>
+        </svg>
+      </button>
+
+      <div class="filter__enterprises">
+        <h3>предприятия</h3>
+        <ul class="filter__enterprises-list enterprises-filter"></ul>
+      </div>
+
+      <div class="filter__events">
+        <h3>События</h3>
+        <ul class="filter__events-list events-filter"></ul>
+      </div>
+    </section>
   </div>
 
   <script src="js/vendor.min.js"></script>

@@ -1,24 +1,16 @@
 .pagination {
-  z-index: 3;
-  margin: 0;
-  margin-left: 22px;
+  z-index: 21;
   padding: 0;
   text-align: start;
   list-style: none;
+  margin: 0 -7px;
 
-  @include viewport--sm {
-    position: fixed;
-    top: 139px;
-    left: 0;
-    right: 0;
+  @include viewport--md {
     z-index: 2;
     display: flex;
-    width: 375px;
-    // position: relative;
-    margin-left: 0;
-    padding-bottom: 20px;
-    padding-left: 24px;
-    background-color: $color-default-white;
+    padding: 0 25px;
+    width: calc(100% + 50px);
+    margin: 0 -25px;
     overflow-x: auto;
   }
 }
@@ -28,8 +20,6 @@
   display: inline-block;
   width: 51px;
   height: 23px;
-  margin: 0;
-  margin-right: 14px;
   padding: 0 3px 2px 3px;
   font-weight: 500;
   font-size: 16px;
@@ -39,27 +29,47 @@
   background-color: transparent;
   color: $color-grey;
   border: 0;
-  border-radius: 11.5px;
+  margin: 0;
   transition: color $default-transition-settings,
     background-color $default-transition-settings;
   letter-spacing: -0.02em;
   outline: none;
   cursor: pointer;
+  z-index: 10;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 51px;
+    bottom: 0;
+    z-index: -1;
+    background-color: $color-tahiti-gold;
+    border-radius: 11px;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
 
   &:active,
   &:focus {
     outline: none;
   }
 
-  &:not(:last-child)::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    right: -8px;
-    width: 3px;
-    height: 2px;
-    background-color: $color-tahiti-gold;
-    border-radius: 50%;
+
+  &:not(:last-child) {
+    margin: 0 14px 0 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      right: -8px;
+      width: 3px;
+      height: 2px;
+      background-color: $color-tahiti-gold;
+      border-radius: 50%;
+    }
   }
 
   &:hover:not(.pagination__current-item),
@@ -67,13 +77,22 @@
     color: $color-matterhorn;
   }
 
-  @include viewport--sm {
+  @include viewport--md {
     padding: 0 10px 2px 8px;
+
+    &:last-of-type {
+      padding-right: 35px;
+      width: 75px;
+    }
   }
+
 }
 
 .pagination__current-item {
-  background-color: $color-tahiti-gold;
   color: $color-default-white;
   pointer-events: none;
+
+  &::after {
+    opacity: 1;
+  }
 }

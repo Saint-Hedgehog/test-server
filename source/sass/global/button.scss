@@ -1,9 +1,9 @@
 .button {
   display: inline-block;
-  margin: 0 16.5px 16px 0;
-  padding: 3px 9px 3px 9px;
+  margin: 0 16px 16px 0;
+  padding: 3px 9px;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 18px;
   vertical-align: middle;
   background-color: transparent;
@@ -25,19 +25,9 @@
   }
 
   &--timeline-enterprises {
-    padding: 0 7px;
-    font-size: 10px;
-    line-height: 23px;
-    border-radius: 15px;
-    letter-spacing: 0.05em;
 
     &:not(.button--events):hover {
       box-shadow: 0 0 10px rgba($color-default-black, 0.15);
-    }
-
-    @include viewport--sm {
-      padding: 2px 21px 2px 19px;
-      border-radius: 25.6px;
     }
   }
 
@@ -45,17 +35,7 @@
     margin-right: 11px;
     color: $color-grey;
     border-color: $color-grey;
-
-    @include viewport--sm {
-      padding: 2px 18px 2px 14px;
-      border-color: $color-gainsboro-2;
-
-      &.button--active {
-        color: $color-white;
-        background-color: $color-grey;
-        border-color: $color-grey;
-      }
-    }
+    text-align: left;
 
     &:empty {
       display: none;
@@ -66,8 +46,101 @@
   &--tmk-group {
     color: $color-tahiti-gold;
     border-color: $color-tahiti-gold;
+  }
 
-    @include viewport--sm {
+  &--15,
+  &--3,
+  &--vtz {
+    color: $color-mandy;
+    border-color: $color-mandy;
+  }
+
+  &--4,
+  &--stz {
+    color: $color-san-marino;
+    border-color: $color-san-marino;
+  }
+
+  &--8,
+  &--tmk-artrom {
+    color: $color-beaver;
+    border-color: $color-beaver;
+  }
+
+  &--9,
+  &--tmk-ipsco {
+    color: $color-scarlet;
+    border-color: $color-scarlet;
+  }
+
+  &--7,
+  &--tagmet {
+    color: $color-fruit-salad;
+    border-color: $color-fruit-salad;
+  }
+
+  &--5,
+  &--sin-tz {
+    color: $color-gulf-stream;
+    border-color: $color-gulf-stream;
+  }
+
+  &--10,
+  &--ktp {
+    color: $color-cream-can;
+    border-color: $color-cream-can;
+  }
+
+  &--11,
+  &--omz {
+    color: $color-bouquet;
+    border-color: $color-bouquet;
+  }
+
+  &--12,
+  &--tmk-gipi {
+    color: $color-wewak;
+    border-color: $color-wewak;
+  }
+}
+
+
+.button {
+  @include viewport--md {
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: normal;
+  }
+
+  @include viewport--sm {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  &--timeline-enterprises {
+    @include viewport--md {
+      padding: 2px 19px;
+      border-radius: 25.6px;
+    }
+  }
+
+  &--events {
+    @include viewport--md {
+      margin-right: 4px;
+      padding: 2px 14px;
+      border-color: $color-gainsboro-2;
+
+      &.button--active {
+        color: $color-white;
+        background-color: $color-grey;
+        border-color: $color-grey;
+      }
+    }
+  }
+
+  &--2,
+  &--tmk-group {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-tahiti-gold;
@@ -79,10 +152,7 @@
   &--15,
   &--3,
   &--vtz {
-    color: $color-mandy;
-    border-color: $color-mandy;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-mandy;
@@ -93,10 +163,7 @@
 
   &--4,
   &--stz {
-    color: $color-san-marino;
-    border-color: $color-san-marino;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-san-marino;
@@ -107,10 +174,7 @@
 
   &--8,
   &--tmk-artrom {
-    color: $color-beaver;
-    border-color: $color-beaver;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-beaver;
@@ -121,10 +185,7 @@
 
   &--9,
   &--tmk-ipsco {
-    color: $color-scarlet;
-    border-color: $color-scarlet;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-scarlet;
@@ -135,10 +196,7 @@
 
   &--7,
   &--tagmet {
-    color: $color-fruit-salad;
-    border-color: $color-fruit-salad;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-fruit-salad;
@@ -149,10 +207,7 @@
 
   &--5,
   &--sin-tz {
-    color: $color-gulf-stream;
-    border-color: $color-gulf-stream;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-gulf-stream;
@@ -163,10 +218,7 @@
 
   &--10,
   &--ktp {
-    color: $color-cream-can;
-    border-color: $color-cream-can;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-cream-can;
@@ -177,10 +229,7 @@
 
   &--11,
   &--omz {
-    color: $color-bouquet;
-    border-color: $color-bouquet;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-bouquet;
@@ -191,21 +240,12 @@
 
   &--12,
   &--tmk-gipi {
-    color: $color-wewak;
-    border-color: $color-wewak;
-
-    @include viewport--sm {
+    @include viewport--md {
       &.button--active {
         color: $color-white;
         background-color: $color-wewak;
         border-color: $color-wewak;
       }
     }
-  }
-
-  @include viewport--sm {
-    font-size: 15px;
-    line-height: 26px;
-    letter-spacing: normal;
   }
 }

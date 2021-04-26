@@ -122,7 +122,7 @@ const clean = () => {
   return del('build');
 };
 
-const build = gulp.series(clean, svgo, copy, css, sprite, js, html);
+const build = gulp.series(clean, svgo, copy, copysvg, css, sprite, js, html);
 
 const start = gulp.series(build, syncserver);
 
